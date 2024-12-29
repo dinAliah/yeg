@@ -1,0 +1,30 @@
+// {
+//   "compilerOptions": {
+//     "paths": {
+//       "@/*": ["./src/*"]
+//     }
+//   }
+// }
+
+
+
+{
+  "compilerOptions": {
+    "target": "ES6",                           // Specify ECMAScript target version
+    "module": "ESNext",                        // Specify module code generation
+    "moduleResolution": "Node",                // Specify module resolution strategy
+    "baseUrl": ".",                            // Base directory to resolve non-relative module names
+    "paths": {
+      "@/*": ["./src/*"]                       // Path alias for simpler imports
+    },
+    "lib": ["DOM", "ESNext"],                  // Specify library files to be included in the compilation
+    "allowSyntheticDefaultImports": true,      // Allow default imports from modules with no default export
+    "esModuleInterop": true,                   // Emit additional JS for supporting CommonJS modules
+    "strict": true,                            // Enable all strict type-checking options
+    "skipLibCheck": true,                      // Skip type checking of all declaration files
+    "forceConsistentCasingInFileNames": true   // Disallow inconsistently-cased references to the same file
+  },
+  "include": ["src"]                          // Include all files in the src directory
+}
+
+  

@@ -37,7 +37,7 @@ function Navbar() {
 
 
             <MenubarMenu>
-              <MenubarTrigger>Career Program</MenubarTrigger>
+              <MenubarTrigger>Career Programm</MenubarTrigger>
               <MenubarContent>
                 <MenubarItem>
                 <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">

@@ -47,10 +47,6 @@ export default function RootLayout({ children }) {
               gtag('config', 'G-QCJEQC9T3Z');
             `}
           </Script>
-          
-
-
-
           <script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6199758154363864`}

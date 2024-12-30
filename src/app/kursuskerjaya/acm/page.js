@@ -5,11 +5,10 @@ import Navbar from "@/components/Navbar.jsx"
 import Sidebar from "@/components/Sidebar.jsx"
 import Contactus from '@/components/Contactus'
 
-
-function sphu() {
+function acm() {
   return (
-    <main>
-      <title>YEG Academy - Kursus Kerjaya</title>
+    <>
+      
 
       {/* <nav className="hidden lg:block sticky top-0 ">
         <Navbar/>
@@ -112,7 +111,7 @@ function sphu() {
           </card3>
           
         </div>
-        <div className="hidden  md:grid grid-cols-2 lg:grid grid-cols-2 gap-5 p-6">
+        <div className="hidden  md:grid lg:grid grid-cols-2 gap-5 p-6">
         <card4 className="bg-slate-200 p-4">
             <div className="flex items-center">
               <h className="text-9xl font-extrabold">4</h>
@@ -130,8 +129,8 @@ function sphu() {
       <div>
       <Footer/>
     </div>
-    </main>
+    </>
   )
 }
 
-export default sphu
+export default acm

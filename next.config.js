@@ -13,7 +13,7 @@
 module.exports = {
   swcMinify: false, // Disable SWC minification (optional)
   output: 'export', // Enable static export mode
-  basePath: '/yeg', // Replace with your repository name if hosted in a subdirectory
+  // basePath: '/yeg', 
   images: {
     unoptimized: true, // Required for GitHub Pages
   },

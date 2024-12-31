@@ -7,16 +7,16 @@ import VideoMqa from '@/components/kembarahaji/VideoMqa'
 import Moto from '@/components/kembarahaji/Moto'
 import Footer from '@/components/Footer'
 import FormMmp from '@/components/mqa/FormMmp'
-import VerticalCountdownTimer from '@/components/VerticalCountdownTimer'
+import PopupAds from '@/components/PopupAds'
 import Facility from '@/components/mqa/Facility'
 import Reference from '@/components/mqa/Reference'
 
 
 function page() {
-  const targetDate = new Date('2024-06-09T23:59:59');
   return (
     <>
     <main>
+      <PopupAds/>
       <section>
       <div className="hidden bg-black h-screen lg:flex justify-end" style={{backgroundImage:'url("/mqaposter1.png")', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
       <div className="lg:flex items-center"><FormMmp/></div>

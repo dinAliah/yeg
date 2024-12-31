@@ -1,8 +1,6 @@
 import React from 'react'
 import Image from "next/image"
 import Footer from "@/components/Footer.jsx"
-import Navbar from "@/components/Navbar.jsx"
-import Sidebar from "@/components/Sidebar.jsx"
 import Contactus from '@/components/Contactus'
 
 
@@ -11,15 +9,6 @@ function diploma1() {
     <main>
       <title>YEG Academy - Distance Online Learning</title>
 
-      {/* <nav className="hidden lg:block sticky top-0 ">
-        <Navbar/>
-    </nav>
-      <nav>
-    <div className="lg:hidden">
-        <Sidebar/>
-    </div>
-    </nav> */}
-  
       <section1>
       <div className="flex justify-center">
                 <Image

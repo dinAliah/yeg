@@ -80,11 +80,9 @@ function footer() {
          
           </div>
           <div className="pt-6 grid space-y-2">
-          <h>Developed by PetalCode Labs</h>
-          <h>Content Prepered by Hanani Azhar</h>
+          <h>Developed by <a href="https://www.tiktok.com/@petalcode">PetalCode Labs</a></h>
           </div>
-            
-            </div>
+          </div>
           </div>
           </div>
           <div className=" col-span-2 p-8">

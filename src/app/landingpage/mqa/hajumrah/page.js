@@ -9,6 +9,7 @@ import Formmqahajumrah from '@/components/mqahajumrah/Formmqahajumrah'
 import Syarat from '@/components/mqahajumrah/Syarat'
 import Facility from '@/components/mqahajumrah/Facility'
 import Reference from '@/components/mqahajumrah/Reference'
+import Subject from '@/components/mqahajumrah/Subject'
 
 
 function page() {
@@ -19,13 +20,11 @@ function page() {
         <div className="grid justify-center">
           <Image
               className=""
-              src="/lpaviation.jpg"
-              alt="lpaviation"
+              src="/hajumrahmqa.jpg"
+              alt="hajumrahmqa"
               width="1500"
               height="80"
-              style={{
-                objectFit:"contain",
-              }}
+              style={{objectFit:"contain"}}
             />
           </div>
           <div className="w-full lg:flex justify-center">
@@ -41,6 +40,7 @@ function page() {
           controls
           autoPlay
           loop
+          muted
           className="w-full max-w-4xl rounded shadow-lg">
           <source src="/videosemakstatus.mp4" type="video/mp4" />
         </video>
@@ -51,7 +51,8 @@ function page() {
       <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Facility</div>
         <Facility/>
       </section>
-      <Syarat/>  
+      <Syarat/> 
+      <Subject/>  
 
         <section>
           <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Roadmap Courses</div>
@@ -66,10 +67,10 @@ function page() {
           }}/>
         </section>
 
-      <div className="py-4 lg:py-10 md:[height:80px]"></div>  
+      <div className="py-4 lg:py-10 md:[height:80px]"></div>
+       
      
-  
-        <Testimoni/>
+      <Testimoni/>
  
       <div className="py-4 lg:py-10 md:[height:80px]"></div>
       <section>

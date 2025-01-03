@@ -19,3 +19,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+li {
+  list-style-position: inside; /* Ensure bullets are inside the box */
+  text-indent: -1.5em; /* Adjust based on your bullet's width */
+  padding-left: 1.5em; /* Align subsequent lines with the text */
+  line-height: 1.5; /* Add spacing for readability */
+  white-space: normal; /* Allow wrapping */
+}

@@ -35,14 +35,12 @@ export default function App() {
     const formEle = document.querySelector("form");
     const formDatab = new FormData(formEle);
 
-    formDatab.append("Program1", selectedItem);
-
-    formDatab.append("Media", selectedItem1);
+    formDatab.append("Program", selectedItem);
     formDatab.append("State", selectedItem2);
     
 
     fetch(
-      "https://script.google.com/macros/s/AKfycbwUlvPCR9pCl4O56CRwQQwowTHJGsOoY-e-erAxaQPzyZ1Nz4IkBMMHr8bDcj9JW5ii/exec",
+      "https://script.google.com/macros/s/AKfycbz7Cxk8l4c-V_JqSffHVZFUcyJPaIuR057s7HgdJDqROrWe8ySgZ6hckmjNs22aNQGK/exec",
       {
         method: "POST",
         body: formDatab
@@ -59,22 +57,18 @@ export default function App() {
 
       setAlertMessage('Form submitted successfully!');
       alert('Penghantaran Berjaya!, Pegawai kami akan menghubungi anda secepat mungkin');
-
   }
 
-
-
-    
   // program yeg
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
     };
 
+  // // media
+  //   const toggleDropdown1 = () => {
+  //     setIsOpen1(!isOpen1);
+  //   };
 
-  // media
-    const toggleDropdown1 = () => {
-      setIsOpen1(!isOpen1);
-    };
   //state  
   const toggleDropdown2 = () => {
     setIsOpen2(!isOpen2);
@@ -88,11 +82,11 @@ export default function App() {
         setIsOpen(false);
       };
 
-    // media 
-      const handleItemClick1 = (item) => {
-        setSelectedItem1(item);
-        setIsOpen1(false);
-      };
+    // // media 
+    //   const handleItemClick1 = (item) => {
+    //     setSelectedItem1(item);
+    //     setIsOpen1(false);
+    //   };
     //state
     const handleItemClick2 = (item) => {
       setSelectedItem2(item);
@@ -108,7 +102,7 @@ export default function App() {
         <h className="py-6 text-black text-3xl font-bold">Course Enquiry</h>
  
       <div className="grid rounded-md">
-        <h className="">Nama Pelajar</h>
+        <h className="">Nama</h>
       <input className="bg-gray-200 px-3  hover:shadow-md duration-500 rounded-md " placeholder="" name="Name" type="text" />
       </div>
       <div className="grid rounded-md">
@@ -120,7 +114,7 @@ export default function App() {
       </div>
       <div className="grid lg:flex  ">
       <div className="grid">
-            <h>Nombor Telefon Pelajar </h>
+            <h> Number Tel </h>
             <input className="bg-gray-200 px-3 py-2 hover:shadow-md duration-500 rounded-md" placeholder="" name="NumberPhone" type="text" />
           </div>
           <div className="grid ">
@@ -130,10 +124,10 @@ export default function App() {
       </div>
       
       <div className="w-full relative inline-block text-left">
-        <div>Pilihan Program (MQA)</div>
+        <div>Pilih Kerjaya</div>
       <button
         onClick={toggleDropdown} 
-        name="Program1"
+        name="Program"
         type="button"
         className=" bg-yellow-500 hover:bg-yellow-600 inline-flex justify-center w-full py-2 text-sm font-medium text-black  border border-transparent rounded-md focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800"
       >
@@ -143,39 +137,25 @@ export default function App() {
       {isOpen && (
         <div className="w-full right-0 mt-2  origin-top-right bg-white border border-gray-200 divide-y  rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
         
-          <p
-            className="px-4 text-md py-2 cursor-pointer bg-yellow-500 font-bold"
-          >
-            Work Based Learning
-          </p>
           <div className="pl-6 text-sm bg-yellow-500">
           <p className="px-4 py-2 cursor-pointer hover:bg-yellow-400 rounded-md"
-            onClick={() => handleItemClick("DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)")}
-          >
-            DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)
-          </p>
+            onClick={() => handleItemClick("Diploma in Aircraft Maintenance Technology + SKM Level 3 (MQA/PA 13009)")}
+          > Diploma in Aircraft Maintenance Technology + SKM Level 3 (MQA/PA 13009)</p>
           </div>
-          <p className="px-4 text-md font-bold py-2 hover:bg-gray-200 bg-slate-600"  >
-            Diploma Kovensional
-          </p>
           <div className="pl-6 text-sm text-white bg-slate-600">
           <p className="px-4 py-2 cursor-pointer hover:bg-slate-400 rounded-md"
-            onClick={() => handleItemClick("DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)")}
-          >
-            DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)
-          </p> 
+            onClick={() => handleItemClick("Diploma in Aircraft Sheet Metal Structure Repair Technology + SKM Level 3 (MQA/PA 17493)")}
+          > Diploma in Aircraft Sheet Metal Structure Repair Technology + SKM Level 3 (MQA/PA 17493)</p> 
           </div>
-          <p
-            className="px-4 text-md py-2 cursor-pointer bg-gray-400 font-bold"
-          >
-            Kerjaya
-          </p>
-          <div className="pl-6 text-sm bg-gray-400">
-          <p className=" py-2 cursor-pointer hover:bg-gray-500 rounded-md"
-            onClick={() => handleItemClick("SIJIL PROFESIONAL PENGURUSAN HAJI & UMRAH (SPHU)")}
-          >
-            SIJIL PROFESIONAL PENGURUSAN HAJI & UMRAH (SPHU)
-          </p>
+          <div className="pl-6 text-sm text-white bg-slate-600">
+          <p className="px-4 py-2 cursor-pointer hover:bg-slate-400 rounded-md"
+            onClick={() => handleItemClick("Diploma in Air Cargo Management + SKM Level 3 (MQA/PA 14971)")}
+          > Diploma in Air Cargo Management + SKM Level 3 (MQA/PA 14971)</p> 
+          </div>
+          <div className="pl-6 text-sm text-white bg-slate-600">
+          <p className="px-4 py-2 cursor-pointer hover:bg-slate-400 rounded-md"
+            onClick={() => handleItemClick("AVIATION - TICKETING")}
+          > Diploma in Aviation Operation Management + SKM Level 3 (MQA/PA 15555)</p> 
           </div>
         </div>
       )}
@@ -194,7 +174,7 @@ export default function App() {
 
           
       <div className="grid  text-left">
-        <p className="py-1 text-black">Negeri</p>
+        <p className="py-1 text-black">Tempat Inerview</p>
       <button
         onClick={toggleDropdown2} 
         name="Negeri"
@@ -296,12 +276,6 @@ export default function App() {
         </div>
       )}
     </div>      
-
-
-
-
-
-
     <div className="pt-4">
     <button className="px-6 py-2 border rounded-md bg-yellow-500 hover:bg-yellow-600 hover:shadow-md duration-300" name="Submit" type="submit" >Submit</button>
     </div>

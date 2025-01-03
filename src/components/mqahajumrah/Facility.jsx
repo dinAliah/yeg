@@ -3,32 +3,36 @@ import Image from 'next/image'
 
 const items = [
   {
-    title: "SCHOLARSHIP",
-    descriptions: ["Dermasiswa khas untuk yuran pengajian."],
+    title: "Dermasiswa",
+    descriptions: ["Dermasiswa yuran pengajian sebanyak RM2500."],
     icon: "/mqaicon1.png",
   },
   {
     title: "Certificate",
-    descriptions: ["Percuma Sijil Kemahiran Industtri(SKIN)"],
+    descriptions: ["Percuma Sijil Kemahiran Industtri(SKIN) Certified Mutawwif Profesional (CMP)"],
     icon: "/mqaicon2.png",
   },
   {
-    title: "allowance",
-    descriptions: ["Elaun praktikal untuk program."],
+    title: "Elaun",
+    descriptions: ["Penginapan disediakan untuk pelajar."],
     icon: "/mqaicon3.png",
   },
   {
-    title: "COLLABORATION",
-    descriptions: ["Percuma master untuk program Aviation & HajUmrah"],
+    title: "Latihan Industri",
+    descriptions: ["Latihan Indstri di Mekah & Madinah selama 1-3 bulan"],
     icon: "/mqaicon4.png",
   },
- 
+  {
+    title: "Collaboration",
+    descriptions: ["Bantuan penempatan kerjaya selepas tamat pengajian"],
+    icon: "/mqaicon4.png",
+  },
 ];
 
 function Facility() {
   return (
     <section className="py-6 ">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-2">
         {items.map((item, index) => (
           <div
             key={index}

@@ -29,7 +29,7 @@ export default function Popup() {
     <>
       {showPopup && (
         <div
-          className={`fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50 transition-opacity duration-500 ${
+          className={`fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50 transform transition-all duration-500 ease-in-out${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >

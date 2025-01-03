@@ -2,37 +2,45 @@
 import React from 'react'
 import Image from 'next/image'
 import SliderJelajahAcm from '@/components/kembarahaji/SliderJelajahAcm'
-import Testimoni from '@/components/mqa/Testimoni'
-import VideoMqa from '@/components/kembarahaji/VideoMqa'
+import Testimoni from '@/components/mqahajumrah/Testimoni'
 import Moto from '@/components/kembarahaji/Moto'
 import Footer from '@/components/Footer'
-import FormMmp from '@/components/mqa/FormMmp'
-import PopupAds from '@/components/PopupAds'
-import Facility from '@/components/mqa/Facility'
-import Reference from '@/components/mqa/Reference'
+import Formmqahajumrah from '@/components/mqahajumrah/Formmqahajumrah'
+import Syarat from '@/components/mqahajumrah/Syarat'
+import Facility from '@/components/mqahajumrah/Facility'
+import Reference from '@/components/mqahajumrah/Reference'
 
 
 function page() {
   return (
     <>
     <main>
-      <PopupAds/>
       <section>
-      <div className="hidden bg-black h-screen lg:flex justify-end" style={{backgroundImage:'url("/mqaposter1.png")', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-      <div className="lg:flex items-center"><FormMmp/></div>
-      </div>
-      <div className="lg:hidden bg-white h-full flex justify-center" >
-      <div className=""><FormMmp/></div>
-      </div>
+        <div className="grid justify-center">
+          <Image
+              className=""
+              src="/lpaviation.jpg"
+              alt="lpaviation"
+              width="1500"
+              height="80"
+              style={{
+                objectFit:"contain",
+              }}
+            />
+          </div>
+          <div className="w-full lg:flex justify-center">
+          <div className=" lg:w-1/2">
+          <Formmqahajumrah/>
+          </div>
+          </div>
       </section>
       <div className="hidden lg:block bg-slate-800 py-4 lg:py-10 md:[height:80px]"></div>
       <section>
-      <div className="hidden  w-full lg:flex justify-center items-center bg-slate-800">
+      <div className="w-full lg:flex justify-center items-center bg-slate-800">
         <video
           controls
           autoPlay
           loop
-          muted
           className="w-full max-w-4xl rounded shadow-lg">
           <source src="/videosemakstatus.mp4" type="video/mp4" />
         </video>
@@ -43,14 +51,14 @@ function page() {
       <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Facility</div>
         <Facility/>
       </section>
-      <div className="py-4 lg:py-10 md:[height:80px]"></div>  
+      <Syarat/>  
 
         <section>
           <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Roadmap Courses</div>
         <Image 
           className="w-full"
-          src="/roadmapmqa.png"
-          alt="roadmapmqa"
+          src="/roadmapmqahajumrah.png"
+          alt="roadmapmqahajumrah"
           width="60"
           height="80"
           style={{
@@ -59,12 +67,10 @@ function page() {
         </section>
 
       <div className="py-4 lg:py-10 md:[height:80px]"></div>  
-      <section>
-        
-      </section>
-      <section>
+     
+  
         <Testimoni/>
-      </section>
+ 
       <div className="py-4 lg:py-10 md:[height:80px]"></div>
       <section>
         <Image 

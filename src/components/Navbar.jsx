@@ -16,7 +16,6 @@ import {
   
 
 function Navbar() {
-  
   return (
     <nav className="bg-slate-800">
         <div className="w-full "> 

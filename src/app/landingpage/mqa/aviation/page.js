@@ -1,16 +1,11 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import SliderJelajahAcm from '@/components/kembarahaji/SliderJelajahAcm'
-import Testimoni from '@/components/mqa/Testimoni'
-import VideoMqa from '@/components/kembarahaji/VideoMqa'
-import Moto from '@/components/kembarahaji/Moto'
-import Footer from '@/components/Footer'
-import FormMmp from '@/components/mqa/FormMmp'
-import VerticalCountdownTimer from '@/components/VerticalCountdownTimer'
-import Facility from '@/components/mqa/Facility'
-import Reference from '@/components/mqa/Reference'
-
+import Testimoni from '@/components/mqaaviation/Testimoni'
+import Formmqaavm from '@/components/mqaaviation/Formmqaavm'
+import Syarat from '@/components/mqaaviation/Syarat'
+import Benefit from '@/components/mqaaviation/Benefit'
+import Reference from '@/components/mqaaviation/Reference'
 
 function page() {
   const targetDate = new Date('2024-06-09T23:59:59');
@@ -18,12 +13,19 @@ function page() {
     <>
     <main>
       <section>
-      <div className="hidden bg-black h-screen lg:flex justify-end" style={{backgroundImage:'url("/mqaposter1.png")', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-      <div className="lg:flex items-center"><FormMmp/></div>
-      </div>
-      <div className="lg:hidden bg-white h-full flex justify-center" >
-      <div className=""><FormMmp/></div>
-      </div>
+        <div className="grid justify-center">
+          <Image
+              className=""
+              src="/lpaviation.jpg"
+              alt="lpaviation"
+              width="1500"
+              height="80"
+              style={{objectFit:"contain"}}
+            />
+          </div>
+          <div className="w-full lg:flex justify-center">
+          <div className=" lg:w-1/2"><Formmqaavm/></div>
+          </div>
       </section>
       <div className="hidden lg:block bg-slate-800 py-4 lg:py-10 md:[height:80px]"></div>
       <section>
@@ -39,47 +41,28 @@ function page() {
       </div>
       </section>
       <div className="bg-slate-800 hidden lg:block py-4 lg:py-10 md:[height:80px]"></div>
-      <section className="bg-gray-200">
-      <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Facility</div>
-        <Facility/>
-      </section>
+      <section className="bg-gray-200"><Benefit/></section>
+      <Syarat/>
+      <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Roadmap Courses</div>
+      <Image 
+        className="w-full"
+        src="/roadmapaviation.png"
+        alt="roadmapaviation"
+        width="60"
+        height="80"
+        style={{objectFit:"contain"}}/>
       <div className="py-4 lg:py-10 md:[height:80px]"></div>  
-
-        <section>
-          <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Roadmap Courses</div>
-        <Image 
-          className="w-full"
-          src="/roadmapmqa.png"
-          alt="roadmapmqa"
-          width="60"
-          height="80"
-          style={{
-            objectFit:"contain",
-          }}/>
-        </section>
-
-      <div className="py-4 lg:py-10 md:[height:80px]"></div>  
-      <section>
-        
-      </section>
-      <section>
-        <Testimoni/>
-      </section>
+      <Testimoni/>
       <div className="py-4 lg:py-10 md:[height:80px]"></div>
-      <section>
-        <Image 
-          className="hidden lg:blockw-full"
-          src="/bersamatun.svg"
-          alt="bersamatun"
-          width="60"
-          height="80"
-          style={{
-            objectFit:"contain",
-          }}
-        />
-        <Reference/>
-        
-        </section>
+      <Image 
+        className="hidden lg:blockw-full"
+        src="/bersamatun.svg"
+        alt="bersamatun"
+        width="60"
+        height="80"
+        style={{objectFit:"contain"}}
+      />
+      <Reference/>
     </main>
     </>  
   )

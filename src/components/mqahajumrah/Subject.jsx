@@ -9,7 +9,10 @@ import {
 function Syarat() {
   return (
     <>
-    <div className="p-2  ">
+    <div className="p-2">
+      <div className="py-2">
+        <h className="lg:text-5xl text-xl font-bold py-3 text-center">Silibus Utama</h>
+      </div>
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger> Program Diploma Haji Umrah</AccordionTrigger>
@@ -69,14 +72,7 @@ function Syarat() {
               </div>
           </div>
         </AccordionContent>
-      </AccordionItem>
-      
-    
-          
-      
-    
-
-
+      </AccordionItem>      
       <AccordionItem value="item-2">
         <AccordionTrigger>Pra-Diploma</AccordionTrigger>
         <AccordionContent>
@@ -109,9 +105,7 @@ function Syarat() {
           </div>          
         </AccordionContent>
       </AccordionItem>
-
-
-      <AccordionItem value="item-1">
+      {/* <AccordionItem value="item-3">
         <AccordionTrigger> Program Diploma Haji Umrah - WBL</AccordionTrigger>
         <AccordionContent>
           <div className="space-y-2">
@@ -169,7 +163,7 @@ function Syarat() {
               </div>
           </div>
         </AccordionContent>
-      </AccordionItem>
+      </AccordionItem> */}
 
 
       

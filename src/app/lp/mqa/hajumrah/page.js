@@ -46,15 +46,11 @@ function page() {
         </video>
       </div>
       </section>
-      <div className="bg-slate-800 hidden lg:block py-4 lg:py-10 md:[height:80px]"></div>
-      <section className="bg-gray-200">
-      <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Facility</div>
-        <Facility/>
-      </section>
+      <div className="bg-slate-800 hidden lg:block py-4 lg:py-10 md:[height:80px]"></div>      
+      <Facility/>
       <Syarat/> 
       <Subject/>  
-
-        <section>
+        {/* <section>
           <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Roadmap Courses</div>
         <Image 
           className="w-full"
@@ -62,16 +58,9 @@ function page() {
           alt="roadmapmqahajumrah"
           width="60"
           height="80"
-          style={{
-            objectFit:"contain",
-          }}/>
-        </section>
-
-      <div className="py-4 lg:py-10 md:[height:80px]"></div>
-       
-     
+          style={{objectFit:"contain"}}/>
+        </section> */}
       <Testimoni/>
- 
       <div className="py-4 lg:py-10 md:[height:80px]"></div>
       <section>
         <Image 
@@ -84,8 +73,9 @@ function page() {
             objectFit:"contain",
           }}
         />
+        <div className="py-4 lg:py-10 md:[height:80px]"></div>
+        <div className="py-4 lg:py-10 md:[height:80px]"></div>
         <Reference/>
-        
         </section>
     </main>
     </>  

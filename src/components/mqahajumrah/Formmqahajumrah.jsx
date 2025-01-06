@@ -142,32 +142,25 @@ export default function App() {
 
       {isOpen && (
         <div className="w-full right-0 mt-2  origin-top-right bg-white border border-gray-200 divide-y rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-        
-          <p
-            className="px-4 text-md py-2 cursor-pointer bg-gray-300 font-bold"
-          >
-            Work Based Learning
-          </p>
           <div className="pl-6 text-sm bg-gray-300">
-          <p className="px-4 py-2 cursor-pointer hover:bg-yellow-400 rounded-md"
-            onClick={() => handleItemClick("DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)")}
-          >
-            DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)
-          </p>
           <p className="px-4 py-2 cursor-pointer hover:bg-yellow-400 rounded-md"
             onClick={() => handleItemClick("PRA-DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)")}
           >
-            PRA-DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)
+            PRA-DIPLOMA PENGURUSAN HAJI & UMRAH (MQA/PA 12046)
           </p>
           </div>
-          <p className="px-4 text-md font-bold py-2 bg-gray-300"  >
-            Diploma Kovensional
-          </p>
           <div className="pl-6 text-sm text-black bg-gray-300">
           <p className="px-4 py-2 cursor-pointer hover:bg-slate-400 rounded-md"
-            onClick={() => handleItemClick("DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY)")}
+            onClick={() => handleItemClick("DIPLOMA PENGURUSAN HAJI & UMRAH (MQA/FA 11377)")}
           >
-            DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY)
+            DIPLOMA PENGURUSAN HAJI & UMRAH (MQA/FA 11377)
+          </p> 
+          </div>
+          <div className="pl-6 text-sm text-black bg-gray-300">
+          <p className="px-4 py-2 cursor-pointer hover:bg-slate-400 rounded-md"
+            onClick={() => handleItemClick("IJAZAH SARJANA MUDA PENGURUSAN HAJI & UMRAH with HONOURS (MQA/PA 17040)")}
+          >
+            IJAZAH SARJANA MUDA PENGURUSAN HAJI & UMRAH with HONOURS (MQA/PA 17040)
           </p> 
           </div>
         </div>
@@ -289,10 +282,6 @@ export default function App() {
         </div>
       )}
     </div>      
-
-
-
-
 
 
     <div className="pt-4">

@@ -7,7 +7,6 @@ import Sidebar from "@/components/Sidebar.jsx"
 import Contactus from "@/components/Contactus.jsx"
 import SliderRamadan from '@/components/SliderRamadan';
 import Head from 'next/head';
-import PopupAds from '@/components/PopupAds'
 
 
 export default function home() {
@@ -22,7 +21,6 @@ export default function home() {
         data-ad-format="auto"
       ></ins>
   <main>
-    <PopupAds/>
     <div className="fixed bottom-0 w-full flex justify-end p-4">
       <div className=" hover:slide-in-from-left-1 flex items-center right-2  rounded-full bg-yellow-500">
         <h className=" p-3 flex items-center rounded-full font-extrabold">Get in Touch</h>

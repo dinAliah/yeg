@@ -8,7 +8,7 @@ const items = [
     icon: "/mqaicon1.png",
   },
   {
-    title: "Certificate",
+    title: "Persijilan",
     descriptions: ["Percuma Sijil Kemahiran Industtri(SKIN) Certified Mutawwif Profesional (CMP)"],
     icon: "/mqaicon2.png",
   },
@@ -23,7 +23,7 @@ const items = [
     icon: "/mqaicon4.png",
   },
   {
-    title: "Collaboration",
+    title: "Kolaburasi",
     descriptions: ["Bantuan penempatan kerjaya selepas tamat pengajian"],
     icon: "/mqaicon4.png",
   },
@@ -31,7 +31,8 @@ const items = [
 
 function Facility() {
   return (
-    <section className="py-6 ">
+    <section className="py-6 bg-gray-200">
+      <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Kelebihan</div>
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-2">
         {items.map((item, index) => (
           <div

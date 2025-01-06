@@ -4,11 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image" 
 import { Autoplay } from 'swiper/modules';
 
-
 import "swiper/css";
 import "swiper/css/autoplay";
-
-
 
 
 export default function App() {
@@ -32,8 +29,8 @@ export default function App() {
           <div className="w-full flex justify-center">
             <Image 
             className="w-full rounded-md"
-            src="/mmpposter.jpg"
-            alt="mmpposter"
+            src="/newyear.jpg"
+            alt="newyear"
             width="1000"
             height="50"
             style={{
@@ -42,38 +39,7 @@ export default function App() {
         />
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="w-full flex justify-center">
-            <Image 
-            className="w-full rounded-md"
-            src="/postermerdeka.jpg"
-            alt="postermerdeka"
-            width="1000"
-            height="50"
-            style={{
-            objectFit:"contain",
-          }}
-        />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="w-full flex justify-center">
-            <Image 
-            className="w-full rounded-md"
-            src="/postermerdeka.jpg"
-            alt="postermerdeka"
-            width="1000"
-            height="50"
-            style={{
-            objectFit:"contain",
-          }}
-        />
-          </div>
-        </SwiperSlide>
-        
-
-      </Swiper>
-      
+      </Swiper>    
     </>
   );
 }

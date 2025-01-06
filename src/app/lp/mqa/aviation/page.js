@@ -43,15 +43,6 @@ function page() {
       <div className="bg-slate-800 hidden lg:block py-4 lg:py-10 md:[height:80px]"></div>
       <section className="bg-gray-200"><Benefit/></section>
       <Syarat/>
-      <div className="lg:text-5xl text-3xl font-bold py-3 text-center">Roadmap Courses</div>
-      <Image 
-        className="w-full"
-        src="/roadmapaviation.png"
-        alt="roadmapaviation"
-        width="60"
-        height="80"
-        style={{objectFit:"contain"}}/>
-      <div className="py-4 lg:py-10 md:[height:80px]"></div>  
       <Testimoni/>
       <div className="py-4 lg:py-10 md:[height:80px]"></div>
       <Image 
@@ -62,7 +53,6 @@ function page() {
         height="80"
         style={{objectFit:"contain"}}
       />
-      <Reference/>
     </main>
     </>  
   )

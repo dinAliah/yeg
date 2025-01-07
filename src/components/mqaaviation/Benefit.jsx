@@ -10,8 +10,8 @@ function Benefit() {
         <section>
         <Image 
           className=" w-full"
-          src="/benafitaviation.png"
-          alt="benafitaviation"
+          src="/benafitmqaaviation.png"
+          alt="benafitmqaaviation"
           width="60"
           height="80"
           style={{

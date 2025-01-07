@@ -75,7 +75,6 @@ function page() {
         />
         <div className="py-4 lg:py-10 md:[height:80px]"></div>
         <div className="py-4 lg:py-10 md:[height:80px]"></div>
-        <Reference/>
         </section>
     </main>
     </>  

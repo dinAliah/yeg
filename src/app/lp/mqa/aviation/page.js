@@ -16,8 +16,8 @@ function page() {
         <div className="grid justify-center">
           <Image
               className=""
-              src="/lpaviation.jpg"
-              alt="lpaviation"
+              src="/dipaviation(phone).png"
+              alt="dipaviation(phone)"
               width="1500"
               height="80"
               style={{objectFit:"contain"}}
@@ -53,6 +53,8 @@ function page() {
         height="80"
         style={{objectFit:"contain"}}
       />
+      <div className="py-4 lg:py-10 md:[height:80px]"></div>
+      <div className="py-4 lg:py-10 md:[height:80px]"></div>
     </main>
     </>  
   )

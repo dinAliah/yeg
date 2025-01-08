@@ -174,7 +174,7 @@ export default function App() {
 
           
       <div className="grid  text-left">
-        <p className="py-1 text-black">Tempat Inerview</p>
+        <p className="py-1 text-black">Tempat Interview</p>
       <button
         onClick={toggleDropdown2} 
         name="Negeri"

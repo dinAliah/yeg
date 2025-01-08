@@ -73,8 +73,8 @@ function page() {
             objectFit:"contain",
           }}
         />
-        <div className="py-4 lg:py-10 md:[height:80px]"></div>
-        <div className="py-4 lg:py-10 md:[height:80px]"></div>
+        {/* <div className="py-4 lg:py-10 md:[height:80px]"></div>
+        <div className="py-4 lg:py-10 md:[height:80px]"></div> */}
         </section>
     </main>
     </>  

@@ -220,58 +220,45 @@ function Syarat() {
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-4">
-        <AccordionTrigger>Bachelor in Haji & Umrah Management (New Student)</AccordionTrigger>
+        <AccordionTrigger>Bachelor in Haji & Umrah Management (Alumni Student)</AccordionTrigger>
         <AccordionContent>
         <div className="bg-green-100">
           <p className="font-bolt text-lg">1st year</p>
-          <li className="">Principle of Tourism</li>
-          <li className="">Penghayatan Etika & peradaban english 1</li>
-          <li className="">Information System in Organization</li>
-          <li className="">Principle of Management</li>
-          <li className="">Travel Geography in Tourism</li>
-          <li className="">Fiqh in Hajj and Umrah 1</li>
-          <li className="">English 2</li>
-          <li className="">Touris and Transportation Management</li>
-          <li className="">Third language (Arabic 1)</li>
+          <li className="">Business Statistics</li>
+          <li className="">Human Resource Management</li>
+          <li className="">Operation Management</li>
+          <li className="">Consumer Behavior</li>
+          <li className="">Small Business Management</li>
+          <li className="">Business Etiquette</li>
+          <li className="">Quality Management</li>
+          <li className="">Financial Accounting</li>
+          <li className="">English Proficiency</li>
           <li className="">Ethnic Relantions</li>
-          <li className="">Bahasa Melayu komunikasi 2</li>
-          <li className="">Islamic Tourism</li>
-          <li className="">Fiqh in Hajj and Umrah 2</li>
-          <li className="">Third language (Arabic 2)</li>
-          <li className="">Group Dynamic</li>
-          <li className="">Bahasa Kebangsaan A</li>
+          <li className="">Malaysian Legal Framework</li>
+          <li className="">Professional Ethics in Malaysia</li>
+          <li className="">Business Law</li>
+          <li className="">Business Intelligence</li>
+          <li className="">Digital Marketing</li>
           </div>
           <div className="bg-green-100">
           <p className="font-bolt text-lg">2nd year</p>
-          <li className="">Fiqh in Hajj and Umrah 3</li>
-          <li className="">Tourism Cross Calture and Heritage</li>
-          <li className="">Foundation of Accounting in Tourism</li>
-          <li className="">Business Ethics</li>
+          <li className="">Business Information System</li>
+          <li className="">Managerial Accounting</li>
+          <li className="">Keterlibatan Komuniti</li>
+          <li className="">Business and Business Environment</li>
+          <li className="">Intro of Information Technology</li>
+          <li className="">Pengajian Malaysia 2</li>
+          <li className="">Marketing Essential</li>
+          <li className="">Project Paper</li>
+          <li className="">Principle of Management</li>
           <li className="">Principle of Marketing</li>
-          <li className="">Islamic Theology</li>
-          <li className="">Human Resources Management</li>
-          <li className="">Ticketing and Reservation</li>
-          <li className="">Introduction to Statics</li>
-          <li className="">Airpot Handling & Procedure</li>
-          <li className="">Comunity Services</li>
-          <li className="">Even Management</li>
-          <li className="">Travel & Tour Agency Operation</li>
-          <li className="">Travel Bahaviour</li>
-          <li className="">Research Method</li>
-          <li className="">Islamic Entrepreneurship</li>
+          <li className="">Organizational Behavior</li>
+          <li className="">Innovation and Commercialization</li>
+          <li className="">Professional Management and Leaders Pratice</li>
+          <li className="">Managing A Successful Business Project</li>
+          <li className="">Business Stratergy</li>
+          <li className="">E-Commerce</li>
           </div>
-          <div className="bg-green-100">
-          <p className="font-bolt text-lg">3nd year</p>
-          <li className="">Customer Service</li>
-          <li className="">Tour Guiding and Product design</li>
-          <li className="">Undergraduate Project</li>
-          <li className="">Organizational Behaviour</li>
-          <li className="">Tour Management and Operation in Hajj & Umrah</li>
-          <li className="">Industrial Traning</li>
-          <li className="">Tourism Marketing Management in Hajj and Umrah</li>
-          <li className="">Outbound Tour</li>
-          <li className="">Tourism and Hospitality Law for Hajj and Umrah</li>
-          </div>           
         </AccordionContent>
       </AccordionItem>
 

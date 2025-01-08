@@ -13,9 +13,6 @@ function page() {
     <>
     <main>
       <section>
-        {/* <div className="hidden bg-black h-screen lg:flex justify-end" style={{backgroundImage:'url("/bgavm.png")', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-        <div className="lg:flex items-center"><Formblastingaviation2/></div>
-        </div> */}
         <div className="grid justify-center">
           <Image
               className=""

@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import Navbar from "@/components/Navbar.jsx"
 import Sidebar from "@/components/Sidebar.jsx"
 import Script from 'next/script';
+import Header from '@/components/Header'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -15,6 +16,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+    
 
   return (
     <html lang="en">
@@ -120,10 +122,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={inter.className}>
-      <header>
-        <nav className="hidden lg:block"><Navbar/></nav>
-        <nav className="lg:hidden"><Sidebar/></nav>
-      </header>
+      <Header/>
       <main>{children}</main>
       <Analytics />
       </body>

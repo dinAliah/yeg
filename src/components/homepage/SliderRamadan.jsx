@@ -26,7 +26,7 @@ export default function App() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center py-8 bg-black">
             <Image 
             className="w-full rounded-md"
             src="/newyear.jpg"

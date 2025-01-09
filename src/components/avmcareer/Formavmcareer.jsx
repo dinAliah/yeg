@@ -25,7 +25,6 @@ export default function App() {
     const emailValue = e.target.elements.Email.value;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
     if (!emailRegex.test(emailValue)) {
       setEmailError('Email must be in a valid format.');
       alert('Email is incorrect!');
@@ -74,8 +73,6 @@ export default function App() {
     setIsOpen2(!isOpen2);
   };
 
- 
-
     // program yeg
     const handleItemClick = (item) => {
         setSelectedItem(item);
@@ -112,7 +109,7 @@ export default function App() {
         name="Email" 
         type="text" />
       </div>
-      <div className="grid lg:flex  ">
+      <div className="grid lg:flex">
       <div className="grid">
             <h> Number Tel </h>
             <input className="bg-gray-200 px-3 py-2 hover:shadow-md duration-500 rounded-md" placeholder="" name="NumberPhone" type="text" />
@@ -168,10 +165,6 @@ export default function App() {
       <h>Nombor Penjaga</h>
       <input className="bg-gray-200 px-3 py-2 hover:shadow-md duration-500 rounded-md" placeholder="" name="ParentNumber"  type="text" />
       </div>  */}
-
-
-    
-
           
       <div className="grid  text-left">
         <p className="py-1 text-black">Tempat Interview</p>

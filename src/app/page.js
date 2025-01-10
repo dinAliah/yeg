@@ -2,8 +2,8 @@
 import Intro from '@/components/homepage/Intro'
 import Collabration from '@/components/homepage/Collabration'
 import SliderRamadan from '@/components/homepage/SliderRamadan';
-import Mainstream from '@/components/homepage/Mainstream'
-import Mainstream2 from '@/components/homepage/Mainstream2'
+import Mainstream from '@/components/homepage/MainStream'
+import Mainstream2 from '@/components/homepage/MainStream2'
 import Qualities from '@/components/homepage/Qualities'
 import Courses from '@/components/homepage/Courses'
 import Trendmark from '@/components/homepage/Trendmark'
@@ -12,8 +12,7 @@ import Trendmark2 from '@/components/homepage/Trendmark2'
 import Entertainment from '@/components/homepage/Entertainment'
 import News from '@/components/homepage/News'
 import Footer from "@/components/Footer.jsx"
-
-
+import ContactUs from "@/components/homepage/ContactUs"
 
 
 export default function home() {
@@ -30,7 +29,10 @@ export default function home() {
       <main>
         <Intro/>
         <Collabration/>
-        <SliderRamadan/>
+        <div className="static">
+          <div className="fixed right-0 z-50 bottom-0 mb-4"><ContactUs/></div>
+        </div>
+        {/* <SliderRamadan/> */}
         <Mainstream/>
         <Mainstream2/>
         <Qualities/>

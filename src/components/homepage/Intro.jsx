@@ -11,7 +11,7 @@ function Intro() {
         <div className="absolute h-[130px] inset-0 bg-gradient-to-b from-[#1d285a] to-[rgba(15,23,42,0)]"></div>
         <Navbar25/>
         <div className="max-w-full lg:px-3 flex justify-center bg-black">
-            <video className="w-[1400px]" controls muted autoPlay ><source src="yegintro.mp4" type="video/mp4" /></video>
+            <video className="w-[1400px]" controls autoPlay ><source src="yegintro.mp4" type="video/mp4" /></video>
         </div>
         </section1>
     </>

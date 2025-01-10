@@ -7,6 +7,7 @@ function Intro() {
   return (
     <>
     <section3 className="">
+    <div className="py-8 lg:py-10 md:[height:80px]"></div>
     <div className="px-8 w-full flex justify-center bg-slate-100">
         <span className="lg:text-4xl font text-4xl text-blue-950 font-bold text-center">THE <span className="text-yellow-600">YEG ACADEMY</span> DIFFERENCE</span>
       </div>
@@ -15,13 +16,11 @@ function Intro() {
         <div className="flex justify-center w-full h-full mx-auto col-span-12 md:col-span-6 lg:col-span-6 md:order-2">
             <video
             controls
-            muted
             autoPlay  // Add this attribute for autoplay
             className=""
           >
             <source src="carousel14.mp4" type="video/mp4" />
           </video>
-          
           
         </div>
         <div className="w-auto h-full grid mx-9 lg:mx-auto md:mx-16 col-span-12 md:col-span-6 gap-6 lg:col-span-5 md:order-3  pl-4">   

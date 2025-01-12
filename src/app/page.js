@@ -1,9 +1,9 @@
 'use client'
 import Intro from '@/components/homepage/Intro'
 import Collabration from '@/components/homepage/Collabration'
-import SliderRamadan from '@/components/homepage/SliderRamadan';
-import MainStream from '@/components/homepage/MainStream'
-import MainStream2 from '@/components/homepage/MainStream2'
+import SliderRamadan from '@/components/homepage/SliderRamadan'
+import Mainstream from '@/components/homepage/Mainstream'
+import Mainstream2 from '@/components/homepage/Mainstream2'
 import Qualities from '@/components/homepage/Qualities'
 import Courses from '@/components/homepage/Courses'
 import Trendmark from '@/components/homepage/Trendmark'
@@ -32,8 +32,8 @@ export default function home() {
           <div className="fixed right-0 z-50 bottom-0 mb-4"><ContactUs/></div>
         </div>
         <SliderRamadan/>
-        <MainStream/>
-        <MainStream2/>
+        <Mainstream/>
+        <Mainstream2/>
         <Qualities/>
         <Courses/>
         <Trendmark/>

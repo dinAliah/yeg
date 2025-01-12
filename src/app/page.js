@@ -35,8 +35,8 @@ export default function home() {
           <div className="fixed right-0 z-50 bottom-0 mb-4"><ContactUs/></div>
         </div>
         {/* <SliderRamadan/> */}
-        <Mainstream/>
-        <Mainstream2/>
+        <MainStream/>
+        <MainStream2/>
 
         
 

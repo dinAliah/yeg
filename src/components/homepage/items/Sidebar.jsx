@@ -41,20 +41,20 @@ const Navbar = () => {
 
 
   return (
-    <nav className="bg-gray-800 p-3">
+    <nav className="bg-gray-800 lg:hidden p-3">
       <div className="flex items-center justify-between">
         <a href="/"
         className="text-white font-bold text-xl">
         <Image
-                      className=""
-                      src="/logoyeg.svg"
-                      alt="logoyeg"
-                      height="120"
-                      width="120"
-                      style={{
-                        objectFit: "contain",
-                      }}
-                    />
+        className=""
+        src="/logoyeg.svg"
+        alt="logoyeg"
+        height="120"
+        width="120"
+        style={{
+          objectFit: "contain",
+        }}
+      />
         </a>
         <button
           className="lg:hidden text-white focus:outline-none duration-500"

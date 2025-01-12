@@ -2,8 +2,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemaps
 Sitemap: https://yegmy.com/sitemap.xml
-
-Sitemap: https://yegmy.com/career/sitemap1.xml
-Sitemap: https://yegmy.com/sitemap2.xml

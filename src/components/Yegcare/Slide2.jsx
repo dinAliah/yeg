@@ -1,14 +1,12 @@
 'use client'
 import React from 'react'
 import Image from "next/image"
-import Sidebar from "@/components/Sidebar.jsx"
 import Footer from "@/components/Footer"
 
 function Slide2() {
   return (
     <>
     <section className="lg:hidden">
-        <Sidebar/>
     </section>
     <div className="w-full h-full px-4 lg:px-16 grid text-blue-950 lg:py-6">
         <span className="lg:text-5xl text-4xl font-bold py-3 text-center">OUR UNIQUE QUALITIES</span>

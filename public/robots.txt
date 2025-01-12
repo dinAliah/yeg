@@ -1,9 +1,9 @@
-# *
+# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Host
-Host: https://example.com
+# Sitemap
+Sitemap: https://yegmy.com/sitemap.xml
 
-# Sitemaps
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://yegmy.com/career/sitemap1.xml
+Sitemap: https://yegmy.com/sitemap2.xml

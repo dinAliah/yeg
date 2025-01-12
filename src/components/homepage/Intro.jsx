@@ -1,20 +1,19 @@
 import React from 'react'
 import Navbar25 from '@/components/homepage/items/Navbar25'
+import Sidebar from '@/components/homepage/items/Sidebar'
 
 
 function Intro() {
   return (
     <>
-    <section1 className="w-full relative">
-        <div className="absolute h-full w-1/6 bg-gradient-to-r from-[#16223d] to-[rgba(15,23,42,0)]">asdasd</div>
-        <div className="absolute h-[120px] inset-0 bg-gradient-to-b from-[#000000] to-[rgba(15,23,42,0)]"></div>
-        <div className="absolute h-[130px] inset-0 bg-gradient-to-b from-[#1d285a] to-[rgba(15,23,42,0)]"></div>
-        <Navbar25/>
-        <div className="max-w-full lg:px-3 flex justify-center bg-black">
-            <video className="w-[1400px]" controls autoPlay ><source src="yegintro.mp4" type="video/mp4" /></video>
-        </div>
+    <Sidebar/>
+    <Navbar25/>
+    <section1 className="relative">
+    <div className="absolute top-0 left-0 h-full w-1/4 bg-gradient-to-r from-[#151c41] to-[rgba(11,24,54,0)"></div>      <div className="bg-black max-w-full lg:px-3 flex justify-center ">
+          <video className="w-[1400px]" controls muted autoPlay ><source src="yegintro.mp4" type="video/mp4" /></video>
+      </div>
         </section1>
-    </>
+        </>
     
   )
 }

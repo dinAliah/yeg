@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Navbar from "@/components/Navbar.jsx";
-import Sidebar from "@/components/Sidebar.jsx";
+import Sidebar from "@/components/homepage/items/Sidebar.jsx";
 
 export default function Header() {
   const pathname = usePathname();

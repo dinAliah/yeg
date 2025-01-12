@@ -14,8 +14,6 @@ import News from '@/components/homepage/News'
 import Footer from "@/components/Footer.jsx"
 import ContactUs from "@/components/homepage/ContactUs"
 
-
-
 export default function home() {
   return (
     <>
@@ -28,19 +26,14 @@ export default function home() {
       data-ad-format="auto">
       </ins>
       <main>
-
         <Intro/>
         <Collabration/>
         <div className="static">
           <div className="fixed right-0 z-50 bottom-0 mb-4"><ContactUs/></div>
         </div>
-        {/* <SliderRamadan/> */}
+        <SliderRamadan/>
         <MainStream/>
         <MainStream2/>
-
-        
-
-
         <Qualities/>
         <Courses/>
         <Trendmark/>

@@ -10,7 +10,7 @@ function App () {
         <section11>
             <div className=" bg-green-800 w-full h-full px-4 lg:px-28">
             <div className="py-4"><h className="text-4xl font-extrabold text-white">Testimoni Dhumy</h></div>
-            <div className="h-full lg:py-6 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-4 items-center">
+            <div className="h-full grid grid-cols-2  lg:py-4 md:grid-cols-4 gap-4 items-center">
             <a href="https://www.tiktok.com/@pengurusanhajiumrah/video/7454090052411477256?is_from_webapp=1&sender_device=pc"
             className="flex hover:scale-150 duration-300">
             <video autoplay="autoplay" loop="loop" muted="muted"

@@ -62,10 +62,10 @@ function page() {
           style={{objectFit:"contain"}}/>
         </section> */}
       <Testimoni/>
-      <div className=" lg:py-10 md:[height:80px]"></div>
-      <section>
-        <Image 
-          className="hidden lg:blockw-full"
+      <div className=" lg:hidden md:[height:80px]"></div>
+      {/* <section >
+        <Image
+        className="hidden lg:block w-full" 
           src="/bersamatun.svg"
           alt="bersamatun"
           width="60"
@@ -74,9 +74,7 @@ function page() {
             objectFit:"contain",
           }}
         />
-        {/* <div className="py-4 lg:py-10 md:[height:80px]"></div>
-        <div className="py-4 lg:py-10 md:[height:80px]"></div> */}
-        </section>
+        </section> */}
         <Reference/>
         
     </main>

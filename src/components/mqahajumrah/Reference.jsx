@@ -3,9 +3,9 @@ import React from 'react'
 function Reference() {
   return (
     <>
-    <div id="target-section" className="w-full fixed bottom-0 flex justify-center p-6">
+    <div id="target-section" className="w-full fixed bottom-0 flex  lg:justify-end justify-center p-6">
     <div className="flex justify-center">
-      <div className="bg-green-800 container lg:w-2/3 grid lg:flex justify-center p-4 rounded-md border relative ">
+      <div className="bg-green-800 container lg:w-full grid lg:flex justify-center p-4 rounded-md border relative ">
       {/* <div className="w-full flex justify-center absolute top-4 bg-red-300-translate-x-1/2 text-white text-xl">Info lanjut?</div> */}
       <div className="w-full grid lg:flex ">
         <div className="grid justify-center space-y-5 text-white">

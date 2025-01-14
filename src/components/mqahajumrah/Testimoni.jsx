@@ -47,7 +47,7 @@ function App () {
                 <source src="/testi4.mp4" type="video/mp4"/>
             </video>
             </a>
-            <a href="https://www.tiktok.com/@pengurusanhajiumrah/video/7454958664617692424?is_from_webapp=1&sender_device=pc"
+            {/* <a href="https://www.tiktok.com/@pengurusanhajiumrah/video/7454958664617692424?is_from_webapp=1&sender_device=pc"
             className="flex hover:scale-150 duration-300">
             <video autoplay="autoplay" loop="loop" muted="muted"
                 className="rounded-md top-0 left-0 w-full h-full object-cover" 
@@ -64,7 +64,7 @@ function App () {
                 height="890">
                 <source src="/testi6.mp4" type="video/mp4"/>
             </video>
-            </a>
+            </a> */}
             </div>
             </div>
         </section11>

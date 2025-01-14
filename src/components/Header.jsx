@@ -6,7 +6,7 @@ import Sidebar from "@/components/homepage/items/Sidebar.jsx";
 export default function Header() {
   const pathname = usePathname();
 
-  const hiddenRoutes = ['/lp/career/aviation','/'];
+  const hiddenRoutes = ['/lp/career/aviation','/','/lp/mqa/hajumrah2',];
   const shouldHideNav = hiddenRoutes.includes(pathname);
 
   return (

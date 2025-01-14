@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <Head>
+      <head>
           <meta charset="UTF-8"/>
           <title>{metadata.title}</title>
           <meta name="description" content={metadata.description} />
@@ -139,7 +139,7 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-      </Head>
+      </head>
       <body className={inter.className}>
       <Header/>
       <main>{children}</main>

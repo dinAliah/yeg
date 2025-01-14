@@ -1,10 +1,9 @@
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google'
-import Navbar from "@/components/Navbar.jsx"
-import Sidebar from "@/components/Sidebar.jsx"
 import Script from 'next/script';
 import Header from '@/components/Header'
+import Head from 'next/head'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,7 +19,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head>
+      <Head>
           <meta charset="UTF-8"/>
           <title>{metadata.title}</title>
           <meta name="description" content={metadata.description} />
@@ -139,7 +138,7 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-      </head>
+      </Head>
       <body className={inter.className}>
       <Header/>
       <main>{children}</main>

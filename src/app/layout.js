@@ -1,14 +1,13 @@
-'use client';
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google'
 import Script from 'next/script';
 import Header from '@/components/Header'
 import Head from 'next/head'
-import { useEffect } from 'react';
 
 
 const inter = Inter({ subsets: ['latin'] })
+
 export const metadata = {
   title: 'YEG Academy | Career & Education Platform',
   description: 'YEG Academy offers career guidance and industry-focused education programs for your future success in Malaysia.',

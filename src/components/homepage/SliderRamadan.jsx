@@ -25,7 +25,7 @@ export default function App() {
         modules={[Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div className="w-full flex justify-center py-8 bg-black">
             <Image 
             className="w-full rounded-md"
@@ -37,6 +37,11 @@ export default function App() {
             objectFit:"contain",
           }}
         />
+          </div>
+        </SwiperSlide> */}
+        <SwiperSlide>
+          <div className="p-2 bg-gradient-to-r from-red-900 to-red-700 max-w-full lg:px-3 flex justify-center ">
+            <video className="w-[1200px] border-none shadow-none" controls autoPlay loop ><source src="postercina.mp4" type="video/mp4" /></video>
           </div>
         </SwiperSlide>
       </Swiper>    

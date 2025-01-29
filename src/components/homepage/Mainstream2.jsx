@@ -21,7 +21,7 @@ function Intro() {
           </video>
         </div>  
       </div>
-      <div className="py-8 lg:py-10 md:[height:80px]"></div>
+      <div className="py-8 lg:py-10 md:[heig`ht:80px]"></div>
     </section>
     </>
     

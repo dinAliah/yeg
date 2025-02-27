@@ -33,8 +33,6 @@ function Navbar() {
                 }}/></a></div>
             <div className="bg-slate-800 flex w-full justify-end">
 
-
-
             <MenubarMenu>
               <MenubarTrigger>Career Program</MenubarTrigger>
               <MenubarContent>
@@ -180,7 +178,7 @@ function Navbar() {
             </MenubarMenu>
             <MenubarMenu>
                 <MenubarTrigger className="bg-yellow-500 hover:bg-yellow-400">
-                <a href="../borangyeg">Contact Us</a> </MenubarTrigger>
+                <a href="./borangyeg">Contact Us</a> </MenubarTrigger>
             </MenubarMenu>
             </div>
             </Menubar>

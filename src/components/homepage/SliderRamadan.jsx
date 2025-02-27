@@ -43,7 +43,7 @@ export default function App() {
           </div>
         </SwiperSlide> */}
         <SwiperSlide>
-        <Image 
+        {/* <Image 
             className="w-full rounded-md"
             src="/nisfushaaban.png"
             alt="newyear"
@@ -52,7 +52,7 @@ export default function App() {
             style={{
             objectFit:"contain",
           }}
-        />
+        /> */}
         </SwiperSlide>
       </Swiper>    
     </>

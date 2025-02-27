@@ -118,14 +118,14 @@ export default function App() {
           }}
         />
       </div>
-          <div className="p-4  lg:flex justify-center  ">     
-            <div className="w-2/3">
+          <div className="p-4 lg:flex justify-center  ">     
+            <div className="w-full lg:w-2/3">
             <form className="bg-white w-full p-6 border space-y-5 rounded-lg shadow-lg" onSubmit={(e) => Submit(e)}>
             <div className="py-6 text-black text-3xl font-bold">
                 <h>Course Enquiry</h>
           </div>
          
-          <div className="grid md:flex lg:flex justify-between gap-8">
+          <div className="grid md:flex gap-8">
           <div className="w-full grid rounded-md space-y-1 ">
               <h className="text-black">Full Name</h>
             <input className="bg-gray-200 px-3 py-2 hover:shadow-md duration-500 rounded-md " placeholder="" name="Name" type="text" />
@@ -136,7 +136,7 @@ export default function App() {
           </div>
           </div>
 
-          <div className="grid md:flex lg:flex justify-between gap-8">
+          <div className="grid md:flex lg:flex gap-8">
           <div className="w-full grid rounded-md space-y-1 ">
             <h>Email</h>
           <input className="bg-gray-200 px-3 py-2 hover:shadow-md duration-500 rounded-md " 
@@ -321,7 +321,7 @@ export default function App() {
     </div>     
     </div>
 
-    <div className="grid md:flex lg:flex justify-between gap-8 ">
+    <div className="grid md:flex lg:flex gap-8 ">
     <div className="w-full grid space-y-1">
         <h>Parents Name</h>
         <input className="bg-gray-200 px-3 py-2 hover:shadow-md duration-500 rounded-md" placeholder="" name="ParentName" type="text" />
@@ -437,7 +437,7 @@ export default function App() {
 
 
 
-          <div className=" inline-block text-left">
+          <div className=" inline-block text-left w-full">
         <p className="py-1 text-white">Where get this info:-</p>
       <button
         onClick={toggleDropdown1} 
@@ -511,7 +511,6 @@ export default function App() {
     </div>
     </div> 
     </div>
-    
     <div>
       <Footer/>
     </div>

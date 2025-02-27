@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script';
 import Header from '@/components/Header'
 import Head from 'next/head'
+import Navbar from '@/components/Navbar'
+import Sidebar from '@/components/Sidebar'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -71,10 +73,6 @@ export default function RootLayout({ children }) {
             }(window, document, 'ttq');
           `}
         </Script>
-
-          
-          
-
 
 
           {/* gtag.js */}
@@ -163,7 +161,8 @@ export default function RootLayout({ children }) {
         />
       </Head>
       <body className={inter.className}>
-      <Header/>
+      <Navbar/>
+      <Sidebar/>
       <main>{children}</main>
       <Analytics />
       </body>

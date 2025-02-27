@@ -1,9 +1,7 @@
 "use client"
-
 // src/components/Navbar.js
 import React, { useState } from 'react';
 import Image from "next/image"
-
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +11,6 @@ const Navbar = () => {
   const [isOpen4, setIsOpen4] = useState(false);
   const [isOpen5, setIsOpen5] = useState(false);
   const [isOpen6, setIsOpen6] = useState(false);
-  
   
 
   const toggleNavbar = () => {
@@ -38,7 +35,6 @@ const Navbar = () => {
   const toggleNavbar6 = () => {
     setIsOpen6(!isOpen6);
   };
-
 
   return (
     <nav className="bg-gray-800 lg:hidden p-3">

@@ -17,7 +17,7 @@ import {
 
 function Navbar() {
   return (
-    <nav className="bg-slate-800">
+    <nav className="bg-slate-800 hidden lg:block md:block">
         <div className="w-full "> 
         <Menubar >
         <div className="bg-slate-800 pl-4">

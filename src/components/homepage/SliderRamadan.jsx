@@ -43,16 +43,16 @@ export default function App() {
           </div>
         </SwiperSlide> */}
         <SwiperSlide>
-        {/* <Image 
-            className="w-full rounded-md"
-            src="/nisfushaaban.png"
+        <Image 
+            className="w-full"
+            src="/ramadan.png"
             alt="newyear"
-            width="1000"
+            width="800"
             height="50"
             style={{
             objectFit:"contain",
           }}
-        /> */}
+        />
         </SwiperSlide>
       </Swiper>    
     </>

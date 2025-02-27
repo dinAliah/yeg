@@ -24,7 +24,7 @@ export default function Navbar25 () {
           </div>
           <ul className="grid gap-6">
             <ul className="flex items-center gap-7 right-0 justify-end">
-              <a className="text-white text-lg" href="/">About Us</a>
+              <a className="text-white text-lg" href="/aboutus">About Us</a>
               <a className="text-white text-lg" href="/">Corperate Integrity</a>
               <a className="text-white text-lg" href="/">Community</a>
               <a className="text-white text-lg" href="/">Vacancies</a>

@@ -41,7 +41,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="bg-gray-800 p-3">
+    <nav className="bg-gray-800 lg:hidden p-3">
       <div className="flex items-center justify-between">
         <a href="/"
         className="text-white font-bold text-xl">

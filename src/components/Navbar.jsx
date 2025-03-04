@@ -17,22 +17,21 @@ import {
 
 function Navbar() {
   return (
-    <nav className="bg-slate-800 hidden lg:block md:block">
-        <div className="w-full "> 
-        <Menubar >
+    <nav className="">
+        <div className=" hidden lg:block md:block"> 
+        <Menubar className="">
         <div className="bg-slate-800 pl-4">
-    <a href="/" className="">
+            <a href="/" className="">
             <Image
                 className=""
                 src="/logoyeg.svg"
                 alt="logoyeg"
-                height="140"
+                height="160"
                 width="140"
                 style={{
                 objectFit: "contain",
                 }}/></a></div>
             <div className="bg-slate-800 flex w-full justify-end">
-
             <MenubarMenu>
               <MenubarTrigger>Career Program</MenubarTrigger>
               <MenubarContent>
@@ -59,11 +58,6 @@ function Navbar() {
                 </MenubarSub>
               </MenubarContent>
             </MenubarMenu>
-
-
-
-
-           
   
             <MenubarMenu>
                 <MenubarTrigger className="hover:bg-slate-600">Online Distance Learning</MenubarTrigger>

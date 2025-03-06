@@ -21,7 +21,13 @@ function footer() {
             }}/>
           </a>
           <div className="grid p-8 lg:px-28 px-14 text-white text-xs">
-            <h className="">YEG Academy M Sdn Bhd</h> 
+            <div className="py-4">
+              <h className="">YEG Academy M Sdn Bhd</h> 
+              <h1>BLOK G-2-2 , The Strand Garden Office,</h1>
+              <h2>Kota Damansara, Jalan PJU 5/1, Kota Damansara</h2>
+              <h3>47810,Petaling Jaya, Selangor</h3>
+            </div>
+            <h className="">MISA GLOBAL WORK Sdn Bhd</h> 
             <h1>BLOK G-2-2 , The Strand Garden Office,</h1>
             <h2>Kota Damansara, Jalan PJU 5/1, Kota Damansara</h2>
             <h3>47810,Petaling Jaya, Selangor</h3> 

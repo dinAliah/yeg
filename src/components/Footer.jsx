@@ -27,11 +27,7 @@ function footer() {
               <h2>Kota Damansara, Jalan PJU 5/1, Kota Damansara</h2>
               <h3>47810,Petaling Jaya, Selangor</h3>
             </div>
-            <h className="">MISA GLOBAL WORK SDN BHD</h> 
-            <h1>BLOK G-2-2 , The Strand Garden Office,</h1>
-            <h2>Kota Damansara, Jalan PJU 5/1, Kota Damansara</h2>
-            <h3>47810,Petaling Jaya, Selangor</h3> 
-            <div className="grid py-6 ">
+            <div className="grid">
             <h>Working hours : 8.30am-5.30pm</h>
             <h>Email: info@yegmy.com</h>
             <div className="grid py-2">

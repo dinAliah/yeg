@@ -402,7 +402,7 @@ export default function App() {
         type="button"
         className="bg-yellow-500 hover:bg-yellow-600 inline-flex justify-center w-full px-8 py-2 text-sm font-medium text-black  border border-transparent rounded-md focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800"
       >
-        {selectedItem2 ? selectedItem2 : "Select State"}
+        {selectedItem2 ? selectedItem2 : "Select State / Country"}
       </button>
 
       {isOpen2 && (
@@ -488,6 +488,17 @@ export default function App() {
             onClick={() => handleItemClick2("Terengganu")}
           >
             Terengganu
+          </p>
+          <div className="bg-slate-800 w-full flex justify-center text-white">International</div>
+          <p className="px-4 py-2 cursor-pointer hover:bg-yellow-400 rounded-md"
+            onClick={() => handleItemClick2("Terengganu")}
+          >
+            Singapore
+          </p>
+          <p className="px-4 py-2 cursor-pointer hover:bg-yellow-400 rounded-md"
+            onClick={() => handleItemClick2("Terengganu")}
+          >
+            Brunei
           </p>
           </div>     
         </div>

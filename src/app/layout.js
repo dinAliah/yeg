@@ -44,12 +44,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6199758154363864`}
-        crossOrigin="anonymous">
-        </script>
-        <Script id="schema-org" type="application/ld+json" strategy="afterInteractive">
+      <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-QCJEQC9T3Z"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QCJEQC9T3Z', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+        
+        {/* <Script id="schema-org" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'EducationalOrganization',
@@ -69,7 +79,7 @@ export default function RootLayout({ children }) {
               availableLanguage: 'English',
             },
           })}
-        </Script>      
+        </Script>       */}
       <Navbar/>
       <Sidebar/>
       <main>{children}</main>

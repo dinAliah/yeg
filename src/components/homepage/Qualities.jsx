@@ -29,9 +29,7 @@ function Intro() {
               alt="malaysia"
               width="40"
               height="10"
-              style={{
-                objectFit:"contain",
-              }}
+              style={{objectFit:"contain"}}
             />
             </div>
             <div className="px-5 py-8 text-lg text-white font-semibold">

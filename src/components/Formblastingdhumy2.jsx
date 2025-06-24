@@ -48,7 +48,7 @@ export default function App() {
     
 
     fetch(
-      "https://script.google.com/macros/s/AKfycbz89sRBlxXL1jmGzztzbo_NAOw5eiWCFiFbanv1i9RCYtiqZOFoOKE1GW_muXbnNOobJw/exec",
+      "https://script.google.com/macros/s/AKfycbyggIMcLntJIhfUrYjwLuE5LFuWHnSk3LcTFKcCioqKo8mFaoPzC9QIxac2JMTRaEcJHg/exec",
       {
         method: "POST",
         body: formDatab
@@ -240,86 +240,6 @@ export default function App() {
           >Degree Pengurusan Haji & Umrah 
           </p>
           </div>
-        </div>
-      )}
-    </div>
-
-
-
-    <div className="relative inline-block text-left">
-            <div>Pilihan Program Diploma, Kerjaya atau Work Based Learning (WBL)</div>
-      <button
-        onClick={toggleDropdown3} 
-        name="Program2"
-        type="button"
-        className="bg-yellow-500 hover:bg-yellow-600 inline-flex justify-center w-full py-2 text-sm font-medium text-black  border border-transparent rounded-md focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800"
-      >
-        {selectedItem3 ? selectedItem3 : "Select Programs 2"}
-      </button>
-
-      {isOpen3 && (
-        <div className="w-full right-0 mt-2  origin-top-right bg-white border border-gray-200 divide-y  rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-        
-          <p
-            className="px-4 text-md py-2 cursor-pointer bg-yellow-500 font-bold"
-          >
-            Work Based Learning
-          </p>
-          <div className="pl-6 text-sm bg-yellow-500">
-          <p className="px-4 py-2 cursor-pointer hover:bg-yellow-400 rounded-md"
-            onClick={() => handleItemClick3(" DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL)")}
-          >
-            DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY-WBL) 
-          </p>
-          </div>
-          <p className="px-4 text-md font-bold py-2 hover:bg-gray-200 bg-slate-600"  >
-            Diploma Kovensional
-          </p>
-          <div className="pl-6 text-sm text-white bg-slate-600">
-          <p className="px-4 py-2 cursor-pointer hover:bg-slate-400 rounded-md"
-            onClick={() => handleItemClick3("DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY)")}
-          >
-            DIPLOMA PENGURUSAN HAJI & UMRAH (DHUMY) 
-          </p>
-          </div>
-
-          <p
-            className="px-4 text-md py-2 cursor-pointer bg-gray-400 font-bold"
-          >
-            Kerjaya
-          </p>
-          <div className="pl-6 text-sm bg-gray-400">
-          <p className=" py-2 cursor-pointer hover:bg-gray-500 rounded-md"
-            onClick={() => handleItemClick3("SPHU - SIJIL PROFESIONAL PENGURUSAN HAJI & UMRAH")}
-          >
-            SPHU - SIJIL PROFESIONAL PENGURUSAN HAJI & UMRAH 
-          </p>
-          </div>
-
-          <p className="px-4 text-md py-2 cursor-pointer bg-gray-400 font-bold">ODL Alumni SPHU</p>
-          <div className="pl-6 text-sm bg-gray-400">
-          <p className=" py-2 cursor-pointer hover:bg-gray-500 rounded-md"
-            onClick={() => handleItemClick3("Degree Pengurusan Haji & Umrah (ODL Alumni SPHU)")}
-          >Degree Pengurusan Haji & Umrah 
-          </p>
-          </div>
-
-          <p className="px-4 text-md py-2 cursor-pointer bg-gray-300 font-bold">ODL New Student and non SPHU</p>
-          <div className="pl-6 text-sm bg-gray-300">
-          <p className=" py-2 cursor-pointer hover:bg-gray-500 rounded-md"
-            onClick={() => handleItemClick3("Degree Pengurusan Haji & Umrah (ODL New Student and non SPHU)")}
-          >Degree Pengurusan Haji & Umrah 
-          </p>
-          </div>
-          
-          <p className="px-4 text-md py-2 cursor-pointer bg-gray-200 font-bold">New Students</p>
-          <div className="pl-6 text-sm bg-gray-200">
-          <p className=" py-2 cursor-pointer hover:bg-gray-500 rounded-md"
-            onClick={() => handleItemClick3("Degree Pengurusan Haji & Umrah (New Students)")}
-          >Degree Pengurusan Haji & Umrah 
-          </p>
-          </div>
-          
         </div>
       )}
     </div>

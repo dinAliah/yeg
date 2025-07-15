@@ -35,10 +35,16 @@ function Navbar() {
             <MenubarMenu>
               <MenubarTrigger>Career Program</MenubarTrigger>
               <MenubarContent>
-                <MenubarItem>
-                <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                <a className="text-md font-light ml-2" href="../kursuskerjaya/sphu">Sijil Program Profesional Haji & Umrah (SPHU)</a> </div>
-                </MenubarItem>  
+                <MenubarSub>
+                  <MenubarSubTrigger>
+                  <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
+                  <a className="text-md font-light ml-2" href="../kursuskerjaya/misa">Sijil Program Profesional Haji & Umrah (SPHU)</a></div>
+                  </MenubarSubTrigger>
+                  <MenubarSubContent>
+                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/oilandgas">Bachelor’s Degree Hajj & Umrah Management</a></MenubarItem>
+                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/maritim">Master Hajj & Umrah Management</a></MenubarItem>
+                  </MenubarSubContent>
+                </MenubarSub>
                 <MenubarItem>
                 <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
                 <a className="text-md font-light ml-2" href="../kursuskerjaya/acm">Aviation Career Malaysia (ACM)</a></div>

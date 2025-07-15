@@ -11,7 +11,6 @@ import Courses2 from '@/components/homepage/Courses2'
 import Trendmark2 from '@/components/homepage/Trendmark2'
 import Entertainment from '@/components/homepage/Entertainment'
 import News from '@/components/homepage/News'
-import Footer from "@/components/Footer.jsx"
 import ContactUs from "@/components/homepage/ContactUs"
 
 export default function home() {
@@ -41,7 +40,6 @@ export default function home() {
         <Trendmark2/>
         <Entertainment/>
         <News/>
-        <Footer/>
       </main>
     </html>
     </>

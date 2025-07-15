@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import Head from 'next/head'
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
+import Footer from "@/components/Footer.jsx"
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -84,6 +85,7 @@ export default function RootLayout({ children }) {
       <Sidebar/>
       <main>{children}</main>
       <Analytics />
+      <Footer/>
       </body>
     </html>
   )

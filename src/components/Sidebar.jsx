@@ -86,11 +86,21 @@ const Navbar = () => {
           {isOpen1 && (
         <div className="lg:hidden mt-4 bg-yellow-700">
           {/* Add your navigation links here */}
-            <a 
-            onClick={toggleNavbar2}
-            className="block text-white py-2 px-4 hover:bg-gray-700" href="../kursuskerjaya/sphu">
+            <button 
+            onClick={toggleNavbar5}
+            className="block text-white py-2 px-4 " href="../kursuskerjaya/sphu">
               Sijil Profesional Haji & Umrah (SPHU)
-            </a>
+            </button>
+            {isOpen5 && (
+            <div className="lg:hidden mt-4 bg-yellow-500">
+              {/* Add your navigation links here */}
+                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="../kursusdiploma/dhumy">
+                Bachelor’s Degree Hajj & Umrah Management</a>
+                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="../kursusdiploma/dle">
+                Master Hajj & Umrah Management</a>
+                
+            </div>
+          )}
             <a 
             onClick={toggleNavbar3}
             className="block text-white py-2 px-4 hover:bg-gray-700"href="../kursuskerjaya/acm">

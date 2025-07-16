@@ -16,7 +16,7 @@ import ContactUs from "@/components/homepage/ContactUs"
 export default function home() {
   return (
     <>
-    <html lang="en">
+    
       <ins
       className="adsbygoogle"
       style={{ display: 'block' }}
@@ -41,9 +41,8 @@ export default function home() {
         <Entertainment/>
         <News/>
       </main>
-    </html>
-    </>
     
+    </>
   )
 }
 

@@ -100,7 +100,6 @@ function diploma1() {
         </div>
       </section2>
       <div>
-      <Footer/>
     </div>
     </main>
   )

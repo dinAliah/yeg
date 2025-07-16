@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
+import Contactus from '@/components/Contactus'
 
 function Page() {
   return (
-    <div className="relative w-screen min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen inline-flex overflow-hidden ">
       {/* Background image layer */}
       <div
         className="absolute inset-0 bg-repeat"
@@ -13,11 +14,9 @@ function Page() {
           backgroundPosition: 'top',
         }}
       />
-      {/* White overlay with opacity */}
       <div className="absolute inset-0 bg-white opacity-80"></div>
-
-      {/* Foreground content */}
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-10">
+    
+      <div className="relative z-10 max-w-screen-lg mx-auto px-6 py-10">
         <div className="pb-6">
           {/* Banner or heading image */}
           <div>
@@ -35,9 +34,9 @@ function Page() {
 
           {/* Section 1 */}
           <div className="lg:py-10 py-6 space-y-4 text-black">
-            <div>
+            <div class='space-y-2'>
               <p className="font-bold">
-                IJAZAH SARJANA MUDA PENGURUSAN HAJI DAN UMRAH (Kepujian)
+                IJAZAH SARJANA MUDA PENGURUSAN HAJI DAN UMRAH (Kepujian) – MQA/PA 17040
               </p>
               <p>Bachelor’s Degree Hajj & Umrah Management (Hons.) - BHUM</p>
             </div>
@@ -58,37 +57,42 @@ function Page() {
           {/* Section 2 */}
           <div className="lg:py-10 py-6 space-y-4 text-black">
             <div>
-              <p className="font-bold">
-                IJAZAH SARJANA MUDA PENGURUSAN HAJI DAN UMRAH (Kepujian) – MQA/PA 17040
-              </p>
-              <p>Dengan program ini, anda akan dapat:</p>
+              <p>Dengan mengikuti program ini, anda akan:</p>
             </div>
 
-            <p>1) Melalui pembelajaran Secara Hybrid</p>
+            <p>1) Mengikuti pembelajaran secara hybrid, yang menggabungkan sesi dalam talian dan bersemuka bagi memberikan fleksibiliti tanpa menjejaskan kualiti akademik.</p>
 
             <div>
-              <p>2) Professor Adjung Dari Industri Sebagai Tenaga Pengajar:</p>
-              <ul className="list-disc ml-6">
-                <li>Hajah Ida Riswana Idris (Pengarah Andalusia Travel & Tours)</li>
-                <li>Haji Jainal Haji Ismail (CEO FGV Transport)</li>
-                <li>
-                  Al-Habib Sheikh Dr. Prof. Omar Kalash Al-Husainiyy (Baitussaadah)
-                </li>
-              </ul>
+              <p>2)Mendapat bimbingan terus daripada Profesor Adjung yang berpengalaman 
+                luas dalam industri, yang turut terlibat secara aktif dalam pengurusan 
+                ibadah Haji dan Umrah serta sektor logistik dan kebajikan jemaah. 
+                Antara tenaga pengajar jemputan yang berwibawa ialah:</p>
+                <ul className="list-disc ml-6 py-2">
+                    <li>Hajah Ida Riswana Idris, Pengarah Andalusia Travel & Tours – tokoh dalam pelancongan Islam dan pengurusan jemaah.</li>
+                    <li>Haji Jainal Haji Ismail, Ketua Pegawai Eksekutif FGV Transport Services – pakar dalam logistik dan pengurusan operasi berskala besar.</li>
+                    <li>Al-Habib Sheikh Dr. Prof. Omar Kalash Al-Husainiyy, tokoh ulama dan penasihat di Baitussaadah – berperanan dalam pembentukan spiritualiti dan bimbingan rohani jemaah.</li>
+                </ul>
             </div>
-
+            <div class='py-2'>
+              <p class='font-bold'>Tahun Pengajian</p>
+              <p class=''>3 tahun (9 Semester)</p>
+            </div>
             <div>
-              <p>Syarat Kelayakan:</p>
-              <ul className="list-disc ml-6">
-                <li>Diploma CGPA 2.0 ke atas</li>
-                <li>Matrikulasi CGPA 2.0 ke atas</li>
-                <li>STPM CGPA 2.0 ke atas</li>
+              <p class='font-bold'>Syarat Kelayakan:</p>
+              <p class=''>Calon yang ingin memohon mestilah memenuhi salah satu daripada kelayakan akademik berikut:</p>
+              <ul className="list-disc ml-6 py-1">
+                <li>Memiliki Diploma dengan PNGK minimum 2.00 ke atas daripada institusi yang diiktiraf</li>
+                <li>Lulus Matrikulasi dengan PNGK minimum 2.00 ke atas</li>
+                <li>Lulus Sijil Tinggi Persekolahan Malaysia (STPM) dengan PNGK minimum 2.00 ke atas</li>
                 <li>STAM minimum adalah Maqbul</li>
-                <li>Sihat fizikal tubuh badan</li>
+                <li>Lulus Sijil Tinggi Agama Malaysia (STAM) dengan pencapaian minimum pangkat Maqbul</li>
+                <li>Sihat tubuh badan dan berupaya menjalani aktiviti akademik dan kokurikulum dengan baik</li>
               </ul>
             </div>
           </div>
         </div>
+        <div class='bg-green-600 w-[200px] drop-shadow-lg text-white p-2 flex justify-center rounded hover:animate-bounce'>
+        <a href='/borangyeg'>SERTAI SEKARANG</a></div>
       </div>
     </div>
   )

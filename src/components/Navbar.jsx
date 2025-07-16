@@ -38,11 +38,11 @@ function Navbar() {
                 <MenubarSub>
                   <MenubarSubTrigger>
                   <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                  <a className="text-md font-light ml-2" href="../kursuskerjaya/misa">Sijil Program Profesional Haji & Umrah (SPHU)</a></div>
+                  <a className="text-md font-light ml-2">Sijil Program Profesional Haji & Umrah (SPHU)</a></div>
                   </MenubarSubTrigger>
                   <MenubarSubContent>
-                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/oilandgas">Bachelor’s Degree Hajj & Umrah Management</a></MenubarItem>
-                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/maritim">Master Hajj & Umrah Management</a></MenubarItem>
+                    <MenubarItem><a className="text-md font-light ml-2" href="./kursuskerjaya/sphu/bhum">Bachelor’s Degree Hajj & Umrah Management</a></MenubarItem>
+                    <MenubarItem><a className="text-md font-light ml-2" href="./kursuskerjaya/sphu/mhum">Master Hajj & Umrah Management</a></MenubarItem>
                   </MenubarSubContent>
                 </MenubarSub>
                 <MenubarItem>

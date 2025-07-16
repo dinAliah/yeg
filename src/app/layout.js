@@ -36,13 +36,12 @@ export default function RootLayout({ children }) {
             });
           `}
         </Script>
-
         {/* App Layout */}
         <Navbar />
         <Sidebar />
-        <main>{children}</main>
-        <Analytics />
+        <main className="">{children}</main>
         <Footer/>
+        <Analytics />
       </body>
     </html>
   )

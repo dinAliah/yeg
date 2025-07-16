@@ -9,16 +9,16 @@ function contactus() {
     <div className=" h-full flex w-full lg:grid-cols-2 justify-center">
 
       <div className="px-4 flex justify-end ">
-          <Image
-            className=" "
-            src="/contactuslogo3.svg"
-            alt="contactuslogo3"
-            width="200"
-            height="200"
-            style={{
-                objectFit:"contain",
-            }}
-            />
+        <Image
+          className=" "
+          src="/contactuslogo3.svg"
+          alt="contactuslogo3"
+          width="200"
+          height="200"
+          style={{
+              objectFit:"contain",
+          }}
+          />
     </div>
     <div className="grid border-l-2 border-black px-6">
     <div className=" grid justify-start ">
@@ -68,7 +68,7 @@ function contactus() {
               }}
                 />
             </div>
-            <a href="../borangyeg" className="flex items-center justify-center px-4 w-full border rounded-full">
+            <a href="./borangyeg" className="flex items-center justify-center px-4 w-full border rounded-full">
               <h className="text-lg">Book an appoitment now</h>
             </a>
           </div>
@@ -142,7 +142,7 @@ function contactus() {
         }}
           />
       </div>
-      <a href="../borangyeg" className="flex items-center justify-center px-4 w-full border rounded-full">
+      <a href="./borangyeg" className="flex items-center justify-center px-4 w-full border rounded-full">
         <h className="text-lg">Book an apoitment now</h>
       </a>
     </div>

@@ -94,9 +94,9 @@ const Navbar = () => {
             {isOpen5 && (
             <div className="lg:hidden mt-4 bg-yellow-500">
               {/* Add your navigation links here */}
-                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="../kursusdiploma/dhumy">
+                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="./kursuskerjaya/sphu/bhum">
                 Bachelor’s Degree Hajj & Umrah Management</a>
-                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="../kursusdiploma/dle">
+                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="./kursuskerjaya/sphu/mhum">
                 Master Hajj & Umrah Management</a>
                 
             </div>

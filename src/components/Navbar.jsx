@@ -41,62 +41,49 @@ function Navbar() {
                   <a className="text-md font-light ml-2">Program Profesional Haji & Umrah (SPHU)</a></div>
                   </MenubarSubTrigger>
                   <MenubarSubContent>
-                    <MenubarItem><a className="text-md font-light ml-2" href="./kursuskerjaya/sphu/bhum">Bachelor’s Degree Hajj & Umrah Management</a></MenubarItem>
-                    <MenubarItem><a className="text-md font-light ml-2" href="./kursuskerjaya/sphu/mhum">Master Hajj & Umrah Management</a></MenubarItem>
-                    <MenubarItem><a className="text-md font-light ml-2" href="./kursuskerjaya/sphu/shum">Profesional Hajj & Umrah Certificate</a></MenubarItem>
+                    <MenubarItem><a className="text-md font-light ml-2" href="/kursuskerjaya/sphu/bhum">Bachelor’s Degree Hajj & Umrah Management</a></MenubarItem>
+                    <MenubarItem><a className="text-md font-light ml-2" href="/kursuskerjaya/sphu/mhum">Master Hajj & Umrah Management</a></MenubarItem>
+                    <MenubarItem><a className="text-md font-light ml-2" href="/kursuskerjaya/sphu/shum">Profesional Hajj & Umrah Certificate</a></MenubarItem>
                   </MenubarSubContent>
                 </MenubarSub>
                 <MenubarItem>
                 <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                <a className="text-md font-light ml-2" href="../kursuskerjaya/acm">Aviation Career Malaysia (ACM)</a></div>
+                <a className="text-md font-light ml-2" href="/kursuskerjaya/acm">Aviation Career Malaysia (ACM)</a></div>
                 </MenubarItem>
-                <MenubarSub>
-                  <MenubarSubTrigger>
-                  <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                  <a className="text-md font-light ml-2" href="../kursuskerjaya/misa">Malaysia Industry Skills Academy(MISA)</a></div>
-                  </MenubarSubTrigger>
-                  <MenubarSubContent>
-                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/oilandgas">Oil & Gas</a></MenubarItem>
-                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/maritim">Maritim</a></MenubarItem>
-                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/telco">Telcomunication</a></MenubarItem>
-                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/renewbleenergy">Renewble Energy</a></MenubarItem>
-                    <MenubarItem><a className="text-md font-light ml-2" href="../kursuskerjaya/misa/aviation">Aviation</a></MenubarItem>
-                  </MenubarSubContent>
-                </MenubarSub>
               </MenubarContent>
             </MenubarMenu>
   
-            <MenubarMenu>
+            {/* <MenubarMenu>
                 <MenubarTrigger className="hover:bg-slate-600">Online Distance Learning</MenubarTrigger>
                 <MenubarContent>
                     <MenubarItem>
                     <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="../odl/diploma1">Diploma in Business & Administration</a></div>
+                        <a className="text-md font-light ml-2" href="/odl/diploma1">Diploma in Business & Administration</a></div>
                     </MenubarItem>
                 </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
+            </MenubarMenu> */}
+            {/* <MenubarMenu>
                 <MenubarTrigger className="hover:bg-slate-600">Diploma Courses</MenubarTrigger>
                 <MenubarContent>
                     <MenubarItem>
                     <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="../kursusdiploma/dhumy">Diploma Pengurusan Haji & Umrah (DHUMY)</a></div>
+                        <a className="text-md font-light ml-2" href="/kursusdiploma/dhumy">Diploma Pengurusan Haji & Umrah (DHUMY)</a></div>
                     </MenubarItem>
                     <MenubarItem>
                     <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="../kursusdiploma/dle">Diploma Penguatkuasa Undang-Undang (DLE)</a></div>
+                        <a className="text-md font-light ml-2" href="/kursusdiploma/dle">Diploma Penguatkuasa Undang-Undang (DLE)</a></div>
                     </MenubarItem>
                     <MenubarItem>
                     <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="../kursusdiploma/dnur">Diploma Kejururawatan (DNUR)</a></div>
+                        <a className="text-md font-light ml-2" href="/kursusdiploma/dnur">Diploma Kejururawatan (DNUR)</a></div>
                     </MenubarItem>
                     <MenubarItem>
                     <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="../kursusdiploma/dacm">Diploma Pengurusan Kargo Udara (DACM)</a></div>
+                        <a className="text-md font-light ml-2" href="/kursusdiploma/dacm">Diploma Pengurusan Kargo Udara (DACM)</a></div>
                     </MenubarItem>
                     <MenubarItem>
                     <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="../kursusdiploma/daom">Diploma Pengurusan Operasi Penerbangan (DAOM)</a></div>
+                        <a className="text-md font-light ml-2" href="/kursusdiploma/daom">Diploma Pengurusan Operasi Penerbangan (DAOM)</a></div>
                     </MenubarItem>
                     <MenubarItem>
                     <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
@@ -111,8 +98,8 @@ function Navbar() {
                         <a className="text-md font-light ml-2" href="../kursusdiploma/dtmmea">Diploma Pengurusan Pelancongan (DTM-MEA)</a></div>
                     </MenubarItem>     
                 </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
+            </MenubarMenu> */}
+            {/* <MenubarMenu>
                 <MenubarTrigger className="hover:bg-slate-600">WBL Diploma Courses</MenubarTrigger>
                 <MenubarContent>
                     <MenubarItem>
@@ -148,38 +135,23 @@ function Navbar() {
                         <a className="text-md font-light ml-2" href="../kursusdiploma/dtmmea">Diploma Pengurusan Pelancongan (DTM-MEA)</a></div>
                     </MenubarItem>     
                 </MenubarContent>
-            </MenubarMenu>
+            </MenubarMenu> */}
 
             <MenubarMenu>
                 <MenubarTrigger className="hover:bg-slate-600">
-                    <a className="" href="./careyeg">Article</a></MenubarTrigger>
+                    <a className="" href="/careyeg">Article</a></MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
                 <MenubarTrigger className="hover:bg-slate-600">
-                <a className="" href="../testimoni">Testimony</a></MenubarTrigger>
+                <a className="" href="/testimoni">Testimony</a></MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
                 <MenubarTrigger className="hover:bg-slate-600">
-                <a className="" href="../career">Job Vacancy</a></MenubarTrigger>
-            </MenubarMenu>
-            <MenubarMenu>
-                <MenubarTrigger><a className="">PDPT-YEG</a></MenubarTrigger>
-                <MenubarContent>
-                    <MenubarItem className="grid">
-                        <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="https://lll-52a72qasy-fuaadtarmizis-projects.vercel.app/">Haj Umrah Examination</a></div>
-                        <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="/">Health Science Examination</a></div>
-                        <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="/">Aviation Examination</a></div>
-                        <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                        <a className="text-md font-light ml-2" href="/">Penguatkuasa Undang-Undang Examination</a></div>
-                    </MenubarItem>
-                </MenubarContent>
+                <a className="" href="/career">Career</a></MenubarTrigger>
             </MenubarMenu>
             <MenubarMenu>
                 <MenubarTrigger className="bg-yellow-500 hover:bg-yellow-400">
-                <a href="./borangyeg">Contact Us</a> </MenubarTrigger>
+                <a href="/borangyeg">Contact Us</a> </MenubarTrigger>
             </MenubarMenu>
             </div>
             </Menubar>

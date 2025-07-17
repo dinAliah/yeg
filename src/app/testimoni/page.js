@@ -13,15 +13,6 @@ function page() {
         <title>Testimonials - YEG Academy</title>
       </Head>
     <body>
-      
-      {/* <nav className="hidden lg:block sticky top-0 ">
-        <Navbar/>
-    </nav> */}
-      <nav>
-    <div className="lg:hidden">
-        <Sidebar/>
-    </div>
-    </nav>
         <section1 className="px-28">
         <div className="pt-8">
             <div className="flex justify-center py-8">

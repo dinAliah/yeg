@@ -82,7 +82,6 @@ function Page() {
               <p class='font-bold'>Tahun Pengajian</p>
               <p class=''>3 Bulan (secara atas talian)</p>
             </div>
-
             <div>
               <p className='font-bold'>Syarat Kelayakan</p>
               <p>Calon yang berminat untuk mengikuti program ini mestilah memenuhi salah satu daripada kriteria berikut:</p>

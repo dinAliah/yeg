@@ -33,16 +33,17 @@ function Navbar() {
                 }}/></a></div>
             <div className="bg-slate-800 flex w-full justify-end">
             <MenubarMenu>
-              <MenubarTrigger>Career Program</MenubarTrigger>
+              <MenubarTrigger>Program</MenubarTrigger>
               <MenubarContent>
                 <MenubarSub>
                   <MenubarSubTrigger>
                   <div className="w-full p-2 hover:bg-slate-500 hover:bg-opacity-10">
-                  <a className="text-md font-light ml-2">Sijil Program Profesional Haji & Umrah (SPHU)</a></div>
+                  <a className="text-md font-light ml-2">Program Profesional Haji & Umrah (SPHU)</a></div>
                   </MenubarSubTrigger>
                   <MenubarSubContent>
                     <MenubarItem><a className="text-md font-light ml-2" href="./kursuskerjaya/sphu/bhum">Bachelor’s Degree Hajj & Umrah Management</a></MenubarItem>
                     <MenubarItem><a className="text-md font-light ml-2" href="./kursuskerjaya/sphu/mhum">Master Hajj & Umrah Management</a></MenubarItem>
+                    <MenubarItem><a className="text-md font-light ml-2" href="./kursuskerjaya/sphu/shum">Profesional Hajj & Umrah Certificate</a></MenubarItem>
                   </MenubarSubContent>
                 </MenubarSub>
                 <MenubarItem>

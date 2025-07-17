@@ -4,107 +4,91 @@ import Footer from "@/components/Footer.jsx"
 import Navbar from "@/components/Navbar.jsx"
 import Sidebar from "@/components/Sidebar.jsx"
 
+// const card =['ahmad', 'fuad', 'alia']
+
+const detail = [
+  {
+    gambar: '/career/career1.jpg',
+    width: 400,
+  },
+  {
+    gambar: '/career/career2.jpg',
+    width: 400,
+  },
+  {
+    gambar: '/career/career3.jpg',
+    width: 400,
+  },
+  {
+    gambar: '/career/career4.jpg',
+    width: 400,
+  },
+  {
+    gambar: '/career/3.png',
+    width: 400,
+  },
+  {
+    gambar: '/career/4.png',
+    width: 400,
+  },
+  {
+    gambar: '/career/5.png',
+    width: 400,
+  },
+  {
+    gambar: '/career/6.png',
+    width: 400,
+  },
+  {
+    gambar: '/career/7.png',
+    width: 400,
+  },
+  {
+    gambar: '/career/8.png',
+    width: 400,
+  },
+  {
+    gambar: '/career/9.png',
+    width: 400,
+  },
+  {
+    gambar: '/career/10.png',
+    width: 400,
+  },
+  {
+    gambar: '/career/11.png',
+    width: 400,
+  },
+];
+
 function career() {
   return (
+    <>
     <main>
         <title>YEG Academy - Career</title>
         <div className="pt-8">
-            <div className="flex justify-center py-8">
-        <div className="group w-3/4 h-full grid justify-center ">
-          <span className="text-slate-700 font-bold text-4xl bg-gradient-to-r from-yellow-500 to-yellow-500 bg-no-repeat [background-position:0_88%] [background-size:1%_100%] motion-safe:transition-all motion-safe:duration-700 group-hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
-          CAREER YEG ACADEMY</span>
-      </div>
-      </div>
+          <div className="flex justify-center py-8">
+            <div className="group w-3/4 h-full grid justify-center ">
+              <span className="text-slate-700 font-bold text-4xl bg-gradient-to-r from-yellow-500 to-yellow-500 bg-no-repeat [background-position:0_88%] [background-size:1%_100%] motion-safe:transition-all motion-safe:duration-700 group-hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
+                CAREER YEG ACADEMY
+              </span>
             </div>
-            <section1>
-            <div className="px-4 lg:px-28 flex justify-center">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
-            <div className="">
-                    <Image
-                    className="rounded-md hover:shadow-slate-500 hover:shadow-2xl shadow-md hover:scale-150 duration-300"
-                        src="/career1.jpg"
-                        alt="career1"
-                        width="300"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-            </div>
-            <div className="">
-            <Image
-                    className="rounded-md hover:shadow-slate-500 hover:shadow-2xl shadow-md hover:scale-150 duration-300"
-                        src="/career2.jpg"
-                        alt="career2"
-                        width="300"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-            </div>
-            <div className="">
-            <Image
-                    className="rounded-md hover:shadow-slate-500 hover:shadow-2xl shadow-md hover:scale-150 duration-300"
-                        src="/career3.jpg"
-                        alt="career3"
-                        width="300"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-            </div>
-            
+          </div>
         </div>
+        <div class="grid grid-cols-3 mx-auto container gap-4 py-4">
+          {detail.map((detail,index) => (
+            <div key={index}>
+              <Image
+              className='rounded'
+              src={detail.gambar}
+              width={detail.width}
+              height={10}/>
             </div>
-            </section1>
-            <div className="py-8 lg:py-10 md:[height:80px]"></div>
-            <section2>
-              <div className="px-8 lg:px-28 flex justify-center">
-                <div className="border hover:shadow-xl rounded-md duration-300 p-3 py-6 bg-slate">
-              <h>Contact Us</h>
-                <div className="grid space-y-4">
-                  <div className="flex items-center">
-                  <Image
-                    id="image1"
-                      className=""
-                      src="/wassap.svg"
-                      alt="wassap"
-                      width="45"
-                      height="10"
-                      style={{
-                        objectFit:"contain",
-                      }}
-                    />
-                    <a href="https://wa.me/+60163144841"  className="font-sans text-blue-500 underline px-3">https://wa.me/+60163144841</a>
-                  </div>
-                  <div className="flex items-center">
-                  <Image
-                    id="image1"
-                      className=""
-                      src="/gmail.svg"
-                      alt="gmail"
-                      width="45"
-                      height="10"
-                      style={{
-                        objectFit:"contain",
-                      }}
-                    />
-                  <a href="mailto:hr@youreducationguidance.my/" className="font-sans text-blue-500 underline px-3">hr@youreducationguidance.my/</a>
-                  </div>
-                  
-                  
-                 
-                </div>
-                </div>
-              </div>
-            </section2>
-            <div className="py-8 lg:py-10 md:[height:80px]"></div>    
-    <div>
-      <Footer/>
-    </div>
+          ))}
+        </div>
     </main>
+    </>
+    
   )
 }
 

@@ -86,16 +86,14 @@ function footer() {
           </div>
           </div>
           </div>
-          <div className=" col-span-2 p-8">
+          <div className=" col-span-2 p-8 ">
             <div className=" text-white text-xs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="grid space-y-3">
+            <div className="grid space-y-3 ">
               <span className="text-xl font-bold py-3">CAREER PROGRAMME</span>
               <a className="font-medium" href="../kursuskerjaya/sphu">Sijil Program Profesional Haji & Umrah (SPHU)</a>
-              <a className="font-medium" href="../kursuskerjaya/acm">Aviation Career Malaysia (ACM)</a>
-              <a className="font-medium" href="../kursuskerjaya/misa">Malaysia Industry Skills Academy (MISA)</a>
-              
+              <a className="font-medium" href="../kursuskerjaya/acm">Aviation Career Malaysia (ACM)</a>              
             </div>
-            <div className="grid space-y-3">
+            {/* <div className="grid space-y-3">
               <span className="text-xl font-bold py-3">DIPLOMA PROGRAMME</span>
               <a className="font-medium" href="../kursusdiploma/dhumy">Diploma Pengurusan Haji & Umrah (DHUMY)</a>
               <a className="font-medium" href="../kursusdiploma/dle">Diploma Penguatkuasa Undang-Undang (DLE)</a>
@@ -105,8 +103,8 @@ function footer() {
               <a className="font-medium" href="../kursusdiploma/damt">Diploma Penyelenggaraan teknologi Pesawat (DAMT)</a>
               <a className="font-medium" href="../kursusdiploma/amt">Sijil Kemahiran Malaysia Operasi Penyelenggaraan Pesawat (AMT)</a>
               <a className="font-medium" href="../kursusdiploma/dtmmea">Diploma Pengurusan Pelancongan (DTM-MEA)</a>
-            </div>
-            <div className="grid space-y-3">
+            </div> */}
+            {/* <div className="grid space-y-3">
               <span className="text-xl font-bold py-3">DIPLOMA-WBL</span>
               <a className="font-medium" href="../kursusdiploma/dhumy">Diploma Pengurusan Haji & Umrah (DHUMY-WBL)</a>
               <a className="font-medium" href="../kursusdiplomawbl/dhmwbl">Diploma Pengurusan Perhotelan (DHM-WBL)</a>
@@ -116,13 +114,13 @@ function footer() {
               <a className="font-medium" href="../kursusdiploma/daom">Diploma Pengurusan Operasi Penerbangan (DAOM-WBL)</a>
               <a className="font-medium" href="../kursusdiplomawbl/dasmwbl">Diploma Teknologi Pembaikan Struktur Pesawat - Kepingan Logam (DASM-WBL)</a>
               <a className="font-medium text-transparent" href="../kursusdiploma/dtmmea">Diploma Pengurusan Pelancongan (DTM-MEA)</a>
-            </div>
+            </div> */}
             <div className="grid space-y-3 py-3">
             <a className="text-xl font-bold" href="../article">ARTICLE</a>
             <a className="text-xl font-bold" href="../testimoni">TESTIMONY</a>
             <a className="text-xl font-bold" href="../career">JOB VACANCY</a>
             {/* <a className="text-xl font-bold" href="../enroll">ENROLE</a> */}
-            <a className="text-xl font-bold" href="../">PDPT-YEG</a> 
+            {/* <a className="text-xl font-bold" href="../">PDPT-YEG</a>  */}
             <a className="text-xl font-bold" href="../borangyeg">CONTACT US</a>
             </div>
             </div>

@@ -1,5 +1,7 @@
-// app/layout.tsx
+'use client'
+
 import './globals.css'
+import { usePathname } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/react'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
@@ -9,15 +11,13 @@ import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'YEG Academy | Career & Education Platform',
-  description: 'YEG Academy offers career guidance and industry-focused education programs for your future success in Malaysia.',
-  icons: {
-    icon: '/yeglogowebsite.svg',
-  },
-}
-
 export default function RootLayout({ children }) {
+  const pathname = usePathname()
+
+  const hideLayoutPaths = ['/-keep1-/qraviation']
+
+  const shouldHideLayout = hideLayoutPaths.includes(pathname)
+
   return (
     <html lang="en">
       <head />
@@ -36,11 +36,11 @@ export default function RootLayout({ children }) {
             });
           `}
         </Script>
-        {/* App Layout */}
-        <Navbar />
-        <Sidebar />
-        <main className="">{children}</main>
-        <Footer/>
+
+        {!shouldHideLayout && <Navbar />}
+        {!shouldHideLayout && <Sidebar />}
+        <main>{children}</main>
+        {!shouldHideLayout && <Footer />}
         <Analytics />
       </body>
     </html>

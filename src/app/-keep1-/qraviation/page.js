@@ -6,7 +6,7 @@ function page() {
     <>
     <div class='absolute w-full h-full grid justify-center bg-gradient-to-b from-red-700 to-red-900'>
       </div>
-      <div  className="relative pt-6">
+      <div  className="relative pt-6 pb-20">
         <div className="lg:container flex justify-center">
         <Image className="w-36 h-36 bg-white rounded-full p-3"
           src="/qraviation/logo.png"
@@ -57,7 +57,7 @@ function page() {
         </div>
         
       </div>
-      <div class='absolute w-full grid justify-center bottom-0 text-gray-400 text-sm py-4 space-y-2 pt-20'>
+      <div class='absolute w-full grid justify-center bottom-0 text-gray-400 text-sm py-4 space-y-2'>
           <h class='text-center'>@aviationCareerMalaysia</h>
           <a href='https://www.tiktok.com/@petalcode'>
           <h>Designed by PetalCode Labs</h>

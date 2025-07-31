@@ -4,7 +4,7 @@ import Image from "next/image"
 function page() {
   return (
     <>
-    <div class='absolute w-full h-screen grid justify-center bg-gradient-to-b from-red-700 to-red-900'>
+    <div class='absolute w-full h-full grid justify-center bg-gradient-to-b from-red-700 to-red-900'>
       </div>
       <div  className="relative pt-6">
         <div className="lg:container flex justify-center">

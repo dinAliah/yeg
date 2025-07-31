@@ -57,9 +57,11 @@ function page() {
         </div>
         
       </div>
-      <div class='absolute w-full grid justify-center bottom-0 text-gray-400 text-sm py-4 space-y-3'>
+      <div class='absolute w-full grid justify-center bottom-0 text-gray-400 text-sm py-4 space-y-2 pt-20'>
           <h class='text-center'>@aviationCareerMalaysia</h>
+          <a href='https://www.tiktok.com/@petalcode'>
           <h>Designed by PetalCode Labs</h>
+          </a>
         </div>
     </>
   );

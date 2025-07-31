@@ -4,10 +4,11 @@ import Image from "next/image"
 function page() {
   return (
     <>
-    <div class='absolute w-full h-full grid justify-center bg-gradient-to-b from-red-700 to-red-900'>
+    <div class=' w-full h-full grid justify-center bg-gradient-to-b from-red-700 to-red-900'>
       </div>
-      <div  className="relative pt-6 pb-20">
-        <div className="lg:container flex justify-center">
+      <div  className="bg-red-300 min-h-screen flex flex-col pt-10">
+        <div class=' flex-grow'>
+           <div className="lg:container flex justify-center">
         <Image className="w-36 h-36 bg-white rounded-full p-3"
           src="/qraviation/logo.png"
           alt="travelmadinah"
@@ -34,7 +35,7 @@ function page() {
           </div>
         </div>
         <div class='grid justify-center text-white text-lg py-4 space-y-2'>
-          <h class='text-center font-semibold text-xl'>Podcost</h>
+          <h class='text-center font-semibold text-xl'>Podcast</h>
           <div class='flex space-x-6'>
             <a href='https://www.youtube.com/@aviationcareermalaysia7438'>
               <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 256 180"><path fill="red" d="M250.346 28.075A32.18 32.18 0 0 0 227.69 5.418C207.824 0 127.87 0 127.87 0S47.912.164 28.046 5.582A32.18 32.18 0 0 0 5.39 28.24c-6.009 35.298-8.34 89.084.165 122.97a32.18 32.18 0 0 0 22.656 22.657c19.866 5.418 99.822 5.418 99.822 5.418s79.955 0 99.82-5.418a32.18 32.18 0 0 0 22.657-22.657c6.338-35.348 8.291-89.1-.164-123.134Z"/><path fill="#FFF" d="m102.421 128.06l66.328-38.418l-66.328-38.418z"/></svg>
@@ -55,14 +56,17 @@ function page() {
             
           </div>
         </div>
-        
-      </div>
-      <div class='absolute w-full grid justify-center bottom-0 text-gray-400 text-sm py-4 space-y-2'>
+        </div>
+       
+        <div class=' w-full grid justify-center  text-gray-400 text-sm py-4 space-y-2'>
           <h class='text-center'>@aviationCareerMalaysia</h>
           <a href='https://www.tiktok.com/@petalcode'>
           <h>Designed by PetalCode Labs</h>
           </a>
         </div>
+        
+      </div>
+      
     </>
   );
 };

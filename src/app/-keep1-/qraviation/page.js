@@ -60,7 +60,7 @@ function page() {
        
         <div class=' w-full grid justify-center  text-gray-400 text-sm py-4 space-y-2'>
           <h class='text-center'>@aviationCareerMalaysia</h>
-          <a href='https://www.tiktok.com/@petalcode'>
+          <a href='https://www.instagram.com/fuaadtarmizi/'>
           <h>Designed by PetalCode Labs</h>
           </a>
         </div>

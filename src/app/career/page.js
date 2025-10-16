@@ -68,7 +68,7 @@ function career() {
         <title>YEG Academy - Career</title>
         <div className="pt-8">
           <div className="flex justify-center py-8">
-            <div className="group w-3/4 h-full grid justify-center ">
+            <div className="group w-3/4 h-full grid justify-center">
               <span className="text-slate-700 font-bold text-4xl bg-gradient-to-r from-yellow-500 to-yellow-500 bg-no-repeat [background-position:0_88%] [background-size:1%_100%] motion-safe:transition-all motion-safe:duration-700 group-hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
                 CAREER YEG ACADEMY
               </span>

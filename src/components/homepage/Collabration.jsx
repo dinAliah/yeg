@@ -65,7 +65,8 @@ function Collabration() {
                         }}
                       />
                     </div>
-         {/*}<div className="flex items-center">
+         {
+         /*}<div className="flex items-center">
             <Image
               src="/collabration/logopelita.svg"
               alt="logopelita"
@@ -75,7 +76,8 @@ function Collabration() {
                 objectFit: 'contain',
               }}
             />
-          </div> */}
+          </div> */
+          }
         </div>
       </section>
     </div>

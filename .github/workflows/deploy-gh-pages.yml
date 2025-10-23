@@ -18,8 +18,18 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies (including dev)
+        run: npm ci --include=dev
+
+      - name: CI diagnostics
+        run: |
+          echo "---- node / npm versions ----"
+          node -v
+          npm -v
+          echo "---- list repo root ----"
+          ls -la
+          echo "---- ensure out/ is removed ----"
+          rm -rf out || true
 
       - name: Build (static export via next.config.js)
         run: npm run build

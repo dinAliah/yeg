@@ -10,8 +10,9 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  // Keep the explicit output tracing root (helps on some Windows setups)
-  outputFileTracingRoot: path.resolve(__dirname, 'C:/Users/user/yeg'),
+  // Keep the explicit output tracing root when needed; use a portable value
+  // (avoid absolute Windows paths which break Linux CI runners)
+  outputFileTracingRoot: path.resolve(__dirname),
 };
 
 module.exports = nextConfig;

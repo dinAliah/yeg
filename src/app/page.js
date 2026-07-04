@@ -46,6 +46,7 @@ export default function home() {
         <Courses2 />
         <Trendmark2 />
         <Entertainment />
+        <div>update-4</div>
         <News />
       </main>
     </>

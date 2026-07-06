@@ -512,6 +512,7 @@ export default function App() {
     </div> 
     </div>
     <div>
+      <div>update</div>
       <Footer/>
     </div>
     </main>

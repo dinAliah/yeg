@@ -165,7 +165,7 @@ export default Navbar */}
 
 
 import React from 'react';
-import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 
@@ -327,33 +327,17 @@ function Navbar() {
           }}
         >
           {/* Wordmark */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', flexShrink: 0 }}>
-            <div
-              style={{
-                width: 38,
-                height: 38,
-                borderRadius: 9,
-                background: '#F4F1E9',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                overflow: 'hidden',
-              }}
-            >
-              <img src="/logoyeg.svg" alt="YEG Academy" style={{ width: 26, height: 26, objectFit: 'contain' }} />
-            </div>
-            <span
-              style={{
-                fontFamily: "'Fraunces', serif",
-                fontWeight: 500,
-                fontSize: 20,
-                letterSpacing: '0.01em',
-                color: '#F4F1E9',
-              }}
-            >
-              YEG <span style={{ color: '#C9A24B', fontStyle: 'italic' }}>Academy</span>
-            </span>
-          </Link>
+          <div className="pl-4">
+            <a href="/" className="">
+            <Image
+                className=""
+                src="/logoyeg.svg"
+                alt="logoyeg"
+                height="160"
+                width="140"
+                style={{
+                objectFit: "contain",
+                }}/></a></div>
 
           {/* Desktop nav */}
           <div

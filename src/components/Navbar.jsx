@@ -1,3 +1,4 @@
+"use client"
 {/*"use client"
 import React from 'react'
 import Image from "next/image"
@@ -162,7 +163,7 @@ function Navbar() {
 
 export default Navbar */}
 
-"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';

@@ -1,9 +1,8 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
-module.exports = {
-  swcMinify: false, // Disable SWC minification (optional)
-  output: 'export', // Enable static export mode
-  
-  images: {
-    unoptimized: true, // Required for GitHub Pages
-  },
-};
+const nextConfig = {
+  // swcMinify: true,   <-- remove this line
+  // ...rest of your config
+}
+
+module.exports = nextConfig

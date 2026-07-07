@@ -37,9 +37,9 @@ function Intro() {
         </card>
 
         {/* tukar gambar ade event aviation */}
-        <card className=" w-full h-full flex justify-center items-center rounded-md  group" style={{ backgroundImage: 'url("/oilandgas.svg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <card className=" w-full h-full flex justify-center items-center rounded-md  group" style={{ backgroundImage: 'url("/ypkm.jpeg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
           <div className="flex justify-center">
-            <span className="group-hover:bg-black group-hover:rounded-md p-3 duration-1000 items-center lg:group-hover:text-2xl group-hover:text-lg group-hover:font-bold group-hover:text-white text-transparent">BIDANG MARITIM, MINYAK & GAS</span>
+            <span className="group-hover:bg-black group-hover:rounded-md p-3 duration-1000 items-center lg:group-hover:text-2xl group-hover:text-lg group-hover:font-bold group-hover:text-white text-transparent">Work Based Learning</span>
           </div>
           <div className="py-52"></div>
         </card>

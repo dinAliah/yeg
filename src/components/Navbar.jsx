@@ -215,12 +215,9 @@ const PROGRAM_GROUPS = [
   {
     title: 'WBL',
     items: [
-      { label: 'Diploma Pengurusan Haji & Umrah (DHUMY-WBL)', href: '/kursusdiplomawbl/dhumywbl' },
+      { label: 'Master Pengurusan Haji & Umrah', href: '/' },
       { label: 'Diploma Pengurusan Perhotelan (DHM-WBL)', href: '/kursusdiplomawbl/dhmwbl' },
-      { label: 'Diploma Seni Kulinari (DCA-WBL)', href: '/kursusdiplomawbl/dcawbl' },
-      { label: 'Diploma Pendidikan Awal Kanak-kanak (DEC-WBL)', href: '/kursusdiplomawbl/decwbl' },
-      { label: 'Diploma Pengurusan Kargo Udara (DACM-WBL)', href: '/kursusdiplomawbl/dacmwbl' },
-      { label: 'Diploma Pengurusan Operasi Penerbangan (DAOM-WBL)', href: '/kursusdiplomawbl/daomwbl' },
+     
     ],
   },
 ];

@@ -328,7 +328,7 @@ function Navbar() {
             <a href="/" className="">
             <Image
                 className=""
-                src="/logoyeg.svg"
+                src="/YEG white logo.png"
                 alt="logoyeg"
                 height="160"
                 width="140"

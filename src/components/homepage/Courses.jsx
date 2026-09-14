@@ -37,12 +37,21 @@ function Intro() {
         </card>
 
         {/* tukar gambar ade event aviation */}
-        <card className=" w-full h-full flex justify-center items-center rounded-md  group" style={{ backgroundImage: 'url("/ypkm.jpeg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-          <div className="flex justify-center">
-            <span className="group-hover:bg-black group-hover:rounded-md p-3 duration-1000 items-center lg:group-hover:text-2xl group-hover:text-lg group-hover:font-bold group-hover:text-white text-transparent">Work Based Learning</span>
+        <div className="relative w-full h-full min-h-[280px] overflow-hidden rounded-md group">
+          <Image
+            src="/ypkm.jpeg"
+            alt="Work Based Learning"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition duration-500" />
+          <div className="relative z-10 flex h-full min-h-[280px] items-end justify-center p-4">
+            <span className="rounded-md bg-black/70 px-3 py-2 text-center text-sm font-bold text-white transition duration-500 group-hover:text-lg">
+              Work Based Learning
+            </span>
           </div>
-          <div className="py-52"></div>
-        </card>
+        </div>
 
         {/* tukar gambar ade event dengan puan siti */}
         <card className=" w-full h-full flex justify-center items-center rounded-md  group" style={{ backgroundImage: 'url("/aviation.svg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>

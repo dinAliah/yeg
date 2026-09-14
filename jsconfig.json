@@ -14,6 +14,7 @@
     "module": "ESNext",                        // Specify module code generation
     "moduleResolution": "Node",                // Specify module resolution strategy
     "baseUrl": ".",                            // Base directory to resolve non-relative module names
+    "ignoreDeprecations": "6.0",               // Allow deprecated baseUrl usage until TypeScript 7.0
     "paths": {
       "@/*": ["./src/*"]                       // Path alias for simpler imports
     },

@@ -167,7 +167,7 @@ export default Navbar */}
 import React from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowUpRight, Phone, Mail } from 'lucide-react';
 
 /**
  * YEG Academy — Navbar
@@ -228,6 +228,33 @@ const NAV_LINKS = [
   { label: 'Career', href: '/career' },
 ];
 
+const SOCIALS = [
+  {
+    label: 'Facebook',
+    href: '#',
+    path: 'M13 22V13h3l.5-4H13V7c0-1.1.4-2 2-2h1.5V1.3C16.2 1.2 14.9 1 13.7 1 10.9 1 9 2.7 9 5.7V9H6v4h3v9h4z',
+  },
+  {
+    label: 'Instagram',
+    href: '#',
+    path: 'M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4a6.4 6.4 0 1 0 0 12.8 6.4 6.4 0 0 0 0-12.8zm0 10.6a4.2 4.2 0 1 1 0-8.4 4.2 4.2 0 0 1 0 8.4zm8.2-10.9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z',
+  },
+  {
+    label: 'TikTok',
+    href: '#',
+    path: 'M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v12.2a2.6 2.6 0 1 1-1.9-2.5V9.6a5.7 5.7 0 1 0 4.9 5.6V9.7a7.3 7.3 0 0 0 4.3 1.4v-3a4.3 4.3 0 0 1-3.3-2.3z',
+  },
+  {
+    label: 'YouTube',
+    href: '#',
+    path: 'M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15.2V8.8l5.2 3.2-5.2 3.2z',
+  },
+  {
+    label: 'LinkedIn',
+    href: '#',
+    path: 'M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z',
+  },
+];
 function useFonts() {
   React.useEffect(() => {
     if (document.getElementById(FONT_IMPORT_ID)) return;
@@ -296,6 +323,11 @@ function Navbar() {
 
   const barHeight = scrolled ? 64 : 78;
 
+    // The collapse mechanic: strips have real height at rest, 0 once scrolled.
+  const stripTransition = 'height 0.35s cubic-bezier(.4,0,.2,1), opacity 0.22s ease';
+  const socialHeight = scrolled ? 0 : 36;
+  const noticeHeight = scrolled ? 0 : 42;
+
   return (
     <>
       <nav
@@ -308,6 +340,114 @@ function Navbar() {
           fontFamily: "'Manrope', sans-serif",
         }}
       >
+          {/* ================= ROW 1: social / contact strip ================= */}
+        {/* This is now a SIBLING of the row below — not nested inside it.   */}
+        {/* It has no display:flex of its own at this outer level, so it     */}
+        {/* stacks above row 2 instead of lining up next to the logo/nav.    */}
+        <div
+          style={{
+            height: socialHeight,
+            opacity: scrolled ? 0 : 1,
+            overflow: 'hidden',
+            background: '#070C18',
+            borderBottom: '1px solid rgba(255,255,255,0.05)',
+            transition: stripTransition,
+          }}
+        >
+          <div
+            style={{
+              height: 36,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '0 clamp(20px, 4vw, 56px)',
+            }}
+          >
+            {/* contact details */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+              <a
+                href="tel:+60394313073"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 7,
+                  color: '#8B93A6',
+                  textDecoration: 'none',
+                  fontSize: 12.5,
+                  fontWeight: 500,
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#E9D9A8'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#8B93A6'; }}
+              >
+                <Phone size={13} />
+                +603 9431 3073
+              </a>
+              <span style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.14)' }} />
+              <a
+                href="mailto:info@yegmy.com"
+                className="yeg-strip-email"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 7,
+                  color: '#8B93A6',
+                  textDecoration: 'none',
+                  fontSize: 12.5,
+                  fontWeight: 500,
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#E9D9A8'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#8B93A6'; }}
+              >
+                <Mail size={13} />
+                info@yegmy.com
+              </a>
+            </div>
+ 
+            {/* social icons */}
+            <nav aria-label="Social media" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    width: 26,
+                    height: 26,
+                    borderRadius: '50%',
+                    display: 'grid',
+                    placeItems: 'center',
+                    transition: 'background 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(201,162,75,0.14)';
+                    e.currentTarget.querySelector('svg').style.fill = '#C9A24B';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.querySelector('svg').style.fill = 'rgba(244,241,233,0.65)';
+                  }}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    style={{ fill: 'rgba(244,241,233,0.65)', transition: 'fill 0.2s ease' }}
+                  >
+                    <path d={s.path} />
+                  </svg>
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+ 
+        {/* ================= ROW 2: main nav row (stays pinned) ================= */}
+        {/* Logo, desktop nav, and mobile toggle all live INSIDE this single    */}
+        {/* flex row — this is the only place display:flex is applied.         */}
         <div
           style={{
             height: barHeight,
@@ -323,6 +463,8 @@ function Navbar() {
             transition: 'height 0.35s cubic-bezier(.4,0,.2,1), background 0.35s ease, box-shadow 0.35s ease',
           }}
         >
+        
+
           {/* Wordmark */}
           <div className="pl-4">
             <a href="/" className="">

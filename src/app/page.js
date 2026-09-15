@@ -28,7 +28,7 @@ export default function home() {
 
       <main>
         <Intro />
-        <Collabration />
+      
         
         {/* Fixed Contact Button */}
         <div className="static">

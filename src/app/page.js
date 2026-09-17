@@ -2,6 +2,7 @@
 
 import Intro from '@/components/homepage/Intro'
 import Collabration from '@/components/homepage/Collabration'
+import Achievement from '@/components/homepage/Achievement'
 import SliderRamadan from '@/components/homepage/SliderRamadan'
 import Mainstream from '@/components/homepage/Mainstream'
 import Mainstream2 from '@/components/homepage/Mainstream2'
@@ -38,6 +39,7 @@ export default function home() {
         </div>
 
         <SliderRamadan />
+        <Achievement />
         <Mainstream />
         <Mainstream2 />
         <Qualities />

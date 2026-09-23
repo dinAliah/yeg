@@ -38,21 +38,35 @@ export default function PrivacyPolicy() {
         undang-undang atau menyokong operasi kami.
       </p>
 
-      <h2 style={{ fontSize: '1.3rem', marginTop: 28, marginBottom: 8 }}>5. Kuki dan Analitik</h2>
+      <h2 style={{ fontSize: '1.3rem', marginTop: 28, marginBottom: 8 }}>5. Meta Pixel dan Pengiklanan</h2>
+      <p>
+        Laman web ini menggunakan Meta Pixel, satu alat daripada Meta Platforms, Inc. ("Meta"), untuk
+        mengukur keberkesanan iklan Facebook dan Instagram kami serta memahami tindakan pelawat di laman
+        web kami (seperti melihat halaman atau menghantar borang). Meta Pixel mengumpul maklumat seperti
+        alamat IP, jenis peranti dan tindakan yang diambil di laman web ini, tertakluk kepada{' '}
+        <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">
+          Dasar Data Meta
+        </a>. Anda boleh menguruskan tetapan iklan peribadi anda melalui{' '}
+        <a href="https://www.facebook.com/adpreferences/ad_settings" target="_blank" rel="noopener noreferrer">
+          Tetapan Iklan Facebook
+        </a>.
+      </p>
+
+      <h2 style={{ fontSize: '1.3rem', marginTop: 28, marginBottom: 8 }}>6. Kuki dan Analitik</h2>
       <p>
         Laman web kami mungkin menggunakan kuki dan alat analitik untuk memahami tingkah laku pelawat,
         menambah baik prestasi laman web dan meningkatkan pengalaman pengguna. Anda boleh mengurus atau
         melumpuhkan kuki melalui tetapan penyemak imbas anda.
       </p>
 
-      <h2 style={{ fontSize: '1.3rem', marginTop: 28, marginBottom: 8 }}>6. Hak Anda</h2>
+      <h2 style={{ fontSize: '1.3rem', marginTop: 28, marginBottom: 8 }}>7. Hak Anda</h2>
       <p>
         Anda mempunyai hak untuk mengakses, mengemas kini, membetulkan atau meminta pemadaman data peribadi
         anda tertakluk kepada undang-undang yang berkenaan dan syarat permintaan yang sah. Anda juga boleh
         menarik balik persetujuan untuk komunikasi tertentu pada bila-bila masa.
       </p>
 
-      <h2 style={{ fontSize: '1.3rem', marginTop: 28, marginBottom: 8 }}>7. Hubungi Kami</h2>
+      <h2 style={{ fontSize: '1.3rem', marginTop: 28, marginBottom: 8 }}>8. Hubungi Kami</h2>
       <p>
         Sekiranya anda mempunyai sebarang pertanyaan mengenai Dasar Privasi ini, sila hubungi kami melalui
         maklumat yang tersedia di laman web kami atau saluran pertanyaan rasmi kami.

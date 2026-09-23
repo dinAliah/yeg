@@ -1,6 +1,6 @@
 export default function PrivacyPolicy() {
   return (
-    <main style={{ maxWidth: 900, margin: '0 auto', padding: '40px 20px', fontFamily: 'Arial, sans-serif', color: '#1f2937', lineHeight: 1.8 }}>
+    <main style={{ maxWidth: 900, margin: '72px auto 0', padding: '40px 20px', fontFamily: 'Arial, sans-serif', color: '#1f2937', lineHeight: 1.8 }}>
       <h1 style={{ fontSize: '2.2rem', marginBottom: 12 }}>Dasar Privasi</h1>
       <p style={{ marginBottom: 24, color: '#4b5563' }}>Tarikh Kemas Kini Terakhir: 23 September 2026</p>
 

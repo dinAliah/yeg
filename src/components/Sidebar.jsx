@@ -100,7 +100,7 @@ const Navbar = () => {
           )}
             <a 
             onClick={toggleNavbar3}
-            className="block text-white py-2 px-4 hover:bg-gray-700"href="../kursuskerjaya/acm">
+            className="block text-white py-2 px-4 hover:bg-gray-700"href="https://acm-my.com/aviation-career-malaysia-site-page/">
               Aviation Career Malaysia (ACM)
             </a>
         </div>

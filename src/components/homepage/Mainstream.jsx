@@ -5,7 +5,7 @@ import Image from "next/image"
 function Intro() {
   return (
     <>
-    <section className="relative -mt-10 lg:-mt-16 rounded-t-[40px] lg:rounded-t-[56px] overflow-hidden shadow-[0_-12px_40px_rgba(0,0,0,0.08)] bg-slate-100">
+    <section className="relative -mt-10 lg:-mt-16 rounded-t-[40px] lg:rounded-[56px] overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.2)] bg-slate-100">
       <div className="py-2 lg:py-10 md:[height:80px]"></div>
       <div className="px-8 w-full flex justify-center bg-slate-100">
         <span className="lg:text-4xl font text-lg text-blue-950 font-bold text-center">THE <span className="text-yellow-600">YEG ACADEMY</span> DIFFERENCE</span>

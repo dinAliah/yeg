@@ -22,7 +22,7 @@ return (
       {/* <Sidebar/>
     <Navbar25/ className="bg-gradient-to-r from-[#151c41] to-[rgba(11,24,54,0)"> */}
       <div className="yeg-hero-scope">
-        <section className="hero">
+        <section className="hero -mt-10 lg:-mt-16 rounded-t-[40px] lg:rounded-t-[56px] overflow-hidden shadow-[0_-12px_40px_rgba(0,0,0,0.08)] bg-slate-100">
           <div className="hero-bg"></div>
           <div className="hero-content">
            
@@ -33,7 +33,7 @@ return (
             </p>
             <div className="cta-row">
               <a href="#programs" className="btn btn-gold">Explore Programmes</a>
-              <a href="#" className="btn btn-outline">Contact an Advisor</a>
+              <a href="https://wa.me/60163144841?text=Hi,%20applying%20a%20job%20with%20YEG" className="btn btn-team">Join Our Team</a>
             </div>
           </div>
         </section>

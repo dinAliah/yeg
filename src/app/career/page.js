@@ -10,26 +10,38 @@ const detail = [
   {
     gambar: '/career/Career11.jpeg',
     width: 400,
+    link: 'https://forms.gle/rooVgjVipm83UGzf8',
+    linkLabel: 'Job Application Form - Recruitment Q4',
   },
   {
     gambar: '/career/Career10.jpeg',
     width: 400,
+    link: 'https://forms.gle/rooVgjVipm83UGzf8',
+    linkLabel: 'Job Application Form - Recruitment Q4',
   },
   {
     gambar: '/career/Career3.jpeg',
     width: 400,
+    link: 'https://forms.gle/rooVgjVipm83UGzf8',
+    linkLabel: 'Job Application Form - Recruitment Q4',
   },
   {
     gambar: '/career/Career4.jpeg',
     width: 400,
+    link: 'https://forms.gle/rooVgjVipm83UGzf8',
+    linkLabel: 'Job Application Form - Recruitment Q4',
   },
   {
     gambar: '/career/Career5.jpeg',
     width: 400,
+    link: 'https://forms.gle/rooVgjVipm83UGzf8',
+    linkLabel: 'Job Application Form - Recruitment Q4',
   },
   {
     gambar: '/career/Career6.jpeg',
     width: 400,
+    link: 'https://forms.gle/rooVgjVipm83UGzf8',
+    linkLabel: 'Job Application Form - Recruitment Q4',
   },
   {
     gambar: '/career/5.png',
@@ -80,15 +92,34 @@ function career() {
           </div>
         </div>
         <div class="grid grid-cols-3 mx-auto container gap-4 py-4">
-          {detail.map((detail,index) => (
-            <div key={index}>
+          {detail.map((detail, index) => {
+            const image = (
               <Image
-              className='rounded'
-              src={detail.gambar}
-              width={detail.width}
-              height={10}/>
-            </div>
-          ))}
+                className={detail.link ? 'rounded cursor-pointer' : 'rounded'}
+                src={detail.gambar}
+                alt={detail.linkLabel || 'YEG Academy career opportunity'}
+                width={detail.width}
+                height={10}
+              />
+            );
+
+            return (
+              <div key={index}>
+                {detail.link ? (
+                  <a
+                    href={detail.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={detail.linkLabel}
+                  >
+                    {image}
+                  </a>
+                ) : (
+                  image
+                )}
+              </div>
+            );
+          })}
         </div>
     </main>
     </>

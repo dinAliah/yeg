@@ -1,7 +1,7 @@
 import React from "react";
 
 // WhatsApp number in international format (no "+", spaces or dashes)
-const PHONE = "60123456789";
+const PHONE = "601";
 
 // Message pre-filled in the customer's chat box
 const MESSAGE = "Hi YEG Academy, I'd like to talk to an advisor.";

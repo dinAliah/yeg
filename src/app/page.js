@@ -1,7 +1,6 @@
 'use client'
 
 import Intro from '@/components/homepage/Intro'
-import Collabration from '@/components/homepage/Collabration'
 import Achievement from '@/components/homepage/Achievement'
 import SliderRamadan from '@/components/homepage/SliderRamadan'
 import Mainstream from '@/components/homepage/Mainstream'
@@ -48,7 +47,6 @@ export default function home() {
         <Courses2 />
         <Trendmark2 />
         <Entertainment />
-        <div>update-4</div>
         <News />
       </main>
     </>

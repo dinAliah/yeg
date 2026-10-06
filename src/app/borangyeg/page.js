@@ -1,6 +1,7 @@
 "use client"
 import React, {useState} from 'react';
 import Image from 'next/image'
+import ContactUs from "@/components/homepage/ContactUs"
 import Footer from "@/components/Footer.jsx"
 import Navbar from "@/components/Navbar.jsx"
 import Sidebar from "@/components/Sidebar.jsx"
@@ -512,6 +513,7 @@ export default function App() {
     </div> 
     </div>
     <div>
+      <ContactUs />
     </div>
     </main>
   );

@@ -3,7 +3,7 @@ import Image from "next/image"
 import Footer from "@/components/Footer.jsx"
 import Navbar from "@/components/Navbar.jsx"
 import Sidebar from "@/components/Sidebar.jsx"
-import ContactUs from "@/components/homepage/ContactUs"
+import ContactUs from "@/components/homepage/ContactUs.jsx"
 
 // const card =['ahmad', 'fuad', 'alia']
 
@@ -72,10 +72,7 @@ const detail = [
     gambar: '/career/11.png',
     width: 400,
   },
-  {
-    gambar: '/career/ai-officer.jpeg',
-    width: 400,
-  },
+ 
 ];
 
 function career() {
@@ -121,9 +118,10 @@ function career() {
               </div>
             );
           })}
+         
         </div>
     </main>
-    </>
+  </>
     
   )
 }

@@ -8,27 +8,27 @@ import Sidebar from "@/components/Sidebar.jsx"
 
 const detail = [
   {
-    gambar: '/career/Career11.jpg',
+    gambar: '/career/Career11.jpeg',
     width: 400,
   },
   {
-    gambar: '/career/Career10.jpg',
+    gambar: '/career/Career10.jpeg',
     width: 400,
   },
   {
-    gambar: '/career/Career3.jpg',
+    gambar: '/career/Career3.jpeg',
     width: 400,
   },
   {
-    gambar: '/career/Career4.jpg',
+    gambar: '/career/Career4.jpeg',
     width: 400,
   },
   {
-    gambar: '/career/Career5.png',
+    gambar: '/career/Career5.jpeg',
     width: 400,
   },
   {
-    gambar: '/career/Career6.png',
+    gambar: '/career/Career6.jpeg',
     width: 400,
   },
   {

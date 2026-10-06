@@ -114,7 +114,7 @@ function Navbar() {
         }}
       >
         {/* Logo */}
-        <a href="/" style={{ display: 'block' }}>
+        <a href="https://www.yegmy.com/" style={{ display: 'block' }}>
           <Image
             src="/YEG white logo.png"
             alt="YEG logo"

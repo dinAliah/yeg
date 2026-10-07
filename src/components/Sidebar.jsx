@@ -43,11 +43,11 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 lg:hidden p-3">
       <div className="flex items-center justify-between">
-        <a href="/"
+        <a href="https://www.yegmy.com/"
         className="text-white font-bold text-xl">
         <Image
           className=""
-          src="/logoyeg.svg"
+          src="/YEG white logo.png"
           alt="logoyeg"
           height="120"
           width="120"

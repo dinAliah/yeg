@@ -6,17 +6,17 @@ import Image from 'next/image'
 const FORM_LINK = 'https://forms.gle/rooVgjVipm83UGzf8'
 const FORM_LABEL = 'Job Application Form - Recruitment Q4'
 
-const departments = ['All', 'Admin', 'Creative', 'IT', 'Finance', 'Business Development','Education']
+const departments = ['All', 'Administration', 'Creative and Branding', 'Advertising & IT', 'Finance', 'Business Development','Education']
 
 // List of posters. Make sure each one has the right department.
 const detail = [
-  { gambar: '/career/CareerAdmin3.jpeg', width: 400, department: 'Admin', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerOperation1.jpeg', width: 400, department: 'Admin', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerAdmin3.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerOperation1.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerYEG.jpeg', width: 400, department: 'Admin', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerIT1.jpeg', width: 400, department: 'IT', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerIT1.jpeg', width: 400, department: 'Advertising & IT', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerYEG.jpeg', width: 400, department: 'Finance', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerCreative1.jpeg', width: 400, department: 'Creative', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerCreative2.jpeg', width: 400, department: 'Creative', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerCreative1.jpeg', width: 400, department: 'Creative and Branding', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerCreative2.jpeg', width: 400, department: 'Creative and Branding', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerEdu1.jpeg', width: 400, department: 'Education', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerEdu2.jpeg', width: 400, department: 'Education', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerSales1.jpeg', width: 400, department: 'Business Development', link: FORM_LINK, linkLabel: FORM_LABEL },

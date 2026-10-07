@@ -21,8 +21,8 @@ const detail = [
   { gambar: '/career/CareerEdu2.jpeg', width: 400, department: 'Education', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerSales1.jpeg', width: 400, department: 'Business Development', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerSales3.jpeg', width: 400, department: 'Business Development', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerFPHU1.jpeg', width: 400, department: 'Business Development', link: FORM_LINK, linkLabel: FORM_LABEL },
-   { gambar: '/career/CareerFPHU1.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL }
+  { gambar: '/career/CareerFPHU1.jpeg', width: 400, department: ['Business Development','Administration'], link: FORM_LINK, linkLabel: FORM_LABEL },
+ 
  
 ]
 

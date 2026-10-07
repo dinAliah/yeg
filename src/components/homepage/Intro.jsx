@@ -33,7 +33,7 @@ return (
             </p>
             <div className="cta-row">
               <a href="#programs" className="btn btn-gold">Explore Programmes</a>
-              <a href="https://forms.gle/rooVgjVipm83UGzf8" className="btn btn-team">Join Our Team</a>
+              <a href="https://www.yegmy.com/career" className="btn btn-team">Join Our Team</a>
             </div>
           </div>
         </section>

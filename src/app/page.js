@@ -13,6 +13,7 @@ import Trendmark2 from '@/components/homepage/Trendmark2'
 import Entertainment from '@/components/homepage/Entertainment'
 import News from '@/components/homepage/News'
 import ContactUs from "@/components/homepage/ContactUs"
+import { Fab } from '@mui/material'
 
 export default function home() {
   return (
@@ -38,8 +39,9 @@ export default function home() {
         </div>
 
         <SliderRamadan />
-        <Achievement />
         <Mainstream />
+        <Achievement />
+      
         <Mainstream2 />
         <Qualities />
         <Courses />
@@ -48,6 +50,7 @@ export default function home() {
         <Trendmark2 />
         <Entertainment />
         <News />
+     
       </main>
     </>
   )

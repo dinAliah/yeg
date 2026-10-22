@@ -92,7 +92,7 @@ const Achievement = () => {
             {/* The stat block - gets 'reveal' class when visible */}
             <div className={`stat-block ${isVisible ? 'reveal' : ''}`}>
               
-              <div className="stat-number">
+              <div className="stat-number gradient-text">
                 <CountUp endValue={item.endValue} suffix={item.suffix} start={isVisible} />
               </div>
               

@@ -6,7 +6,7 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 
 const PROGRAM_ITEMS = [
   { label: 'Fakulti Pengurusan Haji Umrah', href: '/kursuskerjaya/sphu/bhum' },
-  { label: 'Aviation Career Malaysia', href: 'https://acm-my.com/aviation-career-malaysia-site-page/' },
+  { label: 'Aviation Career Malaysia', href: 'https://acm-my.com/' },
 ];
 
 const NAV_LINKS = [

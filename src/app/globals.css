@@ -49,9 +49,12 @@ li {
 .yeg-hero-scope img { display: block; max-width: 100%; }
 
 /* ---------- shared button styles (scoped to this component) ---------- */
+/*i want center button in hero*/
 .yeg-hero-scope .btn {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
+  margin: 0;
   gap: 8px;
   padding: 13px 26px;
   border-radius: 3px;
@@ -102,25 +105,30 @@ li {
   display: flex;
   align-items: center;
   overflow: hidden;
-  border-radius:0 0 50% 50% / 0 0 20% 20%;
-  transform: scaleX(1.01); /* Fixes a Safari rendering bug with border-radius on large elements */
+  border-radius:0 0 50% 50% / 0 0 10% 10%;
+  transform: scaleX(1.02); /* Fixes a Safari rendering bug with border-radius on large elements */
 
 }
 
+/*change image in library yegBG.jpeg*/
 .yeg-hero-scope .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.72) 55%, rgba(6,14,26,0.92) 100%),
-              url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=80') center/cover;
+  background: linear-gradient(190deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.72) 55%, rgba(6,14,26,0.92) 100%),
+            url('/yegBG.jpeg') center/cover;
 }
 
+/*i want to make div words in hero in center with best indent and balance words in widescreen and phone , how? */
 .yeg-hero-scope .hero-content {
   position: relative;
-  
-  z-index: 2;
-  max-width: 640px;
-  padding: 0 40px;
+  z-index: 1;
+  max-width: 900px;
+  margin: auto;
+  padding: 1rem 0;
   color: #fff;
+  text-align: center;
+
+
 }
 
 .yeg-hero-scope .play-chip {
@@ -153,12 +161,14 @@ li {
 .yeg-hero-scope .hero p.lead {
   font-size: 16.5px;
   color: rgba(255,255,255,0.82);
-  max-width: 480px;
+  max-width: 900px;
   margin-bottom: 32px;
+   margin: auto;
+  padding: 1rem 0;
 
   line-height: 1.6;
 }
-.yeg-hero-scope .hero .cta-row { display: flex; gap: 16px; }
+.yeg-hero-scope .hero .cta-row { display: flex; gap: 16px; justify-content: center; }
 
 /* Partner strip overlapping the hero's bottom edge */
 .yeg-hero-scope .partner-strip {
@@ -178,7 +188,7 @@ li {
   gap: 22px;
 }
 .yeg-hero-scope .partner-item {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces';
   font-weight: 700;
   font-size: 15px;
   color: var(--navy-2);

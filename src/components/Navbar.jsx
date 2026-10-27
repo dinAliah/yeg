@@ -10,6 +10,7 @@ const PROGRAM_ITEMS = [
 ];
 
 const NAV_LINKS = [
+  { label: 'Events', href: '/events' },
   { label: 'Article', href: '/careyeg' },
   { label: 'Testimoni', href: '/testimoni' },
   { label: 'Career', href: '/career' },

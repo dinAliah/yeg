@@ -23,6 +23,22 @@ export default function Faq() {
               program yang ditawarkan. Kenal pasti minat, kelayakan dan matlamat pembelajaran anda
               sebelum memilih program.
             </AccordionContent>
+             <AccordionTrigger className="w-full py-5 text-left text-base font-semibold text-slate-900 sm:text-lg">
+             Apakah program pengajian yang ditawarkan oleh YEG Academy?
+            </AccordionTrigger>
+            <AccordionContent className="text-base leading-7 text-slate-600">
+             YEG Academy memperkenalkan bidang pengajian dan latihan termasuk penerbangan,
+            pengurusan Haji dan Umrah serta Work-Based Learning (WBL).
+            Senarai program, tahap kelayakan dan pengambilan semasa perlu dirujuk pada halaman program rasmi YEG Academy.
+            </AccordionContent>
+             <AccordionTrigger className="w-full py-5 text-left text-base font-semibold text-slate-900 sm:text-lg">
+             Adakah program YEG Academy diiktiraf MQA atau JPK?
+            </AccordionTrigger>
+            <AccordionContent className="text-base leading-7 text-slate-600">
+            Pengiktirafan perlu disemak berdasarkan program, institusi penganugerah dan kelayakan tertentu. 
+            Sebelum mendaftar, minta nama rasmi kelayakan serta nombor akreditasi atau pentauliahan yang berkaitan, 
+            kemudian sahkan melalui daftar rasmi MQA atau JPK jika berkenaan.
+            </AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>

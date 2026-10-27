@@ -65,15 +65,31 @@ function Career() {
       <title>YEG Academy - Career</title>
 
       {/* Page title */}
-      <div className="pt-16">
-        <div className="flex justify-center py-8">
-          <div className="group w-3/4 h-full grid justify-center">
-            <span className="text-slate-700 font-bold text-4xl bg-gradient-to-r from-yellow-500 to-yellow-500 bg-no-repeat [background-position:0_88%] [background-size:1%_100%] motion-safe:transition-all motion-safe:duration-700 group-hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
-              CAREER YEG ACADEMY
-            </span>
-          </div>
-        </div>
-      </div>
+       
+      <section aria-labelledby="events-title" className="px-4 pb-8 pt-20 sm:px-6 lg:px-8">
+              <div className="relative mx-auto flex min-h-56 max-w-7xl items-end overflow-hidden rounded-3xl bg-slate-1200 sm:min-h-72">
+                <Image
+                  src="/YEGacademy.jpeg"
+                  alt=""
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-900/35 to-slate-900/10" />
+                <div className="relative max-w-2xl px-6 py-8 text-white sm:px-10 sm:py-12">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-emerald-200">
+                    YEG Academy ·Career Opportunities
+                  </p>
+                  <h1 id="events-title" className="text-3xl font-semibold tracking-tight sm:text-5xl">
+                    Career Opportunities
+                  </h1>
+                  <p className="mt-3 max-w-xl text-sm leading-6 text-white/85 sm:text-base">
+                    Discover what&apos;s happening and revisit the moments that bring our community together.
+                  </p>
+                </div>
+              </div>
+            </section>
 
       {/* Department dropdown */}
       <div className="flex justify-left items-center gap-3 px-8 py-4">

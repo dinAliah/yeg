@@ -12,6 +12,7 @@ import Courses2 from '@/components/homepage/Courses2'
 import Trendmark2 from '@/components/homepage/Trendmark2'
 import Entertainment from '@/components/homepage/Entertainment'
 import News from '@/components/homepage/News'
+import Faq from '@/components/homepage/Faq'
 import ContactUs from "@/components/homepage/ContactUs"
 import { Fab } from '@mui/material'
 
@@ -50,6 +51,7 @@ export default function home() {
         <Trendmark2 />
         <Entertainment />
         <News />
+        <Faq />
      
       </main>
     </>

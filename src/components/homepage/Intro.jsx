@@ -1,6 +1,4 @@
 import React from 'react'
-import Navbar25 from '@/components/homepage/items/Navbar25'
-import Sidebar from '@/components/homepage/items/Sidebar'
 
 function Intro() {
   /*return (

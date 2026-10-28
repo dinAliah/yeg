@@ -9,6 +9,12 @@ const PROGRAM_ITEMS = [
   { label: 'Aviation Career Malaysia', href: 'https://acm-my.com/' },
 ];
 
+const ABOUT_ITEMS = [
+  { label: 'Why YEG ', href: '/about-us' },
+  { label: 'Journey', href: '/about-us/journey' },
+ 
+];
+
 const NAV_LINKS = [
   { label: 'Events', href: '/events' },
   { label: 'Article', href: '/careyeg' },
@@ -49,6 +55,7 @@ function Navbar() {
 
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = React.useState(false);
   const [mobileProgramOpen, setMobileProgramOpen] = React.useState(false);
   const [hovered, setHovered] = React.useState(null);
   const closeTimer = React.useRef(null);
@@ -69,9 +76,14 @@ function Navbar() {
     clearTimeout(closeTimer.current);
     setHovered('Program');
   };
+  const openAbout = () => {
+    clearTimeout(closeTimer.current);
+    setHovered('About');
+  };
   const scheduleClose = () => {
     clearTimeout(closeTimer.current);
     closeTimer.current = setTimeout(() => setHovered((h) => (h === 'Program' ? null : h)), 140);
+    closeTimer.current = setTimeout(() => setHovered((h) => (h === 'About' ? null : h)), 140);
   };
 
   const linkStyle = (active) => ({
@@ -112,7 +124,12 @@ function Navbar() {
           borderBottom: scrolled ? '1px solid rgba(201,162,75,0.16)' : '1px solid rgba(255,255,255,0.03)',
           boxShadow: scrolled ? '0 8px 30px rgba(0,0,0,0.28)' : 'none',
           transition: 'height 0.35s cubic-bezier(.4,0,.2,1), background 0.35s ease, box-shadow 0.35s ease',
-        }}
+        }
+      }
+
+
+       
+
       >
         {/* Logo */}
         <a href="https://www.yegmy.com/" style={{ display: 'block' }}>
@@ -124,7 +141,8 @@ function Navbar() {
             style={{ objectFit: 'contain', height: scrolled ? 48 : 60, width: 'auto', transition: 'height 0.35s ease' }}
           />
         </a>
-
+         
+          {/* want to add About dropdown */} 
         {/* Desktop nav */}
         <div className="yeg-desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           {/* Program dropdown */}
@@ -135,6 +153,7 @@ function Navbar() {
             onFocus={openProgram}
             onBlur={scheduleClose}
           >
+            
             <button
               type="button"
               aria-haspopup="true"
@@ -173,6 +192,82 @@ function Navbar() {
                   }}
                 >
                   {PROGRAM_ITEMS.map(({ label, href }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      style={{
+                        display: 'block',
+                        padding: '12px 14px',
+                        borderRadius: 8,
+                        color: '#F4F1E9',
+                        textDecoration: 'none',
+                        fontSize: 14,
+                        fontWeight: 500,
+                        transition: 'background 0.15s ease, color 0.15s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'rgba(201,162,75,0.12)';
+                        e.currentTarget.style.color = '#E9D9A8';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = '#F4F1E9';
+                      }}
+                    >
+                      {label}
+                    </a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* About dropdown */}
+          <div
+            style={{ position: 'relative' }}
+            onMouseEnter={openAbout}
+            onMouseLeave={scheduleClose}
+            onFocus={openAbout}
+            onBlur={scheduleClose}
+          >
+            <button
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={hovered === 'About'}
+              style={linkStyle(hovered === 'About')}
+            >
+              About
+              <ChevronDown
+                size={15}
+                style={{
+                  transition: 'transform 0.2s ease',
+                  transform: hovered === 'About' ? 'rotate(180deg)' : 'rotate(0)',
+                }}
+              />
+              {hovered === 'About' && <Crescent />}
+            </button>
+
+            <AnimatePresence>
+              {hovered === 'About' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.16 }}
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: 0,
+                    marginTop: 10,
+                    minWidth: 290,
+                    padding: 8,
+                    background: '#0B1220',
+                    border: '1px solid rgba(201,162,75,0.22)',
+                    borderRadius: 12,
+                    boxShadow: '0 18px 40px rgba(0,0,0,0.4)',
+                  }}
+                >
+                  {ABOUT_ITEMS.map(({ label, href }) => (
                     <a
                       key={label}
                       href={href}

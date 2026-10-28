@@ -13,6 +13,7 @@ const Navbar = () => {
   const [isOpen4, setIsOpen4] = useState(false);
   const [isOpen5, setIsOpen5] = useState(false);
   const [isOpen6, setIsOpen6] = useState(false);
+  const [isOpen7, setIsOpen7] = useState(false);
   
   
 
@@ -37,6 +38,9 @@ const Navbar = () => {
   };
   const toggleNavbar6 = () => {
     setIsOpen6(!isOpen6);
+  };
+  const toggleNavbar7 = () => {
+    setIsOpen7(!isOpen7);
   };
 
 
@@ -80,31 +84,12 @@ const Navbar = () => {
             Career Program
           </button>
 
-          {isOpen1 && (
-        <div className="lg:hidden mt-4 bg-yellow-700">
-          {/* Add your navigation links here */}
-            <button 
-            onClick={toggleNavbar5}
-            className="block text-white py-2 px-4 " href="../kursuskerjaya/sphu">
-              Sijil Profesional Haji & Umrah (SPHU)
-            </button>
-            {isOpen5 && (
-            <div className="lg:hidden mt-4 bg-yellow-500">
-              {/* Add your navigation links here */}
-                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="./kursuskerjaya/sphu/bhum">
-                Bachelor’s Degree Hajj & Umrah Management</a>
-                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="./kursuskerjaya/sphu/mhum">
-                Master Hajj & Umrah Management</a>
-                
-            </div>
-          )}
+          
             <a 
             onClick={toggleNavbar3}
             className="block text-white py-2 px-4 hover:bg-gray-700"href="https://acm-my.com/aviation-career-malaysia-site-page/">
               Aviation Career Malaysia (ACM)
             </a>
-        </div>
-          )}
           {/* <button 
             onClick={toggleNavbar6}
             className="block text-white py-2 px-4 hover:bg-gray-700" href="#about">
@@ -154,6 +139,25 @@ const Navbar = () => {
             </div>
               )} */}
 
+            <button
+              type="button"
+              onClick={toggleNavbar7}
+              aria-expanded={isOpen7}
+              className="flex w-full items-center justify-between py-2 px-4 text-left text-white hover:bg-gray-700"
+            >
+              <span>About YEG</span>
+              <span aria-hidden="true">{isOpen7 ? '⌃' : '⌄'}</span>
+            </button>
+            {isOpen7 && (
+              <div className="ml-4 border-l border-yellow-500">
+                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="/about-us">
+                  Why YEG Academy
+                </a>
+                <a className="block text-white py-2 px-4 hover:bg-gray-700" href="/about-us/journey">
+                  Journey
+                </a>
+              </div>
+            )}
             <a className="block text-white py-2 px-4 hover:bg-gray-700" href="/careyeg">
             Article</a>
             <a className="block text-white py-2 px-4 hover:bg-gray-700" href="/testimoni">

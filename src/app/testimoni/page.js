@@ -1,7 +1,5 @@
 import React from 'react'
 import Image from "next/image"
-import Footer from "@/components/Footer.jsx"
-import Sidebar from "@/components/Sidebar.jsx"
 import Head from "next/head"
 
 
@@ -12,7 +10,6 @@ function page() {
         <meta name="description" content="Discover inspiring stories and testimonials from students and partners who have achieved success with YEG Academy" />
         <title>Testimonials - YEG Academy</title>
       </Head>
-    <body>
         <section1 className="px-28">
         <div className="pt-8">
             <div className="flex justify-center py-8">
@@ -952,10 +949,6 @@ function page() {
             </div>
         </section4>
         <div className="py-8 lg:py-10 md:[height:80px]"></div>    
-    <div>
-      <Footer/>
-    </div>
-    </body>
     </>
   )
 }

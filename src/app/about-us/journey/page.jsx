@@ -6,12 +6,12 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const milestones = [
-  { phase: '01', period: 'The beginning', title: 'A clear purpose', text: 'YEG Academy was established in Malaysia to help learners make informed decisions and connect education with real career pathways.', image: '/bangunan1.png' },
-  { phase: '02', period: 'Programme growth', title: 'Education for ambition', text: 'Career programmes expanded around the disciplines that continue to shape Malaysia’s workforce, including Hajj and Umrah management and aviation.', image: '/YEGacademy.jpeg' },
-  { phase: '03', period: 'Industry alignment', title: 'Learning with context', text: 'Professional expertise and industry-informed curriculum became central to programme delivery, preparing learners for the world beyond the classroom.', image: '/ypkm.jpeg' },
-  { phase: '04', period: 'Strategic partnerships', title: 'A stronger ecosystem', text: 'Our network grew through collaborations with education institutions and specialist organisations, creating more connected learning opportunities.', image: '/bangunan2.png' },
-  { phase: '05', period: 'Student experience', title: 'Guidance at every step', text: 'A student-first approach brought practical consultation, clearer programme pathways and personal support into the YEG Academy experience.', image: '/bangunan3.png' },
-  { phase: '06', period: 'Today & beyond', title: 'Ready for what comes next', text: 'We continue to strengthen meaningful education, build trusted partnerships and create purposeful routes toward careers of the future.', image: '/bangunan4.png' },
+  { phase: '01', period: 'Permulaan', title: 'Tujuan yang Jelas', text: 'YEG Academy ditubuhkan di Malaysia untuk membantu pelajar membuat keputusan yang tepat serta menghubungkan pendidikan dengan laluan kerjaya sebenar.', image: '/bangunan1.png' },
+  { phase: '02', period: 'Pertumbuhan Program', title: 'Pendidikan untuk Aspirasi', text: 'Program kerjaya berkembang dalam bidang yang terus membentuk tenaga kerja Malaysia, termasuk pengurusan Haji dan Umrah serta penerbangan.', image: '/YEGacademy.jpeg' },
+  { phase: '03', period: 'Penjajaran Industri', title: 'Pembelajaran dengan Konteks', text: 'Kepakaran profesional dan kurikulum berasaskan industri menjadi teras penyampaian program, membimbing pelajar untuk menghadapi dunia pekerjaan.', image: '/ypkm.jpeg' },
+  { phase: '04', period: 'Kerjasama Strategik', title: 'Ekosistem yang Lebih Kukuh', text: 'Rangkaian YEG berkembang melalui kerjasama dengan institusi pendidikan dan organisasi pakar untuk membentuk peluang pembelajaran yang lebih bersepadu.', image: '/bangunan2.png' },
+  { phase: '05', period: 'Pengalaman Pelajar', title: 'Bimbingan di Setiap Langkah', text: 'Pendekatan berfokus kepada pelajar membawa khidmat perundingan praktikal, laluan program yang jelas dan sokongan peribadi sepanjang pengalaman YEG Academy.', image: '/bangunan3.png' },
+  { phase: '06', period: 'Hari Ini & Masa Hadapan', title: 'Bersedia untuk Cabaran Akan Datang', text: 'Kami terus memperkukuh pendidikan bermakna, membina kerjasama dipercayai dan mencipta laluan yang bermatlamat menuju kerjaya masa hadapan.', image: '/bangunan4.png' },
 ]
 
 export default function JourneyPage() {
@@ -44,15 +44,15 @@ export default function JourneyPage() {
   return (
     <main className="yeg-journey">
       <section className="yeg-journey-hero">
-        <div className="yeg-journey-kicker">Our journey</div>
+        <div className="yeg-journey-kicker">Perjalanan Kami</div>
         <div className="yeg-journey-title-row">
           <h1>Membina Pencapaian dengan tujuan yang jelas.</h1>
-          <p>Explore the moments that shaped YEG Academy—from its founding principle to the growing education ecosystem we continue to build.</p>
+          <p>Terokai detik-detik penting yang membentuk YEG Academy — daripada prinsip penubuhan hingga ekosistem pendidikan yang terus berkembang.</p>
         </div>
       </section>
 
-      <section className="yeg-journey-stage" aria-label="YEG Academy journey milestones">
-        <nav className="yeg-journey-index" aria-label="Choose a milestone">
+      <section className="yeg-journey-stage" aria-label="Pencapaian penting YEG Academy">
+        <nav className="yeg-journey-index" aria-label="Pilih pencapaian">
           {milestones.map((item, index) => (
             <a
               id={`milestone-link-${item.phase}`}
@@ -84,22 +84,21 @@ export default function JourneyPage() {
         </div>
 
         <div className="yeg-journey-controls">
-          <button type="button" onClick={() => move(-1)} aria-label="Previous milestone"><ArrowLeft size={20} /></button>
+          <button type="button" onClick={() => move(-1)} aria-label="Pencapaian sebelumnya"><ArrowLeft size={20} /></button>
           <div className="yeg-journey-progress" aria-label={`Milestone ${active + 1} of ${milestones.length}`}>
             {milestones.map((item, index) => (
-              <button type="button" key={item.phase} className={index === active ? 'is-active' : ''} onClick={() => goTo(index)} aria-label={`View milestone ${index + 1}: ${item.period}`} />
-            ))}
+              <button type="button" key={item.phase} className={index === active ? 'is-active' : ''} onClick={() => goTo(index)}               aria-label={`Lihat pencapaian ${index + 1}: ${item.period}`} />            ))}
           </div>
           <span className="yeg-journey-count">0{active + 1} / 0{milestones.length}</span>
-          <button type="button" onClick={() => move(1)} aria-label="Next milestone"><ArrowRight size={20} /></button>
+          <button type="button" onClick={() => move(1)} aria-label="Pencapaian seterusnya"><ArrowRight size={20} /></button>
         </div>
       </section>
 
       <section className="yeg-journey-metric">
-        <p>Where we are going</p>
-        <h2>Our next chapter will stay rooted in the same principle:</h2>
-        <strong>education should open a clear, credible route to opportunity.</strong>
-        <Link href="/borangyeg">Start your journey <ArrowRight size={17} /></Link>
+        <p>Destinasi Kami</p>
+        <h2>Bab seterusnya kami akan terus berpegang pada prinsip yang sama:</h2>
+        <strong>pendidikan harus membuka laluan peluang yang jelas dan berdaya maju.</strong>
+        <Link href="/borangyeg">Mulakan perjalanan anda <ArrowRight size={17} /></Link>
       </section>
     </main>
   )

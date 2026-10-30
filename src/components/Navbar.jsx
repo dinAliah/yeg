@@ -10,9 +10,8 @@ const PROGRAM_ITEMS = [
 ];
 
 const ABOUT_ITEMS = [
-  { label: 'Why YEG ', href: '/about-us' },
-  { label: 'Journey', href: '/about-us/journey' },
- 
+  { label: 'Company Overview', href: '/about-us' },
+  { label: 'Our Journey', href: '/about-us/journey' },
 ];
 
 const NAV_LINKS = [
@@ -82,9 +81,10 @@ function Navbar() {
   };
   const scheduleClose = () => {
     clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setHovered((h) => (h === 'Program' ? null : h)), 140);
-    closeTimer.current = setTimeout(() => setHovered((h) => (h === 'About' ? null : h)), 140);
+    closeTimer.current = setTimeout(() => setHovered(null), 140);
   };
+
+  React.useEffect(() => () => clearTimeout(closeTimer.current), []);
 
   const linkStyle = (active) => ({
     position: 'relative',
@@ -136,8 +136,8 @@ function Navbar() {
           <Image
             src="/YEG white logo.png"
             alt="YEG logo"
-            height={160}
-            width={140}
+            height={200}
+            width={200}
             style={{ objectFit: 'contain', height: scrolled ? 48 : 60, width: 'auto', transition: 'height 0.35s ease' }}
           />
         </a>
@@ -236,7 +236,7 @@ function Navbar() {
               aria-expanded={hovered === 'About'}
               style={linkStyle(hovered === 'About')}
             >
-              About
+              About Us
               <ChevronDown
                 size={15}
                 style={{
@@ -427,6 +427,64 @@ function Navbar() {
                     ))}
                   </motion.div>
                 )}
+              </AnimatePresence>
+
+              <button
+                onClick={() => setMobileAboutOpen((o) => !o)}
+                aria-expanded={mobileAboutOpen}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '18px 0',
+                  background: 'transparent',
+                  border: 'none',
+                  borderBottom: '1px solid rgba(255,255,255,0.08)',
+                  color: '#F4F1E9',
+                  fontSize: 17,
+                  fontWeight: 600,
+                  fontFamily: 'inherit',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                }}
+              >
+                About Us
+                <ChevronDown
+                  size={18}
+                  style={{ transition: 'transform 0.2s ease', transform: mobileAboutOpen ? 'rotate(180deg)' : 'rotate(0)' }}
+                />
+              </button>
+
+              <AnimatePresence initial={false}>
+                {mobileAboutOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.22 }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    {ABOUT_ITEMS.map(({ label, href }) => (
+                      <a
+                        key={label}
+                        href={href}
+                        style={{
+                          display: 'block',
+                          padding: '14px 0 14px 16px',
+                          borderBottom: '1px solid rgba(255,255,255,0.05)',
+                          borderLeft: '2px solid #C9A24B',
+                          color: '#E9D9A8',
+                          textDecoration: 'none',
+                          fontSize: 15,
+                          fontWeight: 500,
+                        }}
+                      >
+                        {label}
+                      </a>
+                    ))}
+                  </motion.div>
+                )}
+
               </AnimatePresence>
 
               {NAV_LINKS.map(({ label, href }) => (

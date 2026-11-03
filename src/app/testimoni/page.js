@@ -1,16 +1,137 @@
+"use client"
+
 import React from 'react'
+import { useState } from 'react'
 import Image from "next/image"
 import Head from "next/head"
 
 
 function page() {
+  const [activeFilter, setActiveFilter] = useState('all')
+  const filters = [
+    { label: 'All', value: 'all', count: 25 },
+    { label: 'Diploma', value: 'diploma', count: 16 },
+    { label: 'Sijil', value: 'sijil', count: 9 },
+  ]
+
   return (
     <>
     <Head>
         <meta name="description" content="Discover inspiring stories and testimonials from students and partners who have achieved success with YEG Academy" />
         <title>Testimonials - YEG Academy</title>
       </Head>
-        <section1 className="px-28">
+      <div className="testimonials-page" data-testimonial-filter={activeFilter}>
+        <style>{`
+          .testimonials-page {
+            min-height: 100vh;
+            overflow: hidden;
+            padding: 1px 0 4rem;
+            color: #172033;
+            background:
+              radial-gradient(ellipse at 12% 8%, rgba(147, 197, 253, 0.3), transparent 34rem),
+              radial-gradient(ellipse at 88% 24%, rgba(196, 181, 253, 0.24), transparent 32rem),
+              linear-gradient(180deg, #f8fbff 0%, #f3f6fb 48%, #f8fafc 100%);
+          }
+          .testimonials-page > section1,
+          .testimonials-page > section2,
+          .testimonials-page > section3,
+          .testimonials-page > section4 {
+            padding-left: clamp(1rem, 5vw, 5rem) !important;
+            padding-right: clamp(1rem, 5vw, 5rem) !important;
+          }
+          .testimonials-page section1 .group span,
+          .testimonials-page section4 .group span {
+            color: #14213d;
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            letter-spacing: 0.08em;
+            line-height: 1.1;
+            background: none;
+          }
+          .testimonials-page section2 h,
+          .testimonials-page section3 h {
+            color: #172554;
+          }
+          .testimonials-page section2 > div[class*="grid-cols-"],
+          .testimonials-page section3 > div[class*="grid-cols-"],
+          .testimonials-page section1 > div[class*="grid-cols-"] {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
+            gap: 1.25rem;
+          }
+          .testimonials-page card1,
+          .testimonials-page card2,
+          .testimonials-page card3,
+          .testimonials-page card4,
+          .testimonials-page card5 {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.9) !important;
+            border-radius: 1.5rem !important;
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: 0 18px 45px rgba(30, 41, 59, 0.08), inset 0 1px rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(18px);
+            transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+          }
+          .testimonials-page card1:hover,
+          .testimonials-page card2:hover,
+          .testimonials-page card3:hover,
+          .testimonials-page card4:hover,
+          .testimonials-page card5:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 24px 55px rgba(30, 41, 59, 0.13);
+          }
+          .testimonials-page card1 h.text-center,
+          .testimonials-page card2 h.text-center,
+          .testimonials-page card3 h.text-center,
+          .testimonials-page card4 h.text-center,
+          .testimonials-page card5 h.text-center {
+            color: #334155;
+            line-height: 1.75;
+          }
+          .testimonials-page[data-testimonial-filter="diploma"] [data-testimonial-category="sijil"],
+          .testimonials-page[data-testimonial-filter="diploma"] [data-testimonial-grid="career-batch-22"] > :nth-child(-n + 4),
+          .testimonials-page[data-testimonial-filter="sijil"] [data-testimonial-category="diploma"],
+          .testimonials-page[data-testimonial-filter="sijil"] [data-testimonial-grid="career-batch-22"] > :nth-child(5) {
+            display: none !important;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .testimonials-page card1,
+            .testimonials-page card2,
+            .testimonials-page card3,
+            .testimonials-page card4,
+            .testimonials-page card5 {
+              transition: none;
+            }
+          }
+        `}</style>
+        <nav className="mx-auto flex w-[min(100%-2rem,80rem)] flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/80 bg-white/65 px-4 py-4 shadow-xl shadow-slate-900/5 backdrop-blur-xl sm:px-6" aria-label="Filter testimonials">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Explore stories</p>
+            <p className="mt-1 text-sm text-slate-700">Browse testimonials by programme</p>
+          </div>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Programme">
+            {filters.map(({ label, value, count }) => (
+              <button
+                key={value}
+                type="button"
+                aria-pressed={activeFilter === value}
+                onClick={() => setActiveFilter(value)}
+                className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
+                  activeFilter === value
+                    ? 'border-slate-900 bg-slate-900 text-white shadow-lg shadow-slate-900/20'
+                    : 'border-slate-200 bg-white/80 text-slate-700 hover:border-slate-400 hover:bg-white'
+                }`}
+              >
+                {label}
+                <span className={`rounded-full px-2 py-0.5 text-xs ${activeFilter === value ? 'bg-white/15 text-white' : 'bg-slate-100 text-slate-600'}`}>
+                  {count}
+                </span>
+              </button>
+            ))}
+          </div>
+        </nav>
+        <section1 className="px-28" data-testimonial-category="diploma">
         <div className="pt-8">
             <div className="flex justify-center py-8">
         <div className="group w-3/4 h-full grid justify-center ">
@@ -200,7 +321,7 @@ function page() {
                 </card5>
             </div>
         </section1>
-        <section2 className="px-28">
+        <section2 className="px-28" data-testimonial-category="diploma">
             
             <div className="px-6 pt-10">
             <div className=" flex w-1/3 border-b-2 py-3">
@@ -515,7 +636,7 @@ function page() {
             </div>     
       </div>
       </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6 pt-6'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6 pt-6' data-testimonial-category="sijil">
                 <card1 className="p-4 py-4 rounded-md shadow-lg border">
                 <div className="flex justify-center pt-2">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
@@ -668,7 +789,7 @@ function page() {
                 </div>     
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6 pt-6'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6 pt-6' data-testimonial-grid="career-batch-22">
                 <card1 className="p-4 py-4 rounded-md shadow-lg border">
                 <div className="flex justify-center pt-2">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
@@ -948,7 +1069,8 @@ function page() {
                 </card5>
             </div>
         </section4>
-        <div className="py-8 lg:py-10 md:[height:80px]"></div>    
+        <div className="py-8 lg:py-10 md:[height:80px]"></div>
+      </div>
     </>
   )
 }

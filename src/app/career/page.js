@@ -12,9 +12,8 @@ const departments = ['All', 'Administration', 'Creative and Branding', 'Advertis
 const detail = [
   { gambar: '/career/CareerAdmin3.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerCreative1.jpeg', width: 400, department: 'Creative and Branding', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerYEG.jpeg', width: 400, department: 'Admin', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerYEG.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerIT1.jpeg', width: 400, department: 'Advertising & IT', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerYEG.jpeg', width: 400, department: 'Finance', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerOperation1.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerCreative2.jpeg', width: 400, department: 'Creative and Branding', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerEdu1.jpeg', width: 400, department: 'Education', link: FORM_LINK, linkLabel: FORM_LABEL },

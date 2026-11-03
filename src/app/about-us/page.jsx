@@ -15,7 +15,7 @@ import {
 } from 'lucide-react'
 
 export const metadata = {
-  title: 'Tentang Kami & Perkhidmatan | YEG Academy',
+  title: 'Company Overview',
   description:
     'Kenali YEG Academy, rakan pendidikan, program kerjaya dan sokongan profesional kami.',
 }
@@ -136,7 +136,26 @@ export default function AboutUsPage() {
           <div><strong>Berteraskan kerjaya</strong><span>Pembelajaran praktikal</span></div>
         </div>
       </section>
+   <section className="yeg-about-approach" aria-labelledby="approach-title">
+         <div className="yeg-about-purpose" role="group" aria-label="Visi dan misi YEG Academy">
+          <article className="yeg-about-purposeCard">
+            <span className="yeg-about-purposeIcon"><Eye size={24} aria-hidden="true" /></span>
+            <div>
+              <p className="yeg-about-kicker">Visi kami</p>
+              <p>Menjadi institusi pendidikan pilihan yang membentuk graduan berdaya saing, yakin dan bersedia melangkah ke alam pekerjaan.</p>
+            </div>
+          </article>
+          <article className="yeg-about-purposeCard">
+            <span className="yeg-about-purposeIcon"><Target size={24} aria-hidden="true" /></span>
+            <div>
+              <p className="yeg-about-kicker">Misi kami</p>
+              <p>Menyediakan program profesional yang praktikal dan mudah diakses, disokong bimbingan peribadi serta jaringan industri yang membuka laluan kerjaya.</p>
+            </div>
+          </article>
+        </div>
 
+       
+      </section>
       <section className="yeg-about-services" id="services" aria-labelledby="services-title">
         <div className="yeg-about-servicesHeading">
           <div>
@@ -163,52 +182,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="yeg-about-approach" aria-labelledby="approach-title">
-        <div className="yeg-about-approachIntro">
-          <p className="yeg-about-kicker">Cara kami membimbing</p>
-          <h2 id="approach-title">Kejelasan sebelum membuat keputusan.</h2>
-          <p>
-            Keputusan yang baik bermula dengan maklumat yang tepat. Penasihat
-            kami membantu pelajar membandingkan pilihan, memahami syarat
-            kemasukan dan merancang langkah seterusnya dengan yakin.
-          </p>
-          <Link className="yeg-about-journeyLink" href="/about-us/journey">
-            Lihat perjalanan kami <ArrowRight size={17} aria-hidden="true" />
-          </Link>
-        </div>
 
-        <div className="yeg-about-approachDetails">
-          {principles.map(([title, text], index) => (
-            <article className="yeg-about-principle" key={title}>
-              <span className="yeg-about-principleNumber">0{index + 1}</span>
-              <div><h3>{title}</h3><p>{text}</p></div>
-            </article>
-          ))}
-          <div className="yeg-about-partners">
-            <p>Ekosistem pembelajaran kami</p>
-            <div>
-              {partners.map((partner) => <span key={partner}>{partner}</span>)}
-            </div>
-          </div>
-        </div>
-
-        <div className="yeg-about-purpose" role="group" aria-label="Visi dan misi YEG Academy">
-          <article className="yeg-about-purposeCard">
-            <span className="yeg-about-purposeIcon"><Eye size={24} aria-hidden="true" /></span>
-            <div>
-              <p className="yeg-about-kicker">Visi kami</p>
-              <p>Menjadi institusi pendidikan pilihan yang membentuk graduan berdaya saing, yakin dan bersedia melangkah ke alam pekerjaan.</p>
-            </div>
-          </article>
-          <article className="yeg-about-purposeCard">
-            <span className="yeg-about-purposeIcon"><Target size={24} aria-hidden="true" /></span>
-            <div>
-              <p className="yeg-about-kicker">Misi kami</p>
-              <p>Menyediakan program profesional yang praktikal dan mudah diakses, disokong bimbingan peribadi serta jaringan industri yang membuka laluan kerjaya.</p>
-            </div>
-          </article>
-        </div>
-      </section>
 
       <section className="yeg-about-cta" aria-labelledby="about-cta-title">
         <div className="yeg-about-ctaCopy">

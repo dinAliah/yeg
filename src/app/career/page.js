@@ -10,17 +10,15 @@ const departments = ['All', 'Administration', 'Creative and Branding', 'Advertis
 
 // List of posters. Make sure each one has the right department.
 const detail = [
-  { gambar: '/career/CareerAdmin3.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerCreative1.jpeg', width: 400, department: 'Creative and Branding', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerYEG.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerIT1.jpeg', width: 400, department: 'Advertising & IT', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerOperation1.jpeg', width: 400, department: 'Administration', link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerCreative2.jpeg', width: 400, department: 'Creative and Branding', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerEdu1.jpeg', width: 400, department: 'Education', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerEdu2.jpeg', width: 400, department: 'Education', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerSales3.jpeg', width: 400, department: 'Business Development', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerCreative1.jpeg', width: 400, department: 'Creative and Branding', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerIT1.jpeg', width: 400, department: 'Advertising & IT', link: FORM_LINK, linkLabel: FORM_LABEL },
+  { gambar: '/career/CareerCreative2.jpeg', width: 400, department: 'Creative and Branding', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerSales1.jpeg', width: 400, department: 'Business Development', link: FORM_LINK, linkLabel: FORM_LABEL },
   { gambar: '/career/CareerFPHU1.jpeg', width: 400, department: ['Business Development','Administration'], link: FORM_LINK, linkLabel: FORM_LABEL },
-  { gambar: '/career/CareerSales3.jpeg', width: 400, department: 'Business Development', link: FORM_LINK, linkLabel: FORM_LABEL },
+
   
  
  

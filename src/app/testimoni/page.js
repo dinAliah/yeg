@@ -1,24 +1,46 @@
 "use client"
 
-import React from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Head from "next/head"
 
-
 function page() {
-  const [activeFilter, setActiveFilter] = useState('all')
+  const [activeFilter, setActiveFilter] = useState("all")
+
   const filters = [
-    { label: 'All', value: 'all', count: 25 },
-    { label: 'Diploma', value: 'diploma', count: 16 },
-    { label: 'Sijil', value: 'sijil', count: 9 },
+    { label: "Semua", value: "all" },
+    { label: "Sijil", value: "sijil" },
+    { label: "Diploma", value: "diploma" },
+    { label: "Ijazah", value: "degree" },
+    { label: "Sarjana", value: "master" },
+    { label: "Doktor Falsafah (PhD)", value: "phd" },
   ]
+
+  // Simple scroll reveal that works on mobile
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible")
+          }
+        })
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    )
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [activeFilter])
 
   return (
     <>
-    <Head>
-        <meta name="description" content="Discover inspiring stories and testimonials from students and partners who have achieved success with YEG Academy" />
-        <title>Testimonials - YEG Academy</title>
+      <Head>
+        <title>Testimoni Pelajar 2027 · ACM · FPHU · YPKM</title>
+        <meta
+          name="description"
+          content="Kisah dan pengalaman sebenar pelajar Aviation Career Malaysia, FPHU dan YPKM."
+        />
       </Head>
           <section aria-labelledby="events-title" className="px-4 pb-8 pt-20 sm:px-6 lg:px-8">
                     <div className="relative mx-auto flex min-h-56 max-w-7xl items-end overflow-hidden rounded-3xl bg-slate-1200 sm:min-h-72">
@@ -33,1068 +55,331 @@ function page() {
                       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-900/35 to-slate-900/10" />
                       <div className="relative max-w-2xl px-6 py-8 text-white sm:px-10 sm:py-12">
                         <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-emerald-200">
-                          YEG Academy ·Testimoni
+                          YEG Academy · Testimoni Pelajar
                         </p>
                         <h1 id="events-title" className="text-3xl font-semibold tracking-tight sm:text-5xl">
-                           Testimoni
+                          Testimoni
                         </h1>
                         <p className="mt-3 max-w-xl text-sm leading-6 text-white/85 sm:text-base">
-                          Testimoni daripada pelajar dan rakan kongsi yang telah mencapai kejayaan bersama YEG Academy
+                          Kisah dan pengalaman pelajar Aviation Career Malaysia, FPHU dan YPKM — daripada peringkat Sijil hingga Doktor Falsafah (PhD).
                         </p>
                       </div>
                     </div>
                   </section>
       
-      <div className="testimonials-page" data-testimonial-filter={activeFilter}>
+
+      <div className="testimonials-2027">
         <style>{`
-          .testimonials-page {
+          .testimonials-2027 {
+            --navy: #0f172a;
+            --gold: #c9a227;
+            --soft: #f8fafc;
             min-height: 100vh;
-            overflow: hidden;
-            padding: 1px 0 16rem;
-            color: #172033;
             background:
-              radial-gradient(ellipse at 12% 8%, rgba(147, 197, 253, 0.3), transparent 34rem),
-              radial-gradient(ellipse at 88% 24%, rgba(196, 181, 253, 0.24), transparent 32rem),
-              linear-gradient(180deg, #f8fbff 0%, #f3f6fb 48%, #f8fafc 100%);
+              radial-gradient(ellipse 80% 50% at 20% -10%, rgba(201, 162, 39, 0.08), transparent),
+              radial-gradient(ellipse 60% 40% at 90% 10%, rgba(15, 23, 42, 0.04), transparent),
+              linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--navy);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           }
-          .testimonials-page > section1,
-          .testimonials-page > section2,
-          .testimonials-page > section3,
-          .testimonials-page > section4 {
-            padding-left: clamp(1rem, 5vw, 5rem) !important;
-            padding-right: clamp(1rem, 5vw, 5rem) !important;
+
+          /* ===== SCROLL REVEAL ===== */
+          .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
           }
-          .testimonials-page section1 .group span,
-          .testimonials-page section4 .group span {
-            color: #14213d;
-            font-size: clamp(2rem, 5vw, 3.25rem);
-            letter-spacing: 0.08em;
-            line-height: 1.1;
-            background: none;
+          .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
           }
-          .testimonials-page section2 h,
-          .testimonials-page section3 h {
-            color: #172554;
+
+          /* ===== FILTER BAR ===== */
+          .filter-bar {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            backdrop-filter: blur(16px);
+            background: rgba(248, 250, 252, 0.85);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
           }
-          .testimonials-page section2 > div[class*="grid-cols-"],
-          .testimonials-page section3 > div[class*="grid-cols-"],
-          .testimonials-page section1 > div[class*="grid-cols-"] {
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
-            gap: 1.25rem;
+
+          /* ===== CARDS ===== */
+          .t-card {
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 24px -4px rgba(15, 23, 42, 0.06);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
           }
-          .testimonials-page card1,
-          .testimonials-page card2,
-          .testimonials-page card3,
-          .testimonials-page card4,
-          .testimonials-page card5 {
-            display: flex;
-            min-width: 0;
-            flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.9) !important;
-            border-radius: 1.5rem !important;
-            background: rgba(255, 255, 255, 0.72);
-            box-shadow: 0 18px 45px rgba(30, 41, 59, 0.08), inset 0 1px rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(18px);
-            transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+          .t-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12);
           }
-          .testimonials-page card1:hover,
-          .testimonials-page card2:hover,
-          .testimonials-page card3:hover,
-          .testimonials-page card4:hover,
-          .testimonials-page card5:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.94);
-            box-shadow: 0 24px 55px rgba(30, 41, 59, 0.13);
-          }
-          .testimonials-page card1 h.text-center,
-          .testimonials-page card2 h.text-center,
-          .testimonials-page card3 h.text-center,
-          .testimonials-page card4 h.text-center,
-          .testimonials-page card5 h.text-center {
-            color: #334155;
-            line-height: 1.75;
-          }
-          .testimonials-page[data-testimonial-filter="diploma"] [data-testimonial-category="sijil"],
-          .testimonials-page[data-testimonial-filter="diploma"] [data-testimonial-grid="career-batch-22"] > :nth-child(-n + 4),
-          .testimonials-page[data-testimonial-filter="sijil"] [data-testimonial-category="diploma"],
-          .testimonials-page[data-testimonial-filter="sijil"] [data-testimonial-grid="career-batch-22"] > :nth-child(5) {
+
+          /* Hide based on filter */
+          .testimonials-2027[data-filter="sijil"] [data-level]:not([data-level="sijil"]),
+          .testimonials-2027[data-filter="diploma"] [data-level]:not([data-level="diploma"]),
+          .testimonials-2027[data-filter="degree"] [data-level]:not([data-level="degree"]),
+          .testimonials-2027[data-filter="master"] [data-level]:not([data-level="master"]),
+          .testimonials-2027[data-filter="phd"] [data-level]:not([data-level="phd"]) {
             display: none !important;
           }
-          @media (prefers-reduced-motion: reduce) {
-            .testimonials-page card1,
-            .testimonials-page card2,
-            .testimonials-page card3,
-            .testimonials-page card4,
-            .testimonials-page card5 {
-              transition: none;
-            }
+
+          /* Group section titles */
+          .group-title {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--navy);
+          }
+          .group-sub {
+            color: #64748b;
+            font-size: 0.95rem;
+          }
+
+          /* TikTok section */
+          .tiktok-card {
+            background: #000;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            aspect-ratio: 9/16;
+            position: relative;
           }
         `}</style>
-        <nav className="mx-auto flex w-[min(100%-2rem,80rem)] flex-wrap items-center justify-between gap-16 rounded-3xl border border-white/80 bg-white/65 px-4 py-4 shadow-xl shadow-slate-900/5 backdrop-blur-xl sm:px-6" aria-label="Filter testimonials">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Explore stories</p>
-            <p className="mt-1 text-sm text-slate-700">Browse testimonials by programme</p>
-          </div>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Programme">
-            {filters.map(({ label, value, count }) => (
-              <button
-                key={value}
-                type="button"
-                aria-pressed={activeFilter === value}
-                onClick={() => setActiveFilter(value)}
-                className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
-                  activeFilter === value
-                    ? 'border-slate-900 bg-slate-900 text-white shadow-lg shadow-slate-900/20'
-                    : 'border-slate-200 bg-white/80 text-slate-700 hover:border-slate-400 hover:bg-white'
-                }`}
-              >
-                {label}
-                <span className={`rounded-full px-2 py-0.5 text-xs ${activeFilter === value ? 'bg-white/15 text-white' : 'bg-slate-100 text-slate-600'}`}>
-                  {count}
-                </span>
-              </button>
-            ))}
-          </div>
-        </nav>
-        <section1 className="px-28" data-testimonial-category="diploma">
-        <div className="pt-8">
-            <div className="flex justify-center py-8">
-        <div className="group w-3/4 h-full grid justify-center ">
-          <span className="text-slate-700 font-bold text-4xl bg-gradient-to-r from-yellow-500 to-yellow-500 bg-no-repeat [background-position:0_88%] [background-size:1%_100%] motion-safe:transition-all motion-safe:duration-700 group-hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
-          TESTIMONI</span>
-      </div>
-      </div>
-            </div>
-            <div className="pt-8">
-            <div className="flex justify-center py-8">
-        <div className="group w-3/4 h-full grid justify-center ">
-          <span className="text-slate-700 font-bold text-4xl bg-gradient-to-r from-yellow-500 to-yellow-500 bg-no-repeat [background-position:0_88%] [background-size:1%_100%] motion-safe:transition-all motion-safe:duration-700 group-hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
-          ALUMNI</span>
-      </div>
-      </div>
-            </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6'>
-                <card1 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Pilih musuh dengan bijak dan jadikan ia menjadi semangat yang baik untuk perjalanan hidup anda</h>
-                        
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <div className="">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/alumni1.jpg"
-                        alt="alumni1"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    </div>
-                    <div className="grid">
-                        <h className="text-base font-medium">Rabieatul Adawiyah</h>
-                        <h className="text-xs font-light text-slate-500">DHUMY</h>
-                        </div>
-                    </div>
-                </card1>
-                <card2 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Ambil hanya 5 mata untuk menjadi orang yang berjaya, sebab selebihnya saya tidak ingat...</h>
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/alumni2.jpg"
-                        alt="alumni2"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-base font-medium">Saidatul Aishah</h>
-                        <h className="text-xs font-light text-slate-500">DHUMY</h>
-                        </div>
-                    </div>
-                </card2>
-                <card3 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Percaya pada diri sendiri bahawa anda boleh melakukan apa sahaja yang anda takuti dengan bijak</h>  
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/alumni3.jpg"
-                        alt="alumni1"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-base font-medium">Rezza Hussaini</h>
-                        <h className="text-xs font-light text-slate-500">DHUMY</h>
-                        </div>
-                    </div>
-                </card3>
-                <card4 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Semalam adalah sejarah, hari ini adalah hadiah dan esok adalah misteri. Terima kasih YEG Akademi </h>
-                        
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/alumni4.jpg"
-                        alt="alumni4"
-                        width="100"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-base font-medium">Muhammad Syimir</h>
-                        <h className="text-xs font-light text-slate-500">DHUMY</h>
-                        
-                        </div>
-                    </div>
-                </card4>
-                <card5 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Jangan percaya sesiapa selain Allah adalah ayat terbaik untuk tidak kemurungan terhadap pasangan</h>  
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/alumni5.jpg"
-                        alt="alumni1"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-base font-medium">Ismail Sharudin</h>
-                        <h className="text-xs font-light text-slate-500">DHUMY</h>
-                        </div>
-                    </div>
-                </card5>
-            </div>
-        </section1>
-        <section2 className="px-28" data-testimonial-category="diploma">
-            
-            <div className="px-6 pt-10">
-            <div className=" flex w-1/3 border-b-2 py-3">
-            <div className="grid justify-start space-y-2">
-            <h className="font-bold text-2xl">DIPLOMA</h>
-            <h className="font-semibold text-xl">BATCH 23</h>
-            </div>     
-      </div>
-      </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6 pt-6'>
-                <card1 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Program dari YEG Akademi ini sangat bagus. Sekarang saya telah menamatkan diploma saya, Terima kasih banyak YEG Akademi</h>
-                        
-                    </div>
-                   
-                    <div className="text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch1.jpg"
-                        alt="batch1"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Hanis Afiqah</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card1>
-                <card2 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Terima Kasih kepada pensyarah saya, semua pensyarah begitu positif kepada kami, juga sukakan tarbiah YEG Akademi. Terima kasih YEG Akademi</h>
-                        <div className=""></div>
-                    </div>
-                    <div className="text-transparent">asd</div>
-                    <div className="text-transparent lg:hidden">asd</div>
-                    <div className="py-6"></div>
-                    
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch2.jpg"
-                        alt="batch2"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Fakhrullah Ismail</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card2>
-                <card3 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Bahagian kegemaran saya dalam kursus pada masa ini ialah saya boleh menyesuaikannya dengan minat saya, Terima kasih YEG Akademi</h>
-                        
-                    </div>
-                    <div className="text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch3.jpg"
-                        alt="batch3"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Danisha Balqis</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card3>
-                <card4 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Dengan sikap terbuka dan mengalu-alukan saya di YEG Akademi, saya boleh menyelami dan hidup dengan budaya yang berbeza.</h>
-                        
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    
-                    
 
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch4.jpg"
-                        alt="batch4"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Fatiha Rodzman</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card4>
-                <card5 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Di YEG Akademi, saya mendapat peluang untuk bertemu, berinteraksi dan berkawan dengan orang dari seluruh negeri.</h>
-                        
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="lg:py-3"></div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch5.jpg"
-                        alt="batch5"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Nurul Shahmie</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card5>
-            </div>
-            <div className="py-4"></div>
-            <div className="px-6 ">
-                <div className=" flex w-1/3 border-b-2 py-2">
-                <div className="grid justify-start space-y-2">
-                    <h className="font-bold text-2xl">DIPLOMA</h>
-                    <h className="font-semibold text-xl">BATCH 22</h>
-                </div>     
+        <div data-filter={activeFilter}>
+
+          {/* ========== STICKY FILTER ========== */}
+          <div className="filter-bar">
+            <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    Kisah Pelajar 2027
+                  </p>
+                  <p className="mt-0.5 text-sm text-slate-600">
+                    Tapis mengikut kelayakan
+                  </p>
                 </div>
-            </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6 pt-6'>
-                <card1 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Jika anda keliru di mana untuk menyambung pengajian anda, Mungkin YEG Akademi adalah tempat untuk anda memulakan perjalanan anda</h> 
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch6.jpg"
-                        alt="batch6"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Damia Syazwani</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card1>
-                <card2 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Saya suka calture di YEG dan tidak menyesal untuk saya menyambung pelajaran di YEG Academy, Terima kasih YEG Academy</h>
-                        
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch7.jpg"
-                        alt="batch7"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Farishah Awadah</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card2>
-                <card3 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Untuk pangkat pelajar terbaik ini, terima kasih kepada pensyarah saya. Jika bukan kerana mereka, saya tidak mendapat gelaran pelajar terbaik</h>
-                        
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch8.jpg"
-                        alt="batch8"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Nur'Anishah</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card3>
-                <card4 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Hanya kata-kata pendek, Sangat disyorkan untuk mereka yang merancang pengajian mereka di YEG Akademi, Terima kasih YEG Akademi</h> 
-                    </div>
-                    <div className="lg:py-3"></div>
-                    <div className="py-6"></div>
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch9.jpg"
-                        alt="batch9"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Hafizuddin</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card4>
-                <card5 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Saya sangat gembira kerana menjadi pelajar pengurusan haji & Umrah, Terima kasih YEG Academy kerana memperkenalkan saya kepada program ini</h>  
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/batch10.jpg"
-                        alt="batch10"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Hazim Sulaiman</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card5>
-            </div>
-        </section2>
-        <section3 className="px-28">
-            <div className="px-6">
-            <div className=" flex w-1/3 border-b-2 py-3">
-            <div className="grid justify-start space-y-2">
-            <h className="font-bold text-2xl">KERJAYA</h>
-            <h className="font-semibold text-xl">BATCH 23</h>
-            </div>     
-      </div>
-      </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6 pt-6' data-testimonial-category="sijil">
-                <card1 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Program dari Akademi YEG ini sangat bagus. Alhamdulillah, Sekarang saya sudah tamat diploma, Terima kasih YEG Academy</h>
-                        
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya1.png"
-                        alt="kerjaya1"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Aiman</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card1>
-                <card2 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Mungkin YEG Academy adalah tempat yang terbaik yang ingin mengambil kursushaji umrah, Terima Kasih YEg Academy</h>
-                        
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="lg:hidden md:py-3"></div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya2.png"
-                        alt="kerjaya2"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Arshad Saad</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card2>
-                <card3 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Bahagian kegemaran saya dalam kursus pada masa ini ialah saya boleh menyesuaikannya dengan minat saya</h>
-                        
-                    </div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="text-transparent lg:text-transparent md:text-transparent">asd</div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya3.png"
-                        alt="kerjaya3"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Amirul</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card3>
-                <card4 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Dengan sikap terbuka dan mengalu-alukan saya di YEG Akademi, saya boleh menyelami dan selesa dengan budaya yang berbeza.</h>
-                        
-                    </div>
-                    <div className="lg:py-3"></div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya4.png"
-                        alt="kerjaya4"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Zul</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card4>
-                <card5 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Saya suke dengan apa yang dianjurkan oleh YEG Academy, Memang recomended bagi yang ingin sambung belajar.</h>
-                        
-                    </div>
-                    <div className="lg:py-6"></div>
-                    <div className="py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya5.png"
-                        alt="kerjaya5"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Haikal</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card5>
-            </div>
-            <div className="py-4"></div>
-            <div className="px-6 ">
-                <div className=" flex w-1/3 border-b-2 py-2">
-                <div className="grid justify-start space-y-2">
-                    <h className="font-bold text-2xl">KERJAYA</h>
-                    <h className="font-semibold text-xl">BATCH 22</h>
-                </div>     
+
+                <div className="flex flex-wrap gap-2">
+                  {filters.map((f) => (
+                    <button
+                      key={f.value}
+                      onClick={() => setActiveFilter(f.value)}
+                      className={`rounded-full px-4 py-2 text-sm font-semibold transition-all ${
+                        activeFilter === f.value
+                          ? "bg-slate-900 text-white shadow-lg shadow-slate-900/20"
+                          : "bg-white text-slate-700 border border-slate-200 hover:border-slate-400"
+                      }`}
+                    >
+                      {f.label}
+                    </button>
+                  ))}
                 </div>
+              </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6 pt-6' data-testimonial-grid="career-batch-22">
-                <card1 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Jangan keliru dengan program YEG Academy kerana saya telah berjaya dengan program ini</h>
-                        
-                    </div>
-                    <div className="py-6"></div>
-                    
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya6.png"
-                        alt="kerjaya6"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Farishah Awadah</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card1>
-                <card2 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Suka sangat dengan susana pembelajaran di YEG Academy, Terima kasih Yeg Akademi</h>
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya7.png"
-                        alt="kerjaya7"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">NUR</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card2>
-                <card3 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Untuk pelajar terbaik ini, mengucapkan terima kasih kepada pensyarah saya. Jika bukan kerana mereka, saya tidak mendapat gelaran pelajar terbaik</h>
-                        
-                    </div>
-                    <div className="lg:py-3 py-6"></div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya8.png"
-                        alt="kerjaya8"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Muhammad</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card3>
-                <card4 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Hanya ayat yang pendek ingin diucapkan, Terima kasih YEG Academy kerana telah mengesyorkan kepada saya program ini</h> 
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya9.png"
-                        alt="kerjaya9"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Wahid</h>
-                        <h className="text-xs">SPHU</h>
-                        </div>
-                    </div>
-                </card4>
-                <card5 className="p-4 py-4 rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Saya sangat gembira menjadi pelajar pengurusan Haji & Umrah, Terima kasih Yeg Academy </h>  
-                    </div>
-                    <div className="md:py-3 lg:hidden"></div>
-                    <div className="py-6"></div>
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <Image
-                    className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center"
-                        src="/kerjaya10.png"
-                        alt="kerjaya10"
-                        width="200"
-                        height="200"
-                        style={{
-                        objectFit:"cover",
-                        }}
-                    />
-                    <div className="grid">
-                        <h className="text-lg font-medium">Siti</h>
-                        <h className="text-xs">DHUMY</h>
-                        </div>
-                    </div>
-                </card5>
+          </div>
+
+          {/* ========== HERO ========== */}
+          <section className="mx-auto max-w-6xl px-4 pt-12 pb-8 sm:px-6 reveal">
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              Suara Pelajar Kami
+            </h1>
+            <p className="mt-3 max-w-2xl text-lg text-slate-600">
+              Pengalaman sebenar pelajar ACM, FPHU dan YPKM — daripada peringkat Sijil hingga Doktor Falsafah (PhD).
+            </p>
+          </section>
+
+          {/* ========== ACM SECTION ========== */}
+          <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+            <div className="mb-8 reveal">
+              <h2 className="group-title">Aviation Career Malaysia</h2>
+              <p className="group-sub mt-1">ACM · Laluan pantas kerjaya dalam bidang penerbangan</p>
             </div>
-        </section3>
-        <div className="w-full flex justify-center"> 
-        <Image
-          id="image1"
-            className="rounded-md"
-            src="/bersamatun1.svg"
-            alt="bersamatun"
-            width="1470"
-            height="10"
-            style={{
-              objectFit:"contain",
-            }}
-          />
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Example cards – replace with real content */}
+              <article className="t-card p-6 reveal" data-level="diploma">
+                <p className="text-slate-700 leading-relaxed">
+                  “Program ACM ini membuka mata saya tentang industri penerbangan. Kini saya sudah mendapat pekerjaan tetap.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">Aiman</p>
+                    <p className="text-xs text-slate-500">Diploma · ACM</p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="t-card p-6 reveal" data-level="degree">
+                <p className="text-slate-700 leading-relaxed">
+                  “Program laluan pantas ijazah selama 3½ tahun. Selepas menamatkan diploma dan ijazah, saya terus menerima tawaran kerja.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">Nurul</p>
+                    <p className="text-xs text-slate-500">Ijazah · ACM</p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="t-card p-6 reveal" data-level="diploma">
+                <p className="text-slate-700 leading-relaxed">
+                  “Suasana pembelajaran di ACM sangat menyokong. Semua pensyarah mempunyai pengalaman dalam industri.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">Farishah</p>
+                    <p className="text-xs text-slate-500">Diploma · ACM</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          {/* ========== FPHU SECTION ========== */}
+          <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+            <div className="mb-8 reveal">
+              <h2 className="group-title">Fakulti Pengurusan Haji & Umrah</h2>
+              <p className="group-sub mt-1">FPHU · Program daripada Sijil hingga Doktor Falsafah (PhD)</p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <article className="t-card p-6 reveal" data-level="diploma">
+                <p className="text-slate-700 leading-relaxed">
+                  “Program dari YEG Akademi ini sangat bagus. Sekarang saya telah menamatkan diploma saya.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">Hanis Afiqah</p>
+                    <p className="text-xs text-slate-500">Diploma · FPHU</p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="t-card p-6 reveal" data-level="sijil">
+                <p className="text-slate-700 leading-relaxed">
+                  “Suka sangat dengan suasana pembelajaran. Terima kasih YEG Academy.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">NUR</p>
+                    <p className="text-xs text-slate-500">Sijil · FPHU</p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="t-card p-6 reveal" data-level="degree">
+                <p className="text-slate-700 leading-relaxed">
+                  “Dengan sikap terbuka di YEG Akademi, saya boleh hidup dengan budaya yang berbeza.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">Fatiha</p>
+                    <p className="text-xs text-slate-500">Ijazah · FPHU</p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="t-card p-6 reveal" data-level="master">
+                <p className="text-slate-700 leading-relaxed">
+                  “Program Sarjana ini membuka peluang untuk saya menjadi pakar rujuk dalam industri Haji dan Umrah.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">Syakir</p>
+                    <p className="text-xs text-slate-500">Sarjana · FPHU</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          {/* ========== YPKM SECTION ========== */}
+          <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+            <div className="mb-8 reveal">
+              <h2 className="group-title">Yayasan Pendidikan Kasih Malaysia</h2>
+              <p className="group-sub mt-1">YPKM · Biasiswa & sokongan pelajar</p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <article className="t-card p-6 reveal" data-level="diploma">
+                <p className="text-slate-700 leading-relaxed">
+                  “Tanpa biasiswa YPKM, saya tak mampu sambung belajar. Terima kasih banyak.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">Danisha</p>
+                    <p className="text-xs text-slate-500">Diploma · Penerima Biasiswa YPKM</p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="t-card p-6 reveal" data-level="degree">
+                <p className="text-slate-700 leading-relaxed">
+                  “YPKM bantu saya fokus belajar tanpa risau pasal yuran. Alhamdulillah.”
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="h-10 w-10 rounded-full bg-slate-200" />
+                  <div>
+                    <p className="font-medium text-slate-900">Fakhrullah</p>
+                    <p className="text-xs text-slate-500">Ijazah · Penerima Biasiswa YPKM</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          {/* ========== TIKTOK SECTION ========== */}
+          <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+            <div className="mb-10 text-center reveal">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+                Ikuti kami di TikTok
+              </h2>
+              <p className="mt-2 text-slate-600">
+                Kehidupan kampus, kisah pelajar dan tip harian
+              </p>
+              <a
+                href="https://www.tiktok.com/@aviationcareermalaysia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.16 15.8 6.34 6.34 0 0 0 9.5 22.14a6.34 6.34 0 0 0 6.34-6.34V8.75a8.23 8.23 0 0 0 4.76 1.52V6.84a4.84 4.84 0 0 1-1.01-.15z"/>
+                </svg>
+                @aviationcareermalaysia
+              </a>
+            </div>
+
+            {/* TikTok style grid – replace src with real embeds or screenshots later */}
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 reveal">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="tiktok-card flex items-center justify-center bg-slate-900">
+                  <div className="text-center text-white/60">
+                    <svg className="mx-auto h-10 w-10 opacity-40" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.16 15.8 6.34 6.34 0 0 0 9.5 22.14a6.34 6.34 0 0 0 6.34-6.34V8.75a8.23 8.23 0 0 0 4.76 1.52V6.84a4.84 4.84 0 0 1-1.01-.15z"/>
+                    </svg>
+                    <p className="mt-2 text-xs">Klip TikTok {i}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <div className="h-16" />
         </div>
-        <section4 className="px-28">
-            <div className="py-12">
-            <div className="flex justify-center">
-        <div className="group w-3/4 h-full grid justify-center ">
-          <span className="text-slate-700 font-bold text-4xl bg-gradient-to-r from-yellow-500 to-yellow-500 bg-no-repeat [background-position:0_88%] [background-size:1%_100%] motion-safe:transition-all motion-safe:duration-700 group-hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
-          OUR SUPPORT ADVISOR</span>
-      </div>
-      </div>
-            </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-6'>
-                <card1 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Pilih musuh dengan bijak dan jadikan ia menjadi semangat yang baik untuk perjalanan hidup anda</h>
-                        
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <div className="w-10 h-10 rounded-full bg-slate-300 flex justify-center items-center">H</div>
-                    <div className="grid">
-                        <h className="text-lg font-medium">Hanani</h>
-                       
-                        </div>
-                    </div>
-                </card1>
-                <card2 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Ambil hanya 5 mata untuk menjadi orang yang berjaya, sebab selebihnya saya tidak ingat...</h>
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <div className="w-10 h-10 rounded-full bg-red-300 flex justify-center items-center">A</div>
-                    <div className="grid">
-                        <h className="text-lg font-medium">Anis</h>
-                        </div>
-                    </div>
-                </card2>
-                <card3 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Percaya pada diri sendiri bahawa anda boleh melakukan apa sahaja yang anda takuti dengan bijak</h>  
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <div className="w-10 h-10 rounded-full bg-yellow-300 flex justify-center items-center">E</div>
-                    <div className="grid">
-                        <h className="text-lg font-medium">En.Mukmin</h>
-                       
-                        </div>
-                    </div>
-                </card3>
-                <card4 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Semalam adalah sejarah, hari ini adalah hadiah dan esok adalah misteri. Terima kasih YEG Akademi</h>
-                        
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <div className="w-10 h-10 rounded-full bg-green-300 flex justify-center items-center">S</div>
-                    <div className="grid">
-                        <h className="text-lg font-medium">Shahirah</h>
-                        
-                        </div>
-                    </div>
-                </card4>
-                <card5 className="p-4  rounded-md shadow-lg border">
-                <div className="flex justify-center pt-2">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div className="flex justify-center py-3">
-                        <h className="text-center">Jangan percaya sesiapa selain Allah adalah ayat terbaik untuk tidak kemurungan terhadap pasangan</h>  
-                    </div>
-                    <div className="py-6"></div>
-                    <div className="flex">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="#FDCC0D"></path></svg>
-                    </div>
-                    <div className="flex items-center py-1 border-t-2 space-x-3 ">
-                    <div className="w-10 h-10 rounded-full bg-orange-300 flex justify-center items-center">I</div>
-                    <div className="grid">
-                        <h className="text-lg font-medium">Irfan</h>
-                         
-                        </div>
-                    </div>
-                </card5>
-            </div>
-        </section4>
-        <div className="py-8 lg:py-10 md:[height:80px]"></div>
       </div>
     </>
   )

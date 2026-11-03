@@ -20,12 +20,37 @@ function page() {
         <meta name="description" content="Discover inspiring stories and testimonials from students and partners who have achieved success with YEG Academy" />
         <title>Testimonials - YEG Academy</title>
       </Head>
+          <section aria-labelledby="events-title" className="px-4 pb-8 pt-20 sm:px-6 lg:px-8">
+                    <div className="relative mx-auto flex min-h-56 max-w-7xl items-end overflow-hidden rounded-3xl bg-slate-1200 sm:min-h-72">
+                      <Image
+                        src="/YEGacademy.jpeg"
+                        alt=""
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-900/35 to-slate-900/10" />
+                      <div className="relative max-w-2xl px-6 py-8 text-white sm:px-10 sm:py-12">
+                        <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-emerald-200">
+                          YEG Academy ·Testimoni
+                        </p>
+                        <h1 id="events-title" className="text-3xl font-semibold tracking-tight sm:text-5xl">
+                           Testimoni
+                        </h1>
+                        <p className="mt-3 max-w-xl text-sm leading-6 text-white/85 sm:text-base">
+                          Testimoni daripada pelajar dan rakan kongsi yang telah mencapai kejayaan bersama YEG Academy
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+      
       <div className="testimonials-page" data-testimonial-filter={activeFilter}>
         <style>{`
           .testimonials-page {
             min-height: 100vh;
             overflow: hidden;
-            padding: 1px 0 4rem;
+            padding: 1px 0 16rem;
             color: #172033;
             background:
               radial-gradient(ellipse at 12% 8%, rgba(147, 197, 253, 0.3), transparent 34rem),
@@ -105,7 +130,7 @@ function page() {
             }
           }
         `}</style>
-        <nav className="mx-auto flex w-[min(100%-2rem,80rem)] flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/80 bg-white/65 px-4 py-4 shadow-xl shadow-slate-900/5 backdrop-blur-xl sm:px-6" aria-label="Filter testimonials">
+        <nav className="mx-auto flex w-[min(100%-2rem,80rem)] flex-wrap items-center justify-between gap-16 rounded-3xl border border-white/80 bg-white/65 px-4 py-4 shadow-xl shadow-slate-900/5 backdrop-blur-xl sm:px-6" aria-label="Filter testimonials">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Explore stories</p>
             <p className="mt-1 text-sm text-slate-700">Browse testimonials by programme</p>

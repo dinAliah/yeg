@@ -360,6 +360,9 @@ function page() {
                     <video
                       src="/yegTiktok1.mp4"
                       controls
+                      autoPlay
+                      loop
+                      muted
                       playsInline
                       preload="metadata"
                       className="absolute inset-0 h-full w-full object-cover"
@@ -368,6 +371,9 @@ function page() {
                     <video
                       src="/yegTiktok2.mp4"
                       controls
+                      autoPlay
+                      loop
+                      muted
                       playsInline
                       preload="metadata"
                       className="absolute inset-0 h-full w-full object-cover"
@@ -376,6 +382,9 @@ function page() {
                     <video
                       src="/yegTiktok3.mp4"
                       controls
+                      autoPlay
+                      loop
+                      muted
                       playsInline
                       preload="metadata"
                       className="absolute inset-0 h-full w-full object-cover"
@@ -384,6 +393,9 @@ function page() {
                     <video
                       src="/yegTiktok4.mp4"
                       controls
+                      autoPlay
+                      loop
+                      muted
                       playsInline
                       preload="metadata"
                       className="absolute inset-0 h-full w-full object-cover"

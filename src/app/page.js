@@ -1,4 +1,4 @@
-'use client'
+
 
 import Intro from '@/components/homepage/Intro'
 import Achievement from '@/components/homepage/Achievement'
@@ -14,7 +14,7 @@ import Entertainment from '@/components/homepage/Entertainment'
 import News from '@/components/homepage/News'
 import Faq from '@/components/homepage/Faq'
 import ContactUs from "@/components/homepage/ContactUs"
-import { Fab } from '@mui/material'
+
 
 export default function home() {
   return (

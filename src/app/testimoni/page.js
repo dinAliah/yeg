@@ -95,11 +95,13 @@ function page() {
             transform: translateY(0);
           }
 
-          /* ===== FILTER BAR ===== */
+             /* Dont have sticky header */
+          /* ===== FILTER BAR ===== Dont have sticky header */
           .filter-bar {
-            position: sticky;
+            
+            position: relative;
             top: 0;
-            z-index: 40;
+            z-index: 2;
             backdrop-filter: blur(16px);
             background: rgba(248, 250, 252, 0.85);
             border-bottom: 1px solid rgba(15, 23, 42, 0.06);
@@ -355,18 +357,31 @@ function page() {
             {/* TikTok style grid – replace src with real embeds or screenshots later */}
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 reveal">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="tiktok-card flex items-center justify-center bg-slate-900">
+                <div
+                  key={i}
+                  className={`tiktok-card flex items-center justify-center bg-slate-900 ${i === 1 ? "group" : ""}`}
+                >
                   {i === 1 ? (
-                    <video
-                      src="/yegTiktok1.mp4"
-                      controls
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
+                    <>
+                      <video
+                        src="/yegTiktok1.mp4"
+                        controls
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <a
+                        href="https://www.tiktok.com/@yegacademy/video/7603740238183173383?is_from_webapp=1&sender_device=pc&web_id=7675634704025060871"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-4 right-4 z-10 rounded-full bg-pink-600 px-4 py-2 text-sm font-semibold text-white opacity-100 shadow-lg transition hover:bg-pink-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100"
+                      >
+                        Tonton di TikTok
+                      </a>
+                    </>
                   ) : i === 2 ? (
                     <video
                       src="/yegTiktok2.mp4"

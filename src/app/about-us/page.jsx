@@ -15,9 +15,74 @@ import {
 } from 'lucide-react'
 
 export const metadata = {
-  title: 'Company Overview',
+  title: 'Tentang YEG Academy | Pendidikan & Laluan Kerjaya',
   description:
-    'Kenali YEG Academy, rakan pendidikan, program kerjaya dan sokongan profesional kami.',
+    'Kenali YEG Academy: organisasi pendidikan Malaysia yang menyediakan program kerjaya, bimbingan dan sokongan profesional untuk membantu pelajar mencapai laluan kerjaya.',
+  alternates: {
+    canonical: 'https://www.yegmy.com/about-us',
+  },
+  openGraph: {
+    title: 'Tentang YEG Academy | Pendidikan & Laluan Kerjaya',
+    description:
+      'YEG Academy menghubungkan pelajar dengan program pendidikan, bimbingan peribadi dan rakan industri untuk membina laluan kerjaya yang relevan.',
+    url: 'https://www.yegmy.com/about-us',
+    siteName: 'YEG Academy',
+    locale: 'ms_MY',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.yegmy.com/YEGacademy.jpeg',
+        alt: 'Pelajar dan tenaga pengajar berbincang di YEG Academy',
+      },
+    ],
+  },
+}
+
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.yegmy.com/#organization',
+      name: 'YEG Academy',
+      url: 'https://www.yegmy.com/',
+      logo: 'https://www.yegmy.com/YEG%20white%20logo.png',
+      description:
+        'Organisasi pendidikan Malaysia yang menyediakan program profesional, bimbingan kerjaya dan sokongan pendidikan berasaskan industri.',
+    },
+    {
+      '@type': 'AboutPage',
+      '@id': 'https://www.yegmy.com/about-us/#page',
+      url: 'https://www.yegmy.com/about-us',
+      name: 'Tentang YEG Academy',
+      description:
+        'Maklumat tentang visi, misi, perkhidmatan dan pendekatan pendidikan YEG Academy di Malaysia.',
+      inLanguage: 'ms-MY',
+      isPartOf: {
+        '@id': 'https://www.yegmy.com/#website',
+      },
+      about: {
+        '@id': 'https://www.yegmy.com/#organization',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Utama',
+          item: 'https://www.yegmy.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Tentang Kami',
+          item: 'https://www.yegmy.com/about-us',
+        },
+      ],
+    },
+  ],
 }
 
 const services = [
@@ -64,6 +129,10 @@ const partners = [
 export default function AboutUsPage() {
   return (
     <div className="yeg-about-page" lang="ms">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
       <section className="yeg-about-hero" aria-labelledby="about-title">
         <div className="yeg-about-heroCopy">
           <p className="yeg-about-kicker">Tentang YEG Academy</p>

@@ -1,4 +1,6 @@
 "use client"
+import TurnstileField from "@/components/TurnstileField"
+import { submitProtectedForm } from "@/lib/secure-form"
 
 import { useState } from "react"
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react"
@@ -47,8 +49,8 @@ export default function ContactPage() {
     }
 
     try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbw8m7r6p8zv8-9yjiWiN6iNDaYq0JyDtTsuMVnZD5oE__NC1483gX0MxWH76z00zMscYg/exec",
+      const response = await submitProtectedForm(
+        "form-01",
         { method: "POST", body: formData }
       )
       const data = await response.json()
@@ -168,6 +170,7 @@ export default function ContactPage() {
           </div>
 
           {status && <div className="yeg-contact-status" role="status">{status}</div>}
+          <TurnstileField />
           <button type="submit" disabled={submitting}>
             <Send size={16} />
             {submitting ? "Sending..." : "Send Enquiry"}

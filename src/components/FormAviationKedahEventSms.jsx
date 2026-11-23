@@ -1,4 +1,6 @@
 "use client"
+import TurnstileField from "@/components/TurnstileField"
+import { submitProtectedForm } from "@/lib/secure-form"
 import React, { useState, useEffect  } from 'react';
 
 
@@ -22,7 +24,9 @@ export default function App() {
     
 
     
-  function Submit(e) {
+  async function Submit(e) {
+    if (!e) return;
+    e.preventDefault();
     const emailValue = e.target.elements.Email.value;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -40,9 +44,9 @@ export default function App() {
     formDatab.append("Source", selectedItem1);
 
 
-    fetch(
+    await submitProtectedForm(
 
-      "https://script.google.com/macros/s/AKfycby7AR-E1wtxUB8FcuL7wvGwmbCj7v2On5D8fPy7GemsBAILx94GT3rW0TfU5qTg7V6_6A/exec",
+      "form-24",
       {
         method: "POST",
         body: formDatab
@@ -54,7 +58,7 @@ export default function App() {
         console.log(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error); throw error;
       });
 
       setAlertMessage('Form submitted successfully!');
@@ -103,7 +107,7 @@ export default function App() {
     <div className=" hidden lg:block"></div>
         <div className="p-4  lg:flex justify-center  ">     
       <div className="lg:w-1/3 ">
-      <form className=" backdrop-blur-lg w-full p-6 border space-y-5 rounded-lg shadow-lg" onSubmit={(e) => Submit(e)}>
+      <form className=" backdrop-blur-lg w-full p-6 border space-y-5 rounded-lg shadow-lg" onSubmit={(e) => Submit(e).catch(() => window.alert("Form submission failed. Please try again."))}>
       <div className="py-6 text-black text-3xl font-bold">
 
       
@@ -258,6 +262,7 @@ export default function App() {
           </div>
                
     <div className="pt-4">
+    <TurnstileField />
     <button className="px-6 py-2 border rounded-md bg-yellow-500 hover:bg-yellow-600 hover:shadow-md duration-300" name="Submit" type="submit" >Submit</button>
     </div>
         </form>

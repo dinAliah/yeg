@@ -1,4 +1,6 @@
 "use client"
+import TurnstileField from "@/components/TurnstileField"
+import { submitProtectedForm } from "@/lib/secure-form"
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Footer from "@/components/Footer.jsx";
@@ -10,7 +12,8 @@ export default function App() {
   const [emailError, setEmailError] = useState('');
   const [formError, setFormError] = useState('');
 
-  function Submit(e) {
+  async function Submit(e) {
+    if (!e) return;
     e.preventDefault(); // Prevent default form submission behavior
 
     const emailValue = e.target.elements.Email.value;
@@ -33,8 +36,8 @@ export default function App() {
     const formEle = document.querySelector("form");
     const formData = new FormData(formEle);
 
-    fetch(
-      "https://script.google.com/macros/s/AKfycbzjmTyHnFox-ovqkSpGEwLWddSilSjlLVs71zhpVYIQQ6UAVXHNTWxqYARGPw1KQmAi/exec",
+    await submitProtectedForm(
+      "form-34",
       {
         method: "POST",
         body: formData
@@ -45,7 +48,7 @@ export default function App() {
         console.log(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error); throw error;
       });
 
     setAlertMessage('Form submitted successfully!');
@@ -60,7 +63,7 @@ export default function App() {
         <div className="hidden lg:block">j</div>
         <div className="p-4 lg:flex justify-center">
           <div className="lg:w-1/3">
-            <form className="backdrop-blur-lg w-full p-6 border space-y-5 rounded-lg shadow-lg" onSubmit={(e) => Submit(e)}>
+            <form className="backdrop-blur-lg w-full p-6 border space-y-5 rounded-lg shadow-lg" onSubmit={(e) => Submit(e).catch(() => window.alert("Form submission failed. Please try again."))}>
               <div className="py-6 text-black text-3xl font-bold">
                 <h>Borang Pertanyaan</h>
               </div>
@@ -86,6 +89,7 @@ export default function App() {
               </div>
 
               <div className="pt-4">
+                <TurnstileField />
                 <button className="px-6 py-2 border rounded-md bg-yellow-500 hover:bg-yellow-600 hover:shadow-md duration-300" name="Submit" type="submit">Submit</button>
               </div>
             </form>

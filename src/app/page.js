@@ -4,7 +4,6 @@ import Intro from '@/components/homepage/Intro'
 import Achievement from '@/components/homepage/Achievement'
 import SliderRamadan from '@/components/homepage/SliderRamadan'
 import Mainstream from '@/components/homepage/Mainstream'
-import Mainstream2 from '@/components/homepage/Mainstream2'
 import Qualities from '@/components/homepage/Qualities'
 import Courses from '@/components/homepage/Courses'
 import Trendmark from '@/components/homepage/Trendmark'
@@ -42,8 +41,6 @@ export default function home() {
         <SliderRamadan />
         <Mainstream />
         <Achievement />
-      
-        <Mainstream2 />
         <Qualities />
         <Courses />
         <Trendmark />

@@ -16,32 +16,37 @@ export default function RootLayout({ children }) {
 
   const hideLayoutPaths = ['/-keep1-/qraviation']
 
-  const shouldHideLayout = hideLayoutPaths.includes(pathname)
+  const isAdminPath = pathname.startsWith('/admin')
+  const shouldHideLayout = hideLayoutPaths.includes(pathname) || isAdminPath
 
   return (
     <html lang="en">
       <head />
       <body className={inter.className}>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-QCJEQC9T3Z"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-QCJEQC9T3Z', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+        {!isAdminPath && (
+          <>
+            <Script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-QCJEQC9T3Z"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-QCJEQC9T3Z', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
 
         {!shouldHideLayout && <Navbar />}
         {!shouldHideLayout && <Sidebar />}
         <main>{children}</main>
         {!shouldHideLayout && <Footer />}
-        <Analytics />
+        {!isAdminPath && <Analytics />}
       </body>
     </html>
   )

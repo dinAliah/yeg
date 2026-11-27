@@ -1,45 +1,62 @@
-import React from 'react'
-
 function Intro() {
-  /*return (
-    <>
-    {/* <Sidebar/>
-    <Navbar25/ className="bg-gradient-to-r from-[#151c41] to-[rgba(11,24,54,0)"> */
-    /*<section1 className="relative">
-    <div className="absolute top-0 left-0 h-full w-1/4 "></div>
-    <div className="bg-black max-w-full lg:px-3 flex justify-center ">
-      <video className="w-[1400px]"controls playsInline autoPlay><source src="yegintro.mp4" type="video/mp4" /></video>
-      </div>
-        </section1>
-        </>
-    
-  )
-}*/
-return (
-    <>
-      {/* <Sidebar/>
-    <Navbar25/ className="bg-gradient-to-r from-[#151c41] to-[rgba(11,24,54,0)"> */}
-      <div className="yeg-hero-scope">
-        <section className="hero -mt-10 lg:-mt-16 rounded-t-[40px] lg:rounded-t-[56px] overflow-hidden shadow-[0_-12px_40px_rgba(0,0,0,0.08)] bg-slate-100">
-          <div className="hero-bg"></div>
-          <div className="hero-content">
-           
-            <h1>Shaping Malaysia's next generation of <em>career-ready</em> talent.</h1>
-            <p className="lead">
-              YEG Academy connects students with the education pathways employers are actually
-              hiring for — through partnerships built with Malaysia's leading institutions.
-            </p>
-            <div className="cta-row">
-              <a href="#programs" className="btn btn-gold">Explore Programmes</a>
-              <a href="https://www.yegmy.com/career" className="btn btn-team">Join Our Team</a>
-            </div>
+  return (
+    <div className="yeg-hero-scope yeg-home-landing">
+      <section className="hero" aria-labelledby="yeg-home-title">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-content">
+          <p className="hero-eyebrow">YEG Academy · Education &amp; career pathways</p>
+          <h1 id="yeg-home-title">
+            Shaping Malaysia&apos;s next generation of <em>career-ready</em> talent.
+          </h1>
+          <p className="lead">
+            YEG Academy connects students with the education pathways employers are actually
+            hiring for — through partnerships built with Malaysia&apos;s leading institutions.
+          </p>
+          <div className="cta-row">
+            <a href="#programs" className="btn btn-gold">Explore Programmes</a>
+            <a href="/career" className="btn btn-team">Join Our Team</a>
           </div>
-        </section>
+        </div>
+        <div className="hero-visual" aria-hidden="true">
+          <span className="hero-visual-ring" />
+          <span className="hero-visual-mark">YEG</span>
+        </div>
+      </section>
 
-       
+      <div className="partner-strip" aria-label="YEG Academy education partners">
+        <div className="wrap">
+          <span className="partner-label">Our education partners</span>
+          <span className="partner-item">Innovative University College</span>
+          <span className="partner-item">MAHSA University</span>
+          <span className="partner-item">MEATECH</span>
+          <span className="partner-item">Pelita Akademi</span>
+        </div>
       </div>
-    </>
-  )
+
+      <section className="home-feature-section" id="programs" aria-label="YEG Academy pathways">
+        <div className="home-feature-grid">
+          <a className="home-feature-card home-feature-card-primary" href="/kursusdiploma/dhumy">
+            <span className="home-feature-number">01 / PROGRAMMES</span>
+            <h2>Career-ready pathways</h2>
+            <p>Explore diploma programmes shaped around current education and industry needs.</p>
+            <span className="home-feature-link">Explore programmes <span aria-hidden="true">↗</span></span>
+          </a>
+          <a className="home-feature-card home-feature-card-accent" href="/kursusdiplomawbl/dhumywbl">
+            <span className="home-feature-number">02 / WORK-BASED LEARNING</span>
+            <h2>Learn through experience</h2>
+            <p>Combine 12 months of theory with 18 months of paid industry training.</p>
+            <span className="home-feature-link">Discover WBL <span aria-hidden="true">↗</span></span>
+          </a>
+          <a className="home-feature-card home-feature-card-light" href="/about-us">
+            <span className="home-feature-number">03 / PARTNERSHIPS</span>
+            <h2>Connected to industry</h2>
+            <p>Study with professional institutions and learn from experienced industry practitioners.</p>
+            <span className="home-feature-link">About YEG Academy <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+      </section>
+    </div>
+  );
 }
 
-export default Intro
+export default Intro;

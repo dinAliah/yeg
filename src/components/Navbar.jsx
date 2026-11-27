@@ -2,11 +2,38 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ArrowRight, BookOpen, Briefcase, ChevronDown, GraduationCap, Menu, Phone, X, Home, Building2, HeartHandshake } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
-const PROGRAM_ITEMS = [
-  { label: 'Fakulti Pengurusan Haji Umrah', href: '/kursuskerjaya/sphu/bhum' },
-  { label: 'Aviation Career Malaysia', href: 'https://acm-my.com/' },
+const PROGRAM_GROUPS = [
+  {
+    title: 'Diploma Programmes',
+    Icon: BookOpen,
+    items: [
+      { label: 'Aviation Management', href: '/kursusdiploma/dacm' },
+      { label: 'Hajj & Umrah Management', href: '/kursusdiploma/dhumy' },
+
+    ],
+  },
+  {
+    title: 'Work-Based Learning',
+    Icon: GraduationCap,
+    items: [
+      { label: 'Hajj & Umrah Management', href: '/kursusdiplomawbl/dhumywbl' },
+      { label: 'Hospitality Management', href: '/kursusdiplomawbl/dhmwbl' },
+      { label: 'Culinary Arts', href: '/kursusdiplomawbl/dcawbl' },
+      { label: 'Early Childhood Education', href: '/kursusdiplomawbl/decwbl' },
+    ],
+  },
+  {
+    title: 'Career Pathways',
+    Icon: Briefcase,
+    items: [
+      { label: 'Fakulti Pengurusan Haji Umrah', href: '/kursuskerjaya/sphu/bhum' },
+      { label: 'Aviation Career Malaysia', href: 'https://acm-my.com/' },
+      { label: 'MISA Career Programmes', href: '/kursuskerjaya/misa' },
+    ],
+  },
 ];
 
 const ABOUT_ITEMS = [
@@ -44,7 +71,7 @@ function Crescent() {
       style={{ position: 'absolute', left: '50%', bottom: -6, x: '-50%', pointerEvents: 'none' }}
       transition={{ type: 'spring', stiffness: 420, damping: 34 }}
     >
-      <path d="M2 2 C 10 9, 24 9, 32 2" fill="none" stroke="#C9A24B" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M2 2 C 10 9, 24 9, 32 2" fill="none" stroke="#795ee9" strokeWidth="1.6" strokeLinecap="round" />
     </motion.svg>
   );
 }
@@ -57,7 +84,13 @@ function Navbar() {
   const [mobileAboutOpen, setMobileAboutOpen] = React.useState(false);
   const [mobileProgramOpen, setMobileProgramOpen] = React.useState(false);
   const [hovered, setHovered] = React.useState(null);
+  const pathname = usePathname();
   const closeTimer = React.useRef(null);
+  const isPathActive = (href) =>
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`);
+  const programActive = ['/kursusdiploma', '/kursusdiplomawbl', '/kursuskerjaya']
+    .some(isPathActive);
+  const aboutActive = ABOUT_ITEMS.some(({ href }) => isPathActive(href));
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -86,17 +119,29 @@ function Navbar() {
 
   React.useEffect(() => () => clearTimeout(closeTimer.current), []);
 
+  React.useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setHovered(null);
+        setMobileOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
   const linkStyle = (active) => ({
     position: 'relative',
     display: 'inline-flex',
     alignItems: 'center',
     gap: 5,
-    color: active ? '#E9D9A8' : '#F4F1E9',
+    color: active ? '#684fe0' : '#52607e',
     textDecoration: 'none',
     fontSize: 14.5,
     fontWeight: 600,
     padding: '10px 14px',
-    background: 'transparent',
+    background: active ? 'rgba(113, 90, 225, 0.12)' : 'transparent',
     border: 'none',
     cursor: 'pointer',
     fontFamily: 'inherit',
@@ -105,49 +150,19 @@ function Navbar() {
 
   return (
     <>
-      <nav
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1000,
-          fontFamily: "'Manrope', sans-serif",
-          height: scrolled ? 64 : 78,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 clamp(20px, 4vw, 56px)',
-          background: scrolled ? 'rgba(11,18,32,0.82)' : '#0B1220',
-          backdropFilter: scrolled ? 'blur(14px) saturate(140%)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(14px) saturate(140%)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(201,162,75,0.16)' : '1px solid rgba(255,255,255,0.03)',
-          boxShadow: scrolled ? '0 8px 30px rgba(0,0,0,0.28)' : 'none',
-          transition: 'height 0.35s cubic-bezier(.4,0,.2,1), background 0.35s ease, box-shadow 0.35s ease',
-        }
-      }
-
-
-       
-
-      >
+      <nav className={`yeg-navbar${scrolled ? ' is-scrolled' : ''}`}>
         {/* Logo */}
-        <a href="https://www.yegmy.com/" style={{ display: 'block' }}>
-          <Image
-            src="/YEG white logo.png"
-            alt="YEG logo"
-            height={200}
-            width={200}
-            style={{ objectFit: 'contain', height: scrolled ? 48 : 60, width: 'auto', transition: 'height 0.35s ease' }}
-          />
+        <a href="https://www.yegmy.com/" className="yeg-navbar-brand">
+         <Image src="/yeglogo.png" alt="YEG logo" height={100} width={90} style={{ objectFit: 'contain', height: 100, width: 'auto' }} />
+            
         </a>
          
           {/* want to add About dropdown */} 
         {/* Desktop nav */}
-        <div className="yeg-desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div className="yeg-desktop-nav">
           {/* Program dropdown */}
           <div
-            style={{ position: 'relative' }}
+            className="yeg-nav-group"
             onMouseEnter={openProgram}
             onMouseLeave={scheduleClose}
             onFocus={openProgram}
@@ -158,7 +173,9 @@ function Navbar() {
               type="button"
               aria-haspopup="true"
               aria-expanded={hovered === 'Program'}
-              style={linkStyle(hovered === 'Program')}
+              aria-controls="yeg-program-menu"
+              onClick={() => setHovered('Program')}
+              style={linkStyle(hovered === 'Program' || programActive)}
             >
               Program
               <ChevronDown
@@ -177,46 +194,38 @@ function Navbar() {
                   initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.16 }}
-                  style={{
-                    position: 'absolute',
-                    top: '100%',
-                    left: 0,
-                    marginTop: 10,
-                    minWidth: 290,
-                    padding: 8,
-                    background: '#0B1220',
-                    border: '1px solid rgba(201,162,75,0.22)',
-                    borderRadius: 12,
-                    boxShadow: '0 18px 40px rgba(0,0,0,0.4)',
-                  }}
+                  transition={{ duration: 0.2 }}
+                  className="yeg-program-mega"
+                  id="yeg-program-menu"
                 >
-                  {PROGRAM_ITEMS.map(({ label, href }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      style={{
-                        display: 'block',
-                        padding: '12px 14px',
-                        borderRadius: 8,
-                        color: '#F4F1E9',
-                        textDecoration: 'none',
-                        fontSize: 14,
-                        fontWeight: 500,
-                        transition: 'background 0.15s ease, color 0.15s ease',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(201,162,75,0.12)';
-                        e.currentTarget.style.color = '#E9D9A8';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = '#F4F1E9';
-                      }}
-                    >
-                      {label}
+                  <div className="yeg-program-columns">
+                    {PROGRAM_GROUPS.map(({ title, Icon, items }) => (
+                      <section className="yeg-program-column" key={title}>
+                        <h2>
+                          <span className="yeg-program-icon"><Icon size={17} aria-hidden="true" /></span>
+                          {title}
+                        </h2>
+                        <ul>
+                          {items.map(({ label, href }) => (
+                            <li key={href}>
+                              <a href={href}>{label}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    ))}
+                  </div>
+                  <aside className="yeg-program-promo">
+                    <span className="yeg-program-promo-icon"><GraduationCap size={21} aria-hidden="true" /></span>
+                    <h2>Find Your Programme</h2>
+                    <p>Explore YEG Academy diploma, work-based learning and career pathways.</p>
+                    <a className="yeg-program-promo-primary" href="/#programs">
+                      View Programmes <ArrowRight size={15} aria-hidden="true" />
                     </a>
-                  ))}
+                    <a className="yeg-program-promo-secondary" href="/borangyeg">
+                      Speak to an Advisor <ArrowRight size={14} aria-hidden="true" />
+                    </a>
+                  </aside>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -224,7 +233,7 @@ function Navbar() {
 
           {/* About dropdown */}
           <div
-            style={{ position: 'relative' }}
+            className="yeg-nav-group"
             onMouseEnter={openAbout}
             onMouseLeave={scheduleClose}
             onFocus={openAbout}
@@ -234,7 +243,9 @@ function Navbar() {
               type="button"
               aria-haspopup="true"
               aria-expanded={hovered === 'About'}
-              style={linkStyle(hovered === 'About')}
+              aria-controls="yeg-about-menu"
+              onClick={() => setHovered('About')}
+              style={linkStyle(hovered === 'About' || aboutActive)}
             >
               About Us
               <ChevronDown
@@ -254,41 +265,13 @@ function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.16 }}
-                  style={{
-                    position: 'absolute',
-                    top: '100%',
-                    left: 0,
-                    marginTop: 10,
-                    minWidth: 290,
-                    padding: 8,
-                    background: '#0B1220',
-                    border: '1px solid rgba(201,162,75,0.22)',
-                    borderRadius: 12,
-                    boxShadow: '0 18px 40px rgba(0,0,0,0.4)',
-                  }}
+                  className="yeg-about-menu"
+                  id="yeg-about-menu"
                 >
                   {ABOUT_ITEMS.map(({ label, href }) => (
                     <a
                       key={label}
                       href={href}
-                      style={{
-                        display: 'block',
-                        padding: '12px 14px',
-                        borderRadius: 8,
-                        color: '#F4F1E9',
-                        textDecoration: 'none',
-                        fontSize: 14,
-                        fontWeight: 500,
-                        transition: 'background 0.15s ease, color 0.15s ease',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(201,162,75,0.12)';
-                        e.currentTarget.style.color = '#E9D9A8';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = '#F4F1E9';
-                      }}
                     >
                       {label}
                     </a>
@@ -298,34 +281,26 @@ function Navbar() {
             </AnimatePresence>
           </div>
 
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              onMouseEnter={() => setHovered(label)}
-              onMouseLeave={() => setHovered((h) => (h === label ? null : h))}
-              style={linkStyle(hovered === label)}
-            >
-              {label}
-              {hovered === label && <Crescent />}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ label, href }) => {
+            const active = isPathActive(href);
+            return (
+              <a
+                key={label}
+                href={href}
+                aria-current={active ? 'page' : undefined}
+                onMouseEnter={() => setHovered(label)}
+                onMouseLeave={() => setHovered((h) => (h === label ? null : h))}
+                style={linkStyle(active || hovered === label)}
+              >
+                {label}
+                {hovered === label && <Crescent />}
+              </a>
+            );
+          })}
 
           <a
             href="/borangyeg"
-            style={{
-              marginLeft: 10,
-              background: '#C9A24B',
-              color: '#0B1220',
-              textDecoration: 'none',
-              fontSize: 14,
-              fontWeight: 700,
-              padding: '10px 20px',
-              borderRadius: 999,
-              transition: 'background 0.2s ease',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#E9D9A8'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#C9A24B'; }}
+            className="yeg-navbar-contact"
           >
             Contact Us
           </a>
@@ -335,11 +310,26 @@ function Navbar() {
         <button
           onClick={() => setMobileOpen(true)}
           className="yeg-mobile-toggle"
-          style={{ display: 'none', background: 'transparent', border: 'none', color: '#F4F1E9', cursor: 'pointer' }}
+          style={{ display: 'none' }}
           aria-label="Open menu"
         >
           <Menu size={24} />
         </button>
+      </nav>
+
+      <nav className="yeg-mobile-dock" aria-label="Mobile navigation">
+        {[
+          { label: 'Home', href: '/', Icon: Home, active: pathname === '/' },
+          { label: 'About', href: '/about-us', Icon: Building2, active: pathname.startsWith('/about-us') },
+          { label: 'Programmes', href: '/kursusdiploma/dhumy', Icon: GraduationCap, active: pathname.startsWith('/kursus') },
+          { label: 'Partners', href: '/events', Icon: HeartHandshake, active: pathname.startsWith('/events') },
+          { label: 'Contact', href: '/borangyeg', Icon: Phone, active: pathname.startsWith('/borangyeg') },
+        ].map(({ label, href, Icon, active }) => (
+          <a key={label} href={href} aria-current={active ? 'page' : undefined} className={active ? 'is-active' : ''}>
+            <Icon size={19} strokeWidth={active ? 2.3 : 1.8} aria-hidden="true" />
+            <span>{label}</span>
+          </a>
+        ))}
       </nav>
 
       {/* Mobile sheet */}
@@ -360,7 +350,7 @@ function Navbar() {
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px' }}>
-              <Image src="/YEG white logo.png" alt="YEG logo" height={40} width={90} style={{ objectFit: 'contain', height: 40, width: 'auto' }} />
+              <Image src="/YEGlogo.jpeg" alt="YEG logo" height={40} width={90} style={{ objectFit: 'contain', height: 40, width: 'auto' }} />
               <button
                 onClick={() => setMobileOpen(false)}
                 style={{ background: 'transparent', border: 'none', color: '#F4F1E9', cursor: 'pointer' }}
@@ -407,9 +397,9 @@ function Navbar() {
                     transition={{ duration: 0.22 }}
                     style={{ overflow: 'hidden' }}
                   >
-                    {PROGRAM_ITEMS.map(({ label, href }) => (
+                    {PROGRAM_GROUPS.flatMap(({ items }) => items).map(({ label, href }) => (
                       <a
-                        key={label}
+                        key={href}
                         href={href}
                         style={{
                           display: 'block',

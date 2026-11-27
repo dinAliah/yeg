@@ -22,16 +22,29 @@ function Intro() {
           <span className="hero-visual-mark">YEG</span>
         </div>
       </section>
+<div className="partner-strip" aria-label="YEG Academy education partners">
+  <div className="partner-content">
+    {/* Scrolling logos (kiri) */}
+    <div className="partner-marquee">
+      <div className="partner-track">
+        {/* First set */}
+        <img className="partner-item" src="collabration/iuclogo.png" alt="IUC" />
+        <img className="partner-item" src="collabration/meatech2logo.png" alt="MEATECH" />
+        <img className="partner-item" src="collabration/meatechlogo.svg" alt="MEATECH" />
+        <img className="partner-item" src="collabration/logoamtc.png" alt="AMTC" />
 
-      <div className="partner-strip" aria-label="YEG Academy education partners">
-        <div className="wrap">
-          <span className="partner-label">Our education partners</span>
-          <span className="partner-item">Innovative University College</span>
-          <span className="partner-item">MAHSA University</span>
-          <span className="partner-item">MEATECH</span>
-          <span className="partner-item">Pelita Akademi</span>
-        </div>
+        {/* Duplicate set (wajib untuk loop seamless) */}
+        <img className="partner-item" src="collabration/iuclogo.png" alt="IUC" />
+        <img className="partner-item" src="collabration/meatech2logo.png" alt="MEATECH" />
+        <img className="partner-item" src="collabration/meatechlogo.svg" alt="MEATECH" />
+        <img className="partner-item" src="collabration/logoamtc.png" alt="AMTC" />
       </div>
+    </div>
+
+    {/* Title di kanan */}
+    <div className="partner-header">OUR EDUCATION PARTNERS</div>
+  </div>
+</div>
 
       <section className="home-feature-section" id="programs" aria-label="YEG Academy pathways">
         <div className="home-feature-grid">

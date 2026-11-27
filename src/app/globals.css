@@ -1024,68 +1024,127 @@ li {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-/* Partner strip overlapping the hero's bottom edge */
-.yeg-hero-scope .partner-strip {
+.partner-strip {
   position: relative;
   z-index: 3;
   background: #fff;
   margin-top: -46px;
   border-radius: 6px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  padding: 22px 40px;
+  overflow: hidden;
 }
 
-.yeg-hero-scope .partner-strip .wrap {
+/* Layout: logo kiri + title kanan */
+.partner-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 26px 40px;
-  flex-wrap: wrap;
-  gap: 22px;
+  gap: 40px;
 }
 
-.yeg-hero-scope .partner-item {
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--navy-2);
-  opacity: 0.55;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
+/* Area scroll logo (±500px) */
+.partner-marquee {
+  width: 500px;                 /* ← saiz scroll area */
+  max-width: 55%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
 }
 
-.yeg-hero-scope .partner-item:hover {
+/* Track yang bergerak */
+.partner-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: scroll-logos 20s linear infinite;
+  will-change: transform;
+}
+
+/* Pause bila hover */
+.partner-strip:hover .partner-track {
+  animation-play-state: paused;
+}
+
+/* Saiz logo kecil */
+.partner-item {
+  flex-shrink: 0;
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.25s ease;
+}
+
+.partner-item:hover {
   opacity: 1;
 }
 
-.yeg-hero-scope .partner-item small {
-  display: block;
+/* Title di kanan */
+.partner-header {
   font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 9.5px;
-  letter-spacing: 0.06em;
-  opacity: 0.8;
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-@media (max-width: 640px) {
-  .yeg-hero-scope .hero h1 {
-    font-size: 34px;
+/* Animation */
+@keyframes scroll-logos {
+  from {
+    transform: translateX(0);
   }
-
-  .yeg-hero-scope .hero-content {
-    padding: 0 24px;
-  }
-
-  .yeg-hero-scope .hero .cta-row {
-    flex-wrap: wrap;
-  }
-
-  .yeg-hero-scope .partner-strip .wrap {
-    justify-content: center;
-    padding: 22px 24px;
+  to {
+    transform: translateX(-50%);
   }
 }
 
+/* ========== Mobile ========== */
+@media (max-width: 768px) {
+  .partner-strip {
+    padding: 18px 20px;
+  }
+
+  .partner-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .partner-marquee {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .partner-track {
+    gap: 36px;
+    animation-duration: 16s;
+  }
+
+  .partner-item {
+    height: 26px;
+  }
+
+  .partner-header {
+    font-size: 11.5px;
+    order: -1; /* title naik atas di mobile */
+  }
+}
 /* =========================================================
    ACHIEVEMENT SECTION STYLES
    ========================================================= */
@@ -2109,6 +2168,13 @@ li {
   text-decoration: none;
 }
 
+.yeg-navbar-logo {
+  display: block;
+  width: 90px;
+  height: 60px;
+  object-fit: contain;
+}
+
 .yeg-navbar-logo-mark {
   display: grid;
   width: 38px;
@@ -2398,6 +2464,11 @@ li {
     width: calc(100vw - 24px);
     padding: 0 16px;
     border-radius: 18px;
+  }
+
+  .yeg-navbar-logo {
+    width: 78px;
+    height: 52px;
   }
 
   .yeg-navbar.is-scrolled {

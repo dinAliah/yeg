@@ -153,7 +153,13 @@ function Navbar() {
       <nav className={`yeg-navbar${scrolled ? ' is-scrolled' : ''}`}>
         {/* Logo */}
         <a href="https://www.yegmy.com/" className="yeg-navbar-brand">
-         <Image src="/yeglogo.png" alt="YEG logo" height={100} width={90} style={{ objectFit: 'contain', height: 100, width: 'auto' }} />
+          <Image
+            src="/yeglogo.png"
+            alt="YEG logo"
+            height={60}
+            width={90}
+            className="yeg-navbar-logo"
+          />
             
         </a>
          
